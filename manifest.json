@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Browser Extension NAME",
+  "version": "1.0.0",
+  "author": "@juliankasimir",
+  "description": "Browser Extension Template",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "declarativeContent",
+    "storage",
+    "unlimitedStorage",
+    "contextMenus",
+    "alarms",
+    "notifications",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://INSERT_URL_HERE/*"],
+      "css": [
+        "/components/content/content.css"
+      ],
+      "js": [
+        "/components/content/inject.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "/components/content/content.js",
+        "/components/content/content.css",
+        "/components/content/inject.js",
+        "chrome-extension://INSERT_ID_HERE/content.js",
+        "chrome-extension://INSERT_ID_HERE/content.css"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
