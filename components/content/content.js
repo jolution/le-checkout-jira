@@ -144,6 +144,11 @@ if (window.location.href.startsWith(targetURL)) {
                 containerElementHeadline.appendChild(document.createTextNode('Branch Name:'));
                 containerElement.appendChild(containerElementHeadline);
 
+                // TODO: optimate the layout @jochensimon
+                // Maybe we could have something like:
+                // [SELECTBOX] / [INPUT] [COPY BUTTON]
+                // without "git checkout -b" in the input field ?
+
                 containerElement.appendChild(inputElement);
                 containerElement.appendChild(copyButton);
                 containerElement.appendChild(radioContainer);
