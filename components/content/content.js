@@ -18,7 +18,9 @@ function approveValidGitBranchName(branchName) {
 
 const targetURL = 'https://jira.fsc.atos-services.net/browse/';
 
-const LogLevels = 1;
+// TODO: outsource to config file
+// Info: Set the log level to 0 to disable logging
+const LogLevels = 0;
 const LogIdentifier = '[JOLUTION]';
 
 // Function to log a message if LogLevels is greater than 0
@@ -29,12 +31,20 @@ function logThis(message) {
     }
 }
 
+// TODO: outsource to enum file
+const DisplayPrefixesType = {
+    RADIO: 'radio',
+    SELECT: 'select',
+};
+
+const displayPrefixesType = DisplayPrefixesType.SELECT;
+
 if (window.location.href.startsWith(targetURL)) {
     logThis(`URL starts with ${targetURL}`);
 
-    window.onload = function() {
+    window.onload = function () {
         logThis('Page fully loaded');
-        const waitForJIRA = setInterval(function() {
+        const waitForJIRA = setInterval(function () {
             logThis('Checking for JIRA...');
             if (typeof JIRA !== 'undefined' && typeof JIRA.Issue !== 'undefined' && typeof JIRA.Issue.getIssueKey === 'function') {
                 clearInterval(waitForJIRA);
@@ -48,28 +58,49 @@ if (window.location.href.startsWith(targetURL)) {
 
                 // Creating radio buttons
                 const radioContainer = document.createElement('div');
-                const prefixes = ['feature', 'hotfix', 'bugfix', 'release', 'support', 'test', 'task'];
+                const prefixes = ['feature', 'fix', 'build', 'ci', 'docs', 'perf', 'refactor', 'style', 'test', 'chore', 'research'];
 
-                prefixes.forEach(prefix => {
-                    const radioId = `radio-${prefix}`;
+                // TODO: set option to popup.js (not existed yet), you can ask @juliankasimir for add popup base code
+                // Radio Option only interesting for projects with small amount of prefixes
+                if (displayPrefixesType === DisplayPrefixesType.RADIO) {
+                    prefixes.forEach(prefix => {
+                        const radioId = `radio-${prefix}`;
 
-                    const radio = document.createElement('input');
-                    radio.type = 'radio';
-                    radio.name = 'branch-prefix';
-                    radio.id = radioId;
-                    radio.value = prefix;
-                    radio.checked = prefix === 'feature';
-                    radio.addEventListener('change', () => {
-                        updateBranchName(prefix);
+                        const radio = document.createElement('input');
+                        radio.type = 'radio';
+                        radio.name = 'branch-prefix';
+                        radio.id = radioId;
+                        radio.value = prefix;
+                        radio.checked = prefix === 'feature';
+                        radio.addEventListener('change', () => {
+                            updateBranchName(prefix);
+                        });
+
+                        const label = document.createElement('label');
+                        label.textContent = prefix;
+                        label.htmlFor = radioId; // Link the label to the radio button
+
+                        radioContainer.appendChild(radio);
+                        radioContainer.appendChild(label);
+                    });
+                } else if (displayPrefixesType === DisplayPrefixesType.SELECT) {
+
+                    const select = document.createElement('select');
+                    select.addEventListener('change', () => {
+                        updateBranchName(select.value);
                     });
 
-                    const label = document.createElement('label');
-                    label.textContent = prefix;
-                    label.htmlFor = radioId; // Link the label to the radio button
+                    prefixes.forEach(prefix => {
+                        const option = document.createElement('option');
+                        option.value = prefix;
+                        option.textContent = prefix;
+                        // option.selected = prefix === 'feature';
 
-                    radioContainer.appendChild(radio);
-                    radioContainer.appendChild(label);
-                });
+                        select.appendChild(option);
+                    });
+
+                    radioContainer.appendChild(select);
+                }
 
                 // Formatting the branch name
                 const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);

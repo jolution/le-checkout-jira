@@ -1,5 +1,5 @@
 function injectScript(file_path, tag) {
-    var node = document.getElementsByTagName(tag)[0],
+    const node = document.getElementsByTagName(tag)[0],
         script = document.createElement('script');
     script.setAttribute('type', 'text/javascript');
     script.setAttribute('src', file_path);
@@ -16,7 +16,7 @@ function injectStyle(file_path, tag) {
 }*/
 
 function injectStyleRel(file_path, tag) {
-    var node = document.getElementsByTagName(tag)[0],
+    const node = document.getElementsByTagName(tag)[0],
         style = document.createElement('link');
     style.setAttribute('rel', 'stylesheet');
     style.setAttribute('type', 'text/css');
