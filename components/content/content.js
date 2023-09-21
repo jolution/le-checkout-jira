@@ -94,6 +94,8 @@ if (window.location.href.startsWith(targetURL)) {
                         const option = document.createElement('option');
                         option.value = prefix;
                         option.textContent = prefix;
+
+                        // TODO: @raj please preselect the option based on the Jira Issue Type ID
                         // option.selected = prefix === 'feature';
 
                         select.appendChild(option);
