@@ -1,5 +1,11 @@
+// Function to insert a new node after a reference node
 function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
+// Function to check and limit the maximum length of text
+function checkMaxLength(text) {
+    return text.length > 255 ? text.slice(0, 255) : text;
 }
 
 const targetURL = 'https://jira.fsc.atos-services.net/browse/';
@@ -7,6 +13,7 @@ const targetURL = 'https://jira.fsc.atos-services.net/browse/';
 const LogLevels = 1;
 const LogIdentifier = '[JOLUTION]';
 
+// Function to log a message if LogLevels is greater than 0
 function logThis(message) {
     if (LogLevels > 0) {
         // eslint-disable-next-line no-console
@@ -15,7 +22,7 @@ function logThis(message) {
 }
 
 if (window.location.href.startsWith(targetURL)) {
-    logThis(`Url starts with ${targetURL}`);
+    logThis(`URL starts with ${targetURL}`);
 
     window.onload = function() {
         logThis('Page fully loaded');
@@ -27,11 +34,11 @@ if (window.location.href.startsWith(targetURL)) {
 
                 const issueNumber = JIRA.Issue.getIssueKey();
 
-                // Extrahieren des Titels
+                // Extracting the title
                 const titleElement = document.getElementById('summary-val');
                 const title = titleElement.textContent.trim();
 
-                // Erstellen von Radio-Buttons
+                // Creating radio buttons
                 const radioContainer = document.createElement('div');
                 const prefixes = ['feature', 'hotfix', 'bugfix', 'release', 'support', 'test', 'task'];
 
@@ -50,16 +57,16 @@ if (window.location.href.startsWith(targetURL)) {
 
                     const label = document.createElement('label');
                     label.textContent = prefix;
-                    label.htmlFor = radioId; // Verknüpfe das Label mit der Radio-Box
+                    label.htmlFor = radioId; // Link the label to the radio button
 
                     radioContainer.appendChild(radio);
                     radioContainer.appendChild(label);
                 });
 
-                // Formatieren des Branch-Namens
-                const formattedBranchName = `feature/${issueNumber}-${title.toLowerCase().replace(/\s+/g, '-')}`;
+                // Formatting the branch name
+                const formattedBranchName = checkMaxLength(`feature/${issueNumber}-${title.toLowerCase().replace(/\s+/g, '-')}`);
 
-                // Erstellen des Eingabefelds mit dem formatierten Branch-Namen
+                // Creating the input field with the formatted branch name
                 const inputElement = document.createElement('input');
                 inputElement.type = 'text';
                 inputElement.readOnly = true;
@@ -67,13 +74,13 @@ if (window.location.href.startsWith(targetURL)) {
                 inputElement.value = `git checkout -b ${formattedBranchName}`;
                 inputElement.style.width = '82%';
 
-                // Funktion zur Aktualisierung des Branch-Namens basierend auf dem ausgewählten Prefix
+                // Function to update the branch name based on the selected prefix
                 function updateBranchName(prefix) {
-                    const formattedBranchName = `${prefix + '/'}${issueNumber}-${title.toLowerCase().replace(/\s+/g, '-')}`;
+                    const formattedBranchName = checkMaxLength(`${prefix + '/'}${issueNumber}-${title.toLowerCase().replace(/\s+/g, '-')}`);
                     inputElement.value = `git checkout -b ${formattedBranchName}`;
                 }
 
-                // Erstellen des "Copy"-Buttons
+                // Creating the "Copy" button
                 const copyButton = document.createElement('button');
                 copyButton.innerHTML = '<span class="aui-icon aui-icon-small aui-iconfont-copy icon-copy"></span>';
                 copyButton.style.width = '15%';
@@ -84,13 +91,13 @@ if (window.location.href.startsWith(targetURL)) {
                     document.execCommand('copy');
                 });
 
-                // Erstellen des Container-Elements
+                // Creating the container element
                 const containerElement = document.createElement('div');
                 containerElement.appendChild(inputElement);
                 containerElement.appendChild(copyButton);
                 containerElement.appendChild(radioContainer);
 
-                // Auswählen des Ziels für das Eingabefeld und Hinzufügen des Eingabefelds
+                // Selecting the target for the input field and adding the input field
                 const devStatusPanel = document.getElementById('viewissue-devstatus-panel');
                 // devStatusPanel.appendChild(containerElement);
                 insertAfter(containerElement, devStatusPanel);
