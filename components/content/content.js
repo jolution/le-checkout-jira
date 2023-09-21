@@ -136,6 +136,12 @@ if (window.location.href.startsWith(targetURL)) {
                 // Creating the container element
                 const containerElement = document.createElement('div');
                 containerElement.id = 'browser-extension-gitbranch__container';
+
+                const containerElementHeadline = document.createElement('h4');
+                containerElementHeadline.className = 'toggle-title';
+                containerElementHeadline.appendChild(document.createTextNode('Branch Name:'));
+                containerElement.appendChild(containerElementHeadline);
+
                 containerElement.appendChild(inputElement);
                 containerElement.appendChild(copyButton);
                 containerElement.appendChild(radioContainer);
