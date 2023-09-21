@@ -8,6 +8,14 @@ function checkMaxLength(text) {
     return text.length > 255 ? text.slice(0, 255) : text;
 }
 
+function approveValidGitBranchName(branchName) {
+    // Ersetze ungültige Zeichen durch Leerzeichen
+    const sanitizedBranchName = branchName.replace(/[^a-zA-Z0-9\/\-_]/g, '');
+
+    // Überprüfe die maximale Länge
+    return checkMaxLength(sanitizedBranchName);
+}
+
 const targetURL = 'https://jira.fsc.atos-services.net/browse/';
 
 const LogLevels = 1;
@@ -64,20 +72,23 @@ if (window.location.href.startsWith(targetURL)) {
                 });
 
                 // Formatting the branch name
-                const formattedBranchName = checkMaxLength(`feature/${issueNumber}-${title.toLowerCase().replace(/\s+/g, '-')}`);
+                const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
+                const formattedBranchNameWithPrefix = `feature/${issueNumber}-${formattedBranchName}`;
 
                 // Creating the input field with the formatted branch name
                 const inputElement = document.createElement('input');
                 inputElement.type = 'text';
                 inputElement.readOnly = true;
                 inputElement.className = 'text aui-ss-field ajs-dirty-warning-exempt active';
-                inputElement.value = `git checkout -b ${formattedBranchName}`;
+                inputElement.value = `git checkout -b ${formattedBranchNameWithPrefix}`;
                 inputElement.style.width = '82%';
 
                 // Function to update the branch name based on the selected prefix
                 function updateBranchName(prefix) {
-                    const formattedBranchName = checkMaxLength(`${prefix + '/'}${issueNumber}-${title.toLowerCase().replace(/\s+/g, '-')}`);
-                    inputElement.value = `git checkout -b ${formattedBranchName}`;
+                    const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
+                    const formattedBranchNameWithPrefix = `${prefix}/${issueNumber}-${formattedBranchName}`;
+
+                    inputElement.value = `git checkout -b ${formattedBranchNameWithPrefix}`;
                 }
 
                 // Creating the "Copy" button
