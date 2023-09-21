@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Browser Extension NAME",
+  "name": "Jira Branchname Generator",
   "version": "1.0.0",
   "author": "@juliankasimir",
-  "description": "Browser Extension Template",
+  "description": "Generates a branch name from the Jira ticket number and title",
   "permissions": [
     "tabs",
     "activeTab",
@@ -20,7 +20,7 @@
   ],
   "content_scripts": [
     {
-      "matches": ["https://INSERT_URL_HERE/*"],
+      "matches": ["https://jira.fsc.atos-services.net/browse/*"],
       "css": [
         "/components/content/content.css"
       ],
@@ -37,8 +37,8 @@
         "/components/content/content.js",
         "/components/content/content.css",
         "/components/content/inject.js",
-        "chrome-extension://INSERT_ID_HERE/content.js",
-        "chrome-extension://INSERT_ID_HERE/content.css"
+        "chrome-extension://mcibebkpekoelnpennfjepikmfndeccm/content.js",
+        "chrome-extension://mcibebkpekoelnpennfjepikmfndeccm/content.css"
       ],
       "matches": [
         "<all_urls>"
