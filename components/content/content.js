@@ -93,6 +93,7 @@ if (window.location.href.startsWith(targetURL)) {
 
                 // Creating the container element
                 const containerElement = document.createElement('div');
+                containerElement.id = 'browser-extension-gitbranch__container';
                 containerElement.appendChild(inputElement);
                 containerElement.appendChild(copyButton);
                 containerElement.appendChild(radioContainer);
