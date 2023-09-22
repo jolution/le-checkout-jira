@@ -105,6 +105,7 @@ if (window.location.href.startsWith(targetURL)) {
                 }
 
                 // Formatting the branch name
+                // TODO: duplicate code, please outsource to function 1/2
                 const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
                 const formattedBranchNameWithPrefix = `feature/${issueNumber}-${formattedBranchName}`;
 
@@ -114,10 +115,13 @@ if (window.location.href.startsWith(targetURL)) {
                 inputElement.readOnly = true;
                 inputElement.className = 'text aui-ss-field ajs-dirty-warning-exempt active';
                 inputElement.value = `git checkout -b ${formattedBranchNameWithPrefix}`;
+
+                // TODO: outsource to css file
                 inputElement.style.width = '82%';
 
                 // Function to update the branch name based on the selected prefix
                 function updateBranchName(prefix) {
+                    // TODO: duplicate code, please outsource to function 2/2
                     const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
                     const formattedBranchNameWithPrefix = `${prefix}/${issueNumber}-${formattedBranchName}`;
 
@@ -127,13 +131,15 @@ if (window.location.href.startsWith(targetURL)) {
                 // Creating the "Copy" button
                 const copyButton = document.createElement('button');
                 copyButton.innerHTML = '<span class="aui-icon aui-icon-small aui-iconfont-copy icon-copy"></span>';
-                copyButton.style.width = '15%';
-                copyButton.style.marginLeft = '1%';
                 copyButton.className = 'aui-button';
                 copyButton.addEventListener('click', () => {
                     inputElement.select();
                     document.execCommand('copy');
                 });
+
+                // TODO: outsource to css file
+                copyButton.style.width = '15%';
+                copyButton.style.marginLeft = '1%';
 
                 // Creating the container element
                 const containerElement = document.createElement('div');
