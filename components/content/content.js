@@ -20,7 +20,7 @@ const targetURL = 'https://jira.fsc.atos-services.net/browse/';
 
 // TODO: outsource to config file
 // Info: Set the log level to 0 to disable logging
-const LogLevels = 0;
+const LogLevels = 1;
 const LogIdentifier = '[JOLUTION]';
 
 // Function to log a message if LogLevels is greater than 0
@@ -60,6 +60,7 @@ if (window.location.href.startsWith(targetURL)) {
                 const radioContainer = document.createElement('div');
                 const prefixes = ['feature', 'fix', 'build', 'ci', 'docs', 'perf', 'refactor', 'style', 'test', 'chore', 'research'];
 
+                // TODO: may we remove the radio buttons and only use the select box?
                 // TODO: set option to popup.js (not existed yet), you can ask @juliankasimir for add popup base code
                 // Radio Option only interesting for projects with small amount of prefixes
                 if (displayPrefixesType === DisplayPrefixesType.RADIO) {
@@ -102,6 +103,17 @@ if (window.location.href.startsWith(targetURL)) {
                     });
 
                     radioContainer.appendChild(select);
+                }
+
+                // TODO: @raj please preselect the option based on the Jira Issue Type ID
+                // const IssueType = document.getElementById("issuetype-field")?.value;
+                const typeElement = document.getElementById("type-val");
+                if (typeElement) {
+                    const taskText = typeElement.textContent.trim();
+                    logThis(taskText);
+                    if (taskText === "Task") {
+                        // radio select "feature" as default
+                    }
                 }
 
                 // Formatting the branch name
