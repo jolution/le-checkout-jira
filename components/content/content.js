@@ -20,12 +20,12 @@ const targetURL = 'https://jira.fsc.atos-services.net/browse/';
 
 // TODO: outsource to config file
 // Info: Set the log level to 0 to disable logging
-const LogLevels = 1;
+const LogLevel = 1;
 const LogIdentifier = '[JOLUTION]';
 
-// Function to log a message if LogLevels is greater than 0
+// Function to log a message if LogLevel is greater than 0
 function logThis(message) {
-    if (LogLevels > 0) {
+    if (LogLevel > 0) {
         // eslint-disable-next-line no-console
         console.log(`${LogIdentifier} ${message}`);
     }
