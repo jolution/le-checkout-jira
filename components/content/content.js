@@ -55,110 +55,11 @@ if (window.location.href.startsWith(targetURL)) {
                 // Extracting the title
                 const titleElement = document.getElementById('summary-val');
                 const title = titleElement.textContent.trim();
-
-                // Creating radio buttons
-                const radioContainer = document.createElement('div');
                 const prefixes = ['feature', 'fix', 'build', 'ci', 'docs', 'perf', 'refactor', 'style', 'test', 'chore', 'research'];
-
-                // TODO: set option to popup.js (not existed yet), you can ask @juliankasimir for add popup base code
-                // Radio Option only interesting for projects with small amount of prefixes
-                if (displayPrefixesType === DisplayPrefixesType.RADIO) {
-                    prefixes.forEach(prefix => {
-                        const radioId = `radio-${prefix}`;
-
-                        const radio = document.createElement('input');
-                        radio.type = 'radio';
-                        radio.name = 'branch-prefix';
-                        radio.id = radioId;
-                        radio.value = prefix;
-                        radio.checked = prefix === 'feature';
-                        radio.addEventListener('change', () => {
-                            updateBranchName(prefix);
-                        });
-
-                        const label = document.createElement('label');
-                        label.textContent = prefix;
-                        label.htmlFor = radioId; // Link the label to the radio button
-
-                        radioContainer.appendChild(radio);
-                        radioContainer.appendChild(label);
-                    });
-                } else if (displayPrefixesType === DisplayPrefixesType.SELECT) {
-
-                    const select = document.createElement('select');
-                    select.addEventListener('change', () => {
-                        updateBranchName(select.value);
-                    });
-
-                    prefixes.forEach(prefix => {
-                        const option = document.createElement('option');
-                        option.value = prefix;
-                        option.textContent = prefix;
-
-                        // TODO: @raj please preselect the option based on the Jira Issue Type ID
-                        // option.selected = prefix === 'feature';
-
-                        select.appendChild(option);
-                    });
-
-                    radioContainer.appendChild(select);
-                }
-
-                // Formatting the branch name
-                // TODO: duplicate code, please outsource to function 1/2
-                const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
-                const formattedBranchNameWithPrefix = `feature/${issueNumber}-${formattedBranchName}`;
-
-                // Creating the input field with the formatted branch name
-                const inputElement = document.createElement('input');
-                inputElement.type = 'text';
-                inputElement.readOnly = true;
-                inputElement.className = 'text aui-ss-field ajs-dirty-warning-exempt active';
-                inputElement.value = `git checkout -b ${formattedBranchNameWithPrefix}`;
-
-                // TODO: outsource to css file
-                inputElement.style.width = '82%';
-
-                // Function to update the branch name based on the selected prefix
-                function updateBranchName(prefix) {
-                    // TODO: duplicate code, please outsource to function 2/2
-					console.log('prefix: ', prefix)
-                    const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
-                    const formattedBranchNameWithPrefix = `${prefix}/${issueNumber}-${formattedBranchName}`;
-
-                    inputElement.value = `git checkout -b ${formattedBranchNameWithPrefix}`;
-                }
-
-                // Creating the "Copy" button
-                const copyButton = document.createElement('button');
-                copyButton.innerHTML = '<span class="aui-icon aui-icon-small aui-iconfont-copy icon-copy"></span>';
-                copyButton.className = 'aui-button';
-                copyButton.addEventListener('click', () => {
-                    inputElement.select();
-                    document.execCommand('copy');
-                });
-
-                // TODO: outsource to css file
-                copyButton.style.width = '15%';
-                copyButton.style.marginLeft = '1%';
 
                 // Creating the container element
                 const containerElement = document.createElement('div');
                 containerElement.id = 'browser-extension-gitbranch__container';
-
-                const containerElementHeadline = document.createElement('h4');
-                containerElementHeadline.className = 'toggle-title';
-                containerElementHeadline.appendChild(document.createTextNode('Branch Name:'));
-                containerElement.appendChild(containerElementHeadline);
-
-                // TODO: optimate the layout @jochensimon
-                // Maybe we could have something like:
-                // [SELECTBOX] / [INPUT] [COPY BUTTON]
-                // without "git checkout -b" in the input field ?
-
-                containerElement.appendChild(inputElement);
-                containerElement.appendChild(copyButton);
-                containerElement.appendChild(radioContainer);
 
                 // Selecting the target for the input field and adding the input field
                 const devStatusPanel = document.getElementById('viewissue-devstatus-panel');
@@ -166,12 +67,8 @@ if (window.location.href.startsWith(targetURL)) {
                 insertAfter(containerElement, devStatusPanel);
 
 
-
-
-
-
+				
 				// @pimmok implmentation
-
 				/**
 				 * Generate Option list from defined prefixes
 				 * @returns {string} Option fields
@@ -218,7 +115,7 @@ if (window.location.href.startsWith(targetURL)) {
 				}
 
 				/**
-				 * Updates the input field value with git checkout command 
+				 * Updates the input field value with git checkout command
 				 * @param {string} prefix
 				 */
 				window.pimmUpdateBranchName = (prefix) => {
