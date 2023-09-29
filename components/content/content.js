@@ -21,7 +21,7 @@ const targetURL = 'https://jira.fsc.atos-services.net/browse/';
 // TODO: outsource to config file
 // Info: Set the log level to 0 to disable logging
 const LogLevels = 0;
-const LogIdentifier = '[JOLUTION]';
+const LogIdentifier = '[STC5]';
 
 // Function to log a message if LogLevels is greater than 0
 function logThis(message) {
@@ -30,14 +30,6 @@ function logThis(message) {
         console.log(`${LogIdentifier} ${message}`);
     }
 }
-
-// TODO: outsource to enum file
-const DisplayPrefixesType = {
-    RADIO: 'radio',
-    SELECT: 'select',
-};
-
-const displayPrefixesType = DisplayPrefixesType.SELECT;
 
 if (window.location.href.startsWith(targetURL)) {
     logThis(`URL starts with ${targetURL}`);
@@ -66,8 +58,6 @@ if (window.location.href.startsWith(targetURL)) {
                 // devStatusPanel.appendChild(containerElement);
                 insertAfter(containerElement, devStatusPanel);
 
-
-				
 				// @pimmok implmentation
 				/**
 				 * Generate Option list from defined prefixes
@@ -122,7 +112,7 @@ if (window.location.href.startsWith(targetURL)) {
 					const elem = document.getElementById('browser-extension-gitbranch__input');
 					elem.value = pimmSetGitCommand(prefix);
                 }
-                
+
 				// TODO: @pimmok: Comments! Add them!
 				const pimmContainer = `
 				<div id="gitbranch-devstatus" class="module toggle-wrap">
