@@ -163,6 +163,66 @@ if (window.location.href.startsWith(targetURL)) {
                 const devStatusPanel = document.getElementById('viewissue-devstatus-panel');
                 // devStatusPanel.appendChild(containerElement);
                 insertAfter(containerElement, devStatusPanel);
+
+
+
+
+
+
+				// @pimmok implmentation
+				// Creating the container element
+                const pimmContainerElement = document.createElement('div');
+                pimmContainerElement.id = 'gitbranch-devstatus';
+				pimmContainerElement.className = 'module toggle-wrap collapsed';
+
+				const pimmContainerElementHeader = document.createElement('div');
+                pimmContainerElementHeader.className = 'toggle-title';
+                pimmContainerElementHeader.appendChild(document.createTextNode('Branch Name:'));
+                pimmContainerElement.appendChild(pimmContainerElementHeader);
+
+				function pimmPrefixesSelectOptions() {
+					let options = ''
+					if(prefixes) {
+						for(const prefix of prefixes) {
+							options += `<option value="${prefix}" ${(prefix === 'feature') ? "selected" : ""}>${prefix}</option>`
+						}
+					}
+					return options
+				}
+                
+
+
+				// TODO: @pimmok: Comments! Add them!
+				
+
+				const pimmContainer = `
+				<div id="gitbranch-devstatus" class="module toggle-wrap">
+					<div id="gitbranch-devstatus_heading" class="mod-header">
+						<button class="aui-button toggle-title" aria-label="Gitbranch" aria-controls="gitbranch-devstatus" aria-expanded="false" resolved="">
+							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+								<g fill="none" fill-rule="evenodd">
+									<path d="M3.29175 4.793c-.389.392-.389 1.027 0 1.419l2.939 2.965c.218.215.5.322.779.322s.556-.107.769-.322l2.93-2.955c.388-.392.388-1.027 0-1.419-.389-.392-1.018-.392-1.406 0l-2.298 2.317-2.307-2.327c-.194-.195-.449-.293-.703-.293-.255 0-.51.098-.703.293z" fill="#344563">
+									</path>
+								</g>
+							</svg>
+						</button>
+						<h4 class="toggle-title" id="gitbranch-devstatus-label">
+							Gitbranch
+						</h4>
+						<ul class="ops"></ul>
+					</div>
+					<div class="mod-content">
+						<div class="message-container">
+							<select>
+								<option hidden disabled value>Please select</option>
+								${pimmPrefixesSelectOptions()}
+							</select>
+						</div>
+					</div>
+				</div>`;
+
+				containerElement.insertAdjacentHTML("afterend", pimmContainer)
+				// insertAfter(pimmContainer, containerElement);
             }
         }, 100);
     }
