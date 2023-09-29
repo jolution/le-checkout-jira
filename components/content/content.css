@@ -9,11 +9,15 @@
 
 #browser-extension-gitbranch__select{
 	margin:0 auto;
-	margin-top:0.4rem;
-	margin-bottom:1rem;
+	margin-top:0.8rem;
+	margin-bottom:1.4rem;
 	padding:0.25rem 0.5rem;
 	border-radius:3px;
 	border:0;
+}
+
+#browser-extension-gitbranch__select option{
+	background-color:#fff
 }
 
 .flex-container {

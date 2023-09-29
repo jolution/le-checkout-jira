@@ -120,7 +120,7 @@ if (window.location.href.startsWith(targetURL)) {
                 inputElement.style.width = '82%';
 
                 // Function to update the branch name based on the selected prefix
-                window.updateBranchName = (prefix) => {
+                function updateBranchName(prefix) {
                     // TODO: duplicate code, please outsource to function 2/2
 					console.log('prefix: ', prefix)
                     const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
@@ -171,16 +171,11 @@ if (window.location.href.startsWith(targetURL)) {
 
 
 				// @pimmok implmentation
-				// Creating the container element
-                const pimmContainerElement = document.createElement('div');
-                pimmContainerElement.id = 'gitbranch-devstatus';
-				pimmContainerElement.className = 'module toggle-wrap collapsed';
 
-				const pimmContainerElementHeader = document.createElement('div');
-                pimmContainerElementHeader.className = 'toggle-title';
-                pimmContainerElementHeader.appendChild(document.createTextNode('Branch Name:'));
-                pimmContainerElement.appendChild(pimmContainerElementHeader);
-
+				/**
+				 * Generate Option list from defined prefixes
+				 * @returns {string} Option fields
+				 */
 				window.pimmPrefixesSelectOptions = () => {
 					let options = ''
 					if(prefixes) {
@@ -191,14 +186,46 @@ if (window.location.href.startsWith(targetURL)) {
 					return options
 				}
 
+				/**
+				 * Copy the content of the input field
+				 */
 				window.pimmCopy = () => {
-					console.log('PIMMCOPY!')
-					inputElement.select();
+					const elem = document.getElementById('browser-extension-gitbranch__input');
+					elem.select();
                     document.execCommand('copy');
 				}
+
+				/**
+				 * Format page title to fit Github branch nameand add the prefix parameter
+				 * @param {string} prefix
+				 * @returns {string} formatted branch name
+				 */
+				window.pimmGetBranchName = (prefix) => {
+					// TODO: duplicate code, please outsource to function 2/2
+                    const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
+                    const formattedBranchNameWithPrefix = `${prefix}/${issueNumber}-${formattedBranchName}`;
+					return formattedBranchNameWithPrefix;
+				}
+
+				/**
+				 * Set the git checkout command
+				 * @param {string} prefix
+				 * @returns {string} formatted github command
+				 */
+				window.pimmSetGitCommand = (prefix) => {
+					const branch = pimmGetBranchName(prefix);
+					return `git checkout -b ${branch}`;
+				}
+
+				/**
+				 * Updates the input field value with git checkout command 
+				 * @param {string} prefix
+				 */
+				window.pimmUpdateBranchName = (prefix) => {
+					const elem = document.getElementById('browser-extension-gitbranch__input');
+					elem.value = pimmSetGitCommand(prefix);
+                }
                 
-
-
 				// TODO: @pimmok: Comments! Add them!
 				const pimmContainer = `
 				<div id="gitbranch-devstatus" class="module toggle-wrap">
@@ -218,15 +245,21 @@ if (window.location.href.startsWith(targetURL)) {
 					</div>
 					<div class="mod-content">
 						<div class="message-container">
-							<div class="flex-container">
-								<select id="browser-extension-gitbranch__select" class="aui-button" onchange="updateBranchName(this.value)">
-									<option hidden disabled value>Please select</option>
-									${pimmPrefixesSelectOptions()}
-								</select>
+						<div class="field-group">
+							<label for="browser-extension-gitbranch__select">
+								Type <span class="visually-hidden">Required</span>
+								<span class="aui-icon icon-required" aria-hidden="true"></span>
+							</label>
+							<select id="browser-extension-gitbranch__select" class="aui-button" onchange="pimmUpdateBranchName(this.value)">
+								<option hidden disabled value>Please select</option>
+								${pimmPrefixesSelectOptions()}
+							</select>
+						</div>
+								
 							</div>
 							<div class="flex-container space-between form">
 								<form class="aui">
-									<input id="" class="text long-field" readonly="readonly">
+									<input id="browser-extension-gitbranch__input" class="text long-field" readonly="readonly" value="${pimmSetGitCommand('feature')}">
 								</form>
 								<div>
 									<button class="aui-button" onclick="pimmCopy()">
@@ -239,7 +272,6 @@ if (window.location.href.startsWith(targetURL)) {
 				</div>`;
 
 				containerElement.insertAdjacentHTML("afterend", pimmContainer)
-				// insertAfter(pimmContainer, containerElement);
             }
         }, 100);
     }
