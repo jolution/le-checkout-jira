@@ -185,11 +185,11 @@ if (window.location.href.startsWith(targetURL)) {
 									${prefixesSelectOptions()}
 								</select>
 							</div>
-							<div class="flex-container space-between form">
-								<form class="aui" style="width:100%">
+							<div class="flex-container space-between form maxw-36">
+								<form class="aui w-100">
 									<input id="browser-extension-gitbranch__input" class="text long-field" readonly="readonly" value="${setGitCommand('feature')}">
 								</form>
-								<div>
+								<div class="ml-1">
 									<button class="aui-button" onclick="copyGitCommand()">
 										<span class="aui-icon aui-icon-small aui-iconfont-copy icon-copy"></span> ${document.documentElement.lang === 'en' ? "Copy" : "Kopieren"}
 									</button>

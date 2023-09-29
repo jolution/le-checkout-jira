@@ -27,3 +27,15 @@
 .space-between { 
 	justify-content: space-between; 
 }  
+
+.ml-1 {
+	margin-left:1rem;
+}
+
+.w-100 {
+	width:100%;
+}
+
+.maxw-36 {
+	max-width:36rem;
+}
