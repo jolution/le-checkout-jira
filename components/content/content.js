@@ -66,14 +66,12 @@ if (window.location.href.startsWith(targetURL)) {
                 // devStatusPanel.appendChild(containerElement);
                 insertAfter(containerElement, devStatusPanel);
 
-
-				
-				// @pimmok implmentation
 				/**
 				 * Generate Option list from defined prefixes
+				 * @author Jochen Simon <jochen.simon@atos.net>
 				 * @returns {string} Option fields
 				 */
-				window.pimmPrefixesSelectOptions = () => {
+				window.prefixesSelectOptions = () => {
 					let options = ''
 					if(prefixes) {
 						for(const prefix of prefixes) {
@@ -85,8 +83,9 @@ if (window.location.href.startsWith(targetURL)) {
 
 				/**
 				 * Copy the content of the input field
+				 * @author Jochen Simon <jochen.simon@atos.net>
 				 */
-				window.pimmCopy = () => {
+				window.copyCommand = () => {
 					const elem = document.getElementById('browser-extension-gitbranch__input');
 					elem.select();
                     document.execCommand('copy');
@@ -94,10 +93,11 @@ if (window.location.href.startsWith(targetURL)) {
 
 				/**
 				 * Format page title to fit Github branch nameand add the prefix parameter
+				 * @author Jochen Simon <jochen.simon@atos.net>
 				 * @param {string} prefix
 				 * @returns {string} formatted branch name
 				 */
-				window.pimmGetBranchName = (prefix) => {
+				window.getBranchName = (prefix) => {
 					// TODO: duplicate code, please outsource to function 2/2
                     const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
                     const formattedBranchNameWithPrefix = `${prefix}/${issueNumber}-${formattedBranchName}`;
@@ -106,21 +106,23 @@ if (window.location.href.startsWith(targetURL)) {
 
 				/**
 				 * Set the git checkout command
+				 * @author Jochen Simon <jochen.simon@atos.net>
 				 * @param {string} prefix
 				 * @returns {string} formatted github command
 				 */
-				window.pimmSetGitCommand = (prefix) => {
-					const branch = pimmGetBranchName(prefix);
+				window.setBranchName = (prefix) => {
+					const branch = getBranchName(prefix);
 					return `git checkout -b ${branch}`;
 				}
 
 				/**
 				 * Updates the input field value with git checkout command
+				 * @author Jochen Simon <jochen.simon@atos.net>
 				 * @param {string} prefix
 				 */
-				window.pimmUpdateBranchName = (prefix) => {
+				window.updateCommand = (prefix) => {
 					const elem = document.getElementById('browser-extension-gitbranch__input');
-					elem.value = pimmSetGitCommand(prefix);
+					elem.value = setBranchName(prefix);
                 }
                 
 				// TODO: @pimmok: Comments! Add them!
@@ -147,19 +149,19 @@ if (window.location.href.startsWith(targetURL)) {
 								Type <span class="visually-hidden">Required</span>
 								<span class="aui-icon icon-required" aria-hidden="true"></span>
 							</label>
-							<select id="browser-extension-gitbranch__select" class="aui-button" onchange="pimmUpdateBranchName(this.value)">
+							<select id="browser-extension-gitbranch__select" class="aui-button" onchange="updateCommand(this.value)">
 								<option hidden disabled value>Please select</option>
-								${pimmPrefixesSelectOptions()}
+								${prefixesSelectOptions()}
 							</select>
 						</div>
 								
 							</div>
 							<div class="flex-container space-between form">
 								<form class="aui">
-									<input id="browser-extension-gitbranch__input" class="text long-field" readonly="readonly" value="${pimmSetGitCommand('feature')}">
+									<input id="browser-extension-gitbranch__input" class="text long-field" readonly="readonly" value="${setBranchName('feature')}">
 								</form>
 								<div>
-									<button class="aui-button" onclick="pimmCopy()">
+									<button class="aui-button" onclick="copyCommand()">
 										<span class="aui-icon aui-icon-small aui-iconfont-copy icon-copy"></span> Copy
 									</button>
 								</div>
