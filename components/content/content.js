@@ -23,7 +23,7 @@ const targetURL = 'https://jira.fsc.atos-services.net/browse/';
 const LogLevel = 0;
 const LogIdentifier = '[STC5]';
 
-// Function to log a message if LogLevels is greater than 0
+// Function to log a message if LogLevel is greater than 0
 function logThis(message) {
     if (LogLevel > 0) {
         // eslint-disable-next-line no-console
