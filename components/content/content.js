@@ -20,12 +20,12 @@ const targetURL = 'https://jira.fsc.atos-services.net/browse/';
 
 // TODO: outsource to config file
 // Info: Set the log level to 0 to disable logging
-const LogLevels = 0;
+const LogLevel = 0;
 const LogIdentifier = '[STC5]';
 
 // Function to log a message if LogLevels is greater than 0
 function logThis(message) {
-    if (LogLevels > 0) {
+    if (LogLevel > 0) {
         // eslint-disable-next-line no-console
         console.log(`${LogIdentifier} ${message}`);
     }
@@ -48,6 +48,7 @@ if (window.location.href.startsWith(targetURL)) {
                 const titleElement = document.getElementById('summary-val');
                 const title = titleElement.textContent.trim();
                 const prefixes = ['feature', 'fix', 'build', 'ci', 'docs', 'perf', 'refactor', 'style', 'test', 'chore', 'research'];
+                const typeElement = document.getElementById("type-val");
 
                 // Creating the container element
                 const containerElement = document.createElement('div');
@@ -58,66 +59,63 @@ if (window.location.href.startsWith(targetURL)) {
                 // devStatusPanel.appendChild(containerElement);
                 insertAfter(containerElement, devStatusPanel);
 
-				// @pimmok implmentation
-				/**
-				 * Generate Option list from defined prefixes
-				 * @returns {string} Option fields
-				 */
-				window.pimmPrefixesSelectOptions = () => {
-					let options = ''
-					if(prefixes) {
-						for(const prefix of prefixes) {
-							options += `<option value="${prefix}" ${(prefix === 'feature') ? "selected" : ""} onclick="updateBranchName()">${prefix}</option>`
-						}
-					}
-					return options
-				}
-
-				/**
-				 * Copy the content of the input field
-				 */
-				window.pimmCopy = () => {
-					const elem = document.getElementById('browser-extension-gitbranch__input');
-					elem.select();
-                    document.execCommand('copy');
-				}
-
-				/**
-				 * Format page title to fit Github branch nameand add the prefix parameter
-				 * @param {string} prefix
-				 * @returns {string} formatted branch name
-				 */
-				window.pimmGetBranchName = (prefix) => {
-					// TODO: duplicate code, please outsource to function 2/2
-                    const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
-                    const formattedBranchNameWithPrefix = `${prefix}/${issueNumber}-${formattedBranchName}`;
-					return formattedBranchNameWithPrefix;
-				}
-
-				/**
-				 * Set the git checkout command
-				 * @param {string} prefix
-				 * @returns {string} formatted github command
-				 */
-				window.pimmSetGitCommand = (prefix) => {
-					const branch = pimmGetBranchName(prefix);
-					return `git checkout -b ${branch}`;
-				}
-
-				/**
-				 * Updates the input field value with git checkout command
-				 * @param {string} prefix
-				 */
-				window.pimmUpdateBranchName = (prefix) => {
-					const elem = document.getElementById('browser-extension-gitbranch__input');
-					elem.value = pimmSetGitCommand(prefix);
+                /**
+                 * Generate Option list from defined prefixes
+                 * @returns {string} Option fields
+                 */
+                window.prefixesSelectOptions = () => {
+                    let options = ''
+                    if (prefixes) {
+                        for (const prefix of prefixes) {
+                            options += `<option value="${prefix}" ${(prefix === 'fix' && typeElement?.textContent.trim() === "Bug") ? "selected" : ""} onclick="updateBranchName()">${prefix}</option>`
+                        }
+                    }
+                    return options
                 }
 
-				// TODO: @pimmok: Comments! Add them!
-				const pimmContainer = `
+                /**
+                 * Copy the content of the input field
+                 */
+                window.copyGitbranchName = () => {
+                    const elem = document.getElementById('browser-extension-gitbranch__input');
+                    elem.select();
+                    document.execCommand('copy');
+                }
+
+                /**
+                 * Format page title to fit Github branch nameand add the prefix parameter
+                 * @param {string} prefix
+                 * @returns {string} formatted branch name
+                 */
+                window.getBranchName = (prefix) => {
+                    // TODO: duplicate code, please outsource to function 2/2
+                    const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
+                    return `${prefix}/${issueNumber}-${formattedBranchName}`;
+                }
+
+                /**
+                 * Set the git checkout command
+                 * @param {string} prefix
+                 * @returns {string} formatted github command
+                 */
+                window.setGitCommand = (prefix) => {
+                    const branch = getBranchName(prefix);
+                    return `git checkout -b ${branch}`;
+                }
+
+                /**
+                 * Updates the input field value with git checkout command
+                 * @param {string} prefix
+                 */
+                window.updateBranchName = (prefix) => {
+                    const elem = document.getElementById('browser-extension-gitbranch__input');
+                    elem.value = setGitCommand(prefix);
+                }
+
+                const container = `
 				<div id="gitbranch-devstatus" class="module toggle-wrap">
 					<div id="gitbranch-devstatus_heading" class="mod-header">
-						<button class="aui-button toggle-title" aria-label="Gitbranch" aria-controls="gitbranch-devstatus" aria-expanded="false" resolved="">
+						<button class="aui-button toggle-title" aria-label="Gitbranch" aria-controls="gitbranch-devstatus" aria-expanded="false" resolved>
 							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
 								<g fill="none" fill-rule="evenodd">
 									<path d="M3.29175 4.793c-.389.392-.389 1.027 0 1.419l2.939 2.965c.218.215.5.322.779.322s.556-.107.769-.322l2.93-2.955c.388-.392.388-1.027 0-1.419-.389-.392-1.018-.392-1.406 0l-2.298 2.317-2.307-2.327c-.194-.195-.449-.293-.703-.293-.255 0-.51.098-.703.293z" fill="#344563">
@@ -137,20 +135,20 @@ if (window.location.href.startsWith(targetURL)) {
 								Type <span class="visually-hidden">Required</span>
 								<span class="aui-icon icon-required" aria-hidden="true"></span>
 							</label>
-							<select id="browser-extension-gitbranch__select" class="aui-button" onchange="pimmUpdateBranchName(this.value)">
-								<option hidden disabled value>Please select</option>
-								${pimmPrefixesSelectOptions()}
+							<select id="browser-extension-gitbranch__select" class="aui-button" onchange="updateBranchName(this.value)">
+								<option hidden disabled value>${document.documentElement.lang === 'en' ? "Please select" : "Bitte auswählen"}</option>
+								${prefixesSelectOptions()}
 							</select>
 						</div>
 								
 							</div>
 							<div class="flex-container space-between form">
 								<form class="aui">
-									<input id="browser-extension-gitbranch__input" class="text long-field" readonly="readonly" value="${pimmSetGitCommand('feature')}">
+									<input id="browser-extension-gitbranch__input" class="text long-field" readonly="readonly" value="${setGitCommand('feature')}">
 								</form>
 								<div>
-									<button class="aui-button" onclick="pimmCopy()">
-										<span class="aui-icon aui-icon-small aui-iconfont-copy icon-copy"></span> Copy
+									<button class="aui-button" onclick="copyGitbranchName()">
+										<span class="aui-icon aui-icon-small aui-iconfont-copy icon-copy"></span> ${document.documentElement.lang === 'en' ? "Copy" : "Kopieren"}
 									</button>
 								</div>
 							</table>
@@ -158,7 +156,7 @@ if (window.location.href.startsWith(targetURL)) {
 					</div>
 				</div>`;
 
-				containerElement.insertAdjacentHTML("afterend", pimmContainer)
+                containerElement.insertAdjacentHTML("afterend", container)
             }
         }, 100);
     }
