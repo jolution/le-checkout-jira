@@ -120,8 +120,9 @@ if (window.location.href.startsWith(targetURL)) {
                 inputElement.style.width = '82%';
 
                 // Function to update the branch name based on the selected prefix
-                function updateBranchName(prefix) {
+                window.updateBranchName = (prefix) => {
                     // TODO: duplicate code, please outsource to function 2/2
+					console.log('prefix: ', prefix)
                     const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
                     const formattedBranchNameWithPrefix = `${prefix}/${issueNumber}-${formattedBranchName}`;
 
@@ -180,21 +181,25 @@ if (window.location.href.startsWith(targetURL)) {
                 pimmContainerElementHeader.appendChild(document.createTextNode('Branch Name:'));
                 pimmContainerElement.appendChild(pimmContainerElementHeader);
 
-				function pimmPrefixesSelectOptions() {
+				window.pimmPrefixesSelectOptions = () => {
 					let options = ''
 					if(prefixes) {
 						for(const prefix of prefixes) {
-							options += `<option value="${prefix}" ${(prefix === 'feature') ? "selected" : ""}>${prefix}</option>`
+							options += `<option value="${prefix}" ${(prefix === 'feature') ? "selected" : ""} onclick="updateBranchName()">${prefix}</option>`
 						}
 					}
 					return options
+				}
+
+				window.pimmCopy = () => {
+					console.log('PIMMCOPY!')
+					inputElement.select();
+                    document.execCommand('copy');
 				}
                 
 
 
 				// TODO: @pimmok: Comments! Add them!
-				
-
 				const pimmContainer = `
 				<div id="gitbranch-devstatus" class="module toggle-wrap">
 					<div id="gitbranch-devstatus_heading" class="mod-header">
@@ -207,16 +212,28 @@ if (window.location.href.startsWith(targetURL)) {
 							</svg>
 						</button>
 						<h4 class="toggle-title" id="gitbranch-devstatus-label">
-							Gitbranch
+							Copy git checkout command
 						</h4>
 						<ul class="ops"></ul>
 					</div>
 					<div class="mod-content">
 						<div class="message-container">
-							<select>
-								<option hidden disabled value>Please select</option>
-								${pimmPrefixesSelectOptions()}
-							</select>
+							<div class="flex-container">
+								<select id="browser-extension-gitbranch__select" class="aui-button" onchange="updateBranchName(this.value)">
+									<option hidden disabled value>Please select</option>
+									${pimmPrefixesSelectOptions()}
+								</select>
+							</div>
+							<div class="flex-container space-between form">
+								<form class="aui">
+									<input id="" class="text long-field" readonly="readonly">
+								</form>
+								<div>
+									<button class="aui-button" onclick="pimmCopy()">
+										<span class="aui-icon aui-icon-small aui-iconfont-copy icon-copy"></span> Copy
+									</button>
+								</div>
+							</table>
 						</div>
 					</div>
 				</div>`;

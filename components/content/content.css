@@ -2,3 +2,24 @@
     margin-top:1rem;
     padding-left: 20px;
 }
+
+#browser-extension-gitbranch__table {
+	justify-content: space-between;
+  }
+
+#browser-extension-gitbranch__select{
+	margin:0 auto;
+	margin-top:0.4rem;
+	margin-bottom:1rem;
+	padding:0.25rem 0.5rem;
+	border-radius:3px;
+	border:0;
+}
+
+.flex-container {
+	display:flex;
+}
+
+.space-between { 
+	justify-content: space-between; 
+}  
