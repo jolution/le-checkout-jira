@@ -20,24 +20,16 @@ const targetURL = 'https://jira.fsc.atos-services.net/browse/';
 
 // TODO: outsource to config file
 // Info: Set the log level to 0 to disable logging
-const LogLevels = 0;
-const LogIdentifier = '[JOLUTION]';
+const LogLevel = 1;
+const LogIdentifier = '[STC5]';
 
-// Function to log a message if LogLevels is greater than 0
+// Function to log a message if LogLevel is greater than 0
 function logThis(message) {
-    if (LogLevels > 0) {
+    if (LogLevel > 0) {
         // eslint-disable-next-line no-console
         console.log(`${LogIdentifier} ${message}`);
     }
 }
-
-// TODO: outsource to enum file
-const DisplayPrefixesType = {
-    RADIO: 'radio',
-    SELECT: 'select',
-};
-
-const displayPrefixesType = DisplayPrefixesType.SELECT;
 
 if (window.location.href.startsWith(targetURL)) {
     logThis(`URL starts with ${targetURL}`);
@@ -59,50 +51,25 @@ if (window.location.href.startsWith(targetURL)) {
                 // Creating radio buttons
                 const radioContainer = document.createElement('div');
                 const prefixes = ['feature', 'fix', 'build', 'ci', 'docs', 'perf', 'refactor', 'style', 'test', 'chore', 'research'];
+                const typeElement = document.getElementById("type-val");
 
-                // TODO: set option to popup.js (not existed yet), you can ask @juliankasimir for add popup base code
-                // Radio Option only interesting for projects with small amount of prefixes
-                if (displayPrefixesType === DisplayPrefixesType.RADIO) {
-                    prefixes.forEach(prefix => {
-                        const radioId = `radio-${prefix}`;
+                logThis(typeElement?.textContent.trim());
 
-                        const radio = document.createElement('input');
-                        radio.type = 'radio';
-                        radio.name = 'branch-prefix';
-                        radio.id = radioId;
-                        radio.value = prefix;
-                        radio.checked = prefix === 'feature';
-                        radio.addEventListener('change', () => {
-                            updateBranchName(prefix);
-                        });
+                const select = document.createElement('select');
+                select.addEventListener('change', () => {
+                    updateBranchName(select.value);
+                });
 
-                        const label = document.createElement('label');
-                        label.textContent = prefix;
-                        label.htmlFor = radioId; // Link the label to the radio button
+                prefixes.forEach(prefix => {
+                    const option = document.createElement('option');
+                    option.value = prefix;
+                    option.textContent = prefix;
+                    option.selected = (prefix === 'fix' && typeElement?.textContent.trim() === "Bug");
 
-                        radioContainer.appendChild(radio);
-                        radioContainer.appendChild(label);
-                    });
-                } else if (displayPrefixesType === DisplayPrefixesType.SELECT) {
+                    select.appendChild(option);
+                });
 
-                    const select = document.createElement('select');
-                    select.addEventListener('change', () => {
-                        updateBranchName(select.value);
-                    });
-
-                    prefixes.forEach(prefix => {
-                        const option = document.createElement('option');
-                        option.value = prefix;
-                        option.textContent = prefix;
-
-                        // TODO: @raj please preselect the option based on the Jira Issue Type ID
-                        // option.selected = prefix === 'feature';
-
-                        select.appendChild(option);
-                    });
-
-                    radioContainer.appendChild(select);
-                }
+                radioContainer.appendChild(select);
 
                 // Formatting the branch name
                 // TODO: duplicate code, please outsource to function 1/2
