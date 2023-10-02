@@ -37,6 +37,7 @@
     {
       "resources": [
         "/components/content/inject.js",
+        "/components/content/utils.js",
         "/components/content/config.js",
         "/components/content/content.js",
         "/components/content/content.css",

@@ -1,32 +1,22 @@
 import CONFIG from "./config.js";
+
 import {getTranslation} from './language.js';
+import {insertAfter, logThis} from "./utils.js";
 
 const TRANSLATION = getTranslation();
 
-// Function to insert a new node after a reference node
-function insertAfter(newNode, referenceNode) {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-}
-
-// Function to check and limit the maximum length of text
+// check and limit the maximum length of text
 function checkMaxLength(text) {
     return text.length > 255 ? text.slice(0, 255) : text;
 }
 
+// approve a valid git branch name
 function approveValidGitBranchName(branchName) {
     // Ersetze ungültige Zeichen durch Leerzeichen
     const sanitizedBranchName = branchName.replace(/[^a-zA-Z0-9\/\-_]/g, '');
 
     // Überprüfe die maximale Länge
     return checkMaxLength(sanitizedBranchName);
-}
-
-// Function to log a message if LogLevel is greater than 0
-function logThis(message) {
-    if (CONFIG.LOG_LEVEL > 0) {
-        // eslint-disable-next-line no-console
-        console.log(`${CONFIG.LOG_IDENTIFIER} ${message}`);
-    }
 }
 
 if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
