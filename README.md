@@ -1,6 +1,6 @@
 # Gitbranch Generator Browser Extension for Jira On Promise
 
-This is a browser extension that generates a git branch name based on the current date and time.
+This is a browser extension that generates a git branch name based on the current jira issue key and the issue summary.
 
 ## Installation
 
