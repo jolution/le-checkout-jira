@@ -1,13 +1,16 @@
-// Function to insert a new node after a reference node
-function insertAfter(newNode, referenceNode) {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-}
+import CONFIG from "./config.js";
 
-// Function to check and limit the maximum length of text
+import {getTranslation} from './language.js';
+import {insertAfter, logThis} from "./utils.js";
+
+const TRANSLATION = getTranslation();
+
+// check and limit the maximum length of text
 function checkMaxLength(text) {
     return text.length > 255 ? text.slice(0, 255) : text;
 }
 
+// approve a valid git branch name
 function approveValidGitBranchName(branchName) {
     // Ersetze ungültige Zeichen durch Leerzeichen
     const sanitizedBranchName = branchName.replace(/[^a-zA-Z0-9\/\-_]/g, '');
@@ -16,23 +19,8 @@ function approveValidGitBranchName(branchName) {
     return checkMaxLength(sanitizedBranchName);
 }
 
-const targetURL = 'https://jira.fsc.atos-services.net/browse/';
-
-// TODO: outsource to config file
-// Info: Set the log level to 0 to disable logging
-const LogLevel = 0;
-const LogIdentifier = '[STC5]';
-
-// Function to log a message if LogLevel is greater than 0
-function logThis(message) {
-    if (LogLevel > 0) {
-        // eslint-disable-next-line no-console
-        console.log(`${LogIdentifier} ${message}`);
-    }
-}
-
-if (window.location.href.startsWith(targetURL)) {
-    logThis(`URL starts with ${targetURL}`);
+if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
+    logThis(`URL starts with ${CONFIG.TARGET_URL}`);
 
     window.onload = function () {
         logThis('Page fully loaded');
@@ -59,63 +47,30 @@ if (window.location.href.startsWith(targetURL)) {
                 // devStatusPanel.appendChild(containerElement);
                 insertAfter(containerElement, devStatusPanel);
 
-				/**
-				 * Generate Option list from defined prefixes
-				 * @author Jochen Simon <jochen.simon@atos.net>
-				 * @returns {string} Option fields
-				 */
-				window.prefixesSelectOptions = () => {
-					let options = ''
-					if(prefixes) {
-						for(const prefix of prefixes) {
-							options += `<option value="${prefix}" ${(prefix === 'fix' && typeElement?.textContent.trim() === "Bug") ? "selected" : ""} onclick="updateBranchName()">${prefix}</option>`
-						}
-					}
-					return options
-				}
+                /**
+                 * Generate Option list from defined prefixes
+                 * @author Jochen Simon <jochen.simon@atos.net>
+                 * @returns {string} Option fields
+                 */
+                window.prefixesSelectOptions = () => {
+                    let options = ''
+                    if (prefixes) {
+                        for (const prefix of prefixes) {
+                            // "Bug" is the bug type identifier name in Jira for both languages (DE,EN)
+                            options += `<option value="${prefix}" ${(prefix === 'fix' && typeElement?.textContent.trim() === "Bug") ? "selected" : ""} onclick="updateGitCommand()">${prefix}</option>`
+                        }
+                    }
+                    return options
+                }
 
-				/**
-				 * Copy the content of the input field
-				 * @author Jochen Simon <jochen.simon@atos.net>
-				 */
-				window.copyCommand = () => {
-					const elem = document.getElementById('browser-extension-gitbranch__input');
-					elem.select();
-                    document.execCommand('copy');
-				}
-
-				/**
-				 * Format page title to fit Github branch nameand add the prefix parameter
-				 * @author Jochen Simon <jochen.simon@atos.net>
-				 * @param {string} prefix
-				 * @returns {string} formatted branch name
-				 */
-				window.getBranchName = (prefix) => {
-					// TODO: duplicate code, please outsource to function 2/2
-                    const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
-                    const formattedBranchNameWithPrefix = `${prefix}/${issueNumber}-${formattedBranchName}`;
-					return formattedBranchNameWithPrefix;
-				}
-
-				/**
-				 * Set the git checkout command
-				 * @author Jochen Simon <jochen.simon@atos.net>
-				 * @param {string} prefix
-				 * @returns {string} formatted github command
-				 */
-				window.setGitCommand = (prefix) => {
-					const branch = getBranchName(prefix);
-					return `git checkout -b ${branch}`;
-				}
-
-				/**
-				 * Updates the input field value with git checkout command
-				 * @author Jochen Simon <jochen.simon@atos.net>
-				 * @param {string} prefix
-				 */
-				window.updateGitCommand = (prefix) => {
-					const elem = document.getElementById('browser-extension-gitbranch__input');
-					elem.value = setGitCommand(prefix);
+                /**
+                 * Updates the input field value with git checkout command
+                 * @author Jochen Simon <jochen.simon@atos.net>
+                 * @param {string} prefix
+                 */
+                window.updateGitCommand = (prefix) => {
+                    const elem = document.getElementById('browser-extension-gitbranch__input');
+                    elem.value = setGitCommand(prefix);
                 }
 
                 /**
@@ -128,12 +83,11 @@ if (window.location.href.startsWith(targetURL)) {
                 }
 
                 /**
-                 * Format page title to fit Github branch nameand add the prefix parameter
+                 * Format page title to fit GitHub branch name and add the prefix parameter
                  * @param {string} prefix
                  * @returns {string} formatted branch name
                  */
                 window.getBranchName = (prefix) => {
-                    // TODO: duplicate code, please outsource to function 2/2
                     const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
                     return `${prefix}/${issueNumber}-${formattedBranchName}`;
                 }
@@ -141,20 +95,11 @@ if (window.location.href.startsWith(targetURL)) {
                 /**
                  * Set the git checkout command
                  * @param {string} prefix
-                 * @returns {string} formatted github command
+                 * @returns {string} formatted GitHub command
                  */
                 window.setGitCommand = (prefix) => {
                     const branch = getBranchName(prefix);
                     return `git checkout -b ${branch}`;
-                }
-
-                /**
-                 * Updates the input field value with git checkout command
-                 * @param {string} prefix
-                 */
-                window.updateBranchName = (prefix) => {
-                    const elem = document.getElementById('browser-extension-gitbranch__input');
-                    elem.value = setGitCommand(prefix);
                 }
 
                 const container = `
@@ -169,7 +114,7 @@ if (window.location.href.startsWith(targetURL)) {
 							</svg>
 						</button>
 						<h4 class="toggle-title" id="gitbranch-devstatus-label">
-							Copy git checkout command
+							${TRANSLATION.COPY_GIT_COMMAND}
 						</h4>
 						<ul class="ops"></ul>
 					</div>
@@ -177,21 +122,21 @@ if (window.location.href.startsWith(targetURL)) {
 						<div class="message-container">
 							<div class="field-group">
 								<label for="browser-extension-gitbranch__select">
-									Type <span class="visually-hidden">Required</span>
+									${TRANSLATION.TYPE} <span class="visually-hidden">${TRANSLATION.REQUIRED}</span>
 									<span class="aui-icon icon-required" aria-hidden="true"></span>
 								</label>
 								<select id="browser-extension-gitbranch__select" class="aui-button" onchange="updateGitCommand(this.value)">
-									<option hidden disabled value>${document.documentElement.lang === 'en' ? "Please select" : "Bitte auswählen"}</option>
+									<option hidden disabled value>${TRANSLATION.SELECT_PROMPT}</option>
 									${prefixesSelectOptions()}
 								</select>
 							</div>
 							<div class="flex-container space-between form maxw-36">
 								<form class="aui w-100">
-									<input id="browser-extension-gitbranch__input" class="text long-field" readonly="readonly" value="${setGitCommand('feature')}">
+									<input id="browser-extension-gitbranch__input" class="text long-field" readonly="readonly" value="${setGitCommand(typeElement?.textContent.trim() === "Bug" ? 'fix' : 'feature')}">
 								</form>
 								<div class="ml-1">
 									<button class="aui-button" onclick="copyGitCommand()">
-										<span class="aui-icon aui-icon-small aui-iconfont-copy icon-copy"></span> ${document.documentElement.lang === 'en' ? "Copy" : "Kopieren"}
+										<span class="aui-icon aui-icon-small aui-iconfont-copy icon-copy"></span> ${TRANSLATION.COPY_BUTTON_TEXT}
 									</button>
 								</div>
 							</table>
