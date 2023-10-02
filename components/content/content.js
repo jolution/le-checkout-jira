@@ -56,7 +56,8 @@ if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
                     let options = ''
                     if (prefixes) {
                         for (const prefix of prefixes) {
-                            options += `<option value="${prefix}" ${(prefix === 'fix' && typeElement?.textContent.trim() === "Bug") ? "selected" : ""} onclick="updateBranchName()">${prefix}</option>`
+                            // "Bug" is the bug type identifier name in Jira for both languages (DE,EN)
+                            options += `<option value="${prefix}" ${(prefix === 'fix' && typeElement?.textContent.trim() === "Bug") ? "selected" : ""} onclick="updateGitCommand()">${prefix}</option>`
                         }
                     }
                     return options
@@ -87,7 +88,6 @@ if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
                  * @returns {string} formatted branch name
                  */
                 window.getBranchName = (prefix) => {
-                    // TODO: duplicate code, please outsource to function 2/2
                     const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
                     return `${prefix}/${issueNumber}-${formattedBranchName}`;
                 }
@@ -100,15 +100,6 @@ if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
                 window.setGitCommand = (prefix) => {
                     const branch = getBranchName(prefix);
                     return `git checkout -b ${branch}`;
-                }
-
-                /**
-                 * Updates the input field value with git checkout command
-                 * @param {string} prefix
-                 */
-                window.updateBranchName = (prefix) => {
-                    const elem = document.getElementById('browser-extension-gitbranch__input');
-                    elem.value = setGitCommand(prefix);
                 }
 
                 const container = `
@@ -141,7 +132,7 @@ if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
 							</div>
 							<div class="flex-container space-between form maxw-36">
 								<form class="aui w-100">
-									<input id="browser-extension-gitbranch__input" class="text long-field" readonly="readonly" value="${setGitCommand('feature')}">
+									<input id="browser-extension-gitbranch__input" class="text long-field" readonly="readonly" value="${setGitCommand(typeElement?.textContent.trim() === "Bug" ? 'fix' : 'feature')}">
 								</form>
 								<div class="ml-1">
 									<button class="aui-button" onclick="copyGitCommand()">
