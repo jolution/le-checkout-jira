@@ -5,7 +5,7 @@ summary.
 
 ## Screenshots
 
-![App Screenshot](screenshot-jira.png)
+![App Screenshot](screenshot.png)
 
 ## Installation
 
