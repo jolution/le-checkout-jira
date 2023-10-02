@@ -1,20 +1,8 @@
-const TRANSLATION = {
-    en: {
-        COPY_GIT_COMMAND: "Copy git checkout command",
-        SELECT_PROMPT: "Please select",
-        COPY_BUTTON_TEXT: "Copy",
-        TYPE: "Type",
-        REQUIRED: "Required",
-    },
-    de: {
-        COPY_GIT_COMMAND: "Git checkout Befehl kopieren",
-        SELECT_PROMPT: "Bitte auswählen",
-        COPY_BUTTON_TEXT: "Kopieren",
-        TYPE: "Art",
-        REQUIRED: "Erforderlich"
-    },
-};
+import * as TRANSLATION from './translation.json' assert {type: 'json'};
 
 export function getTranslation() {
-    return TRANSLATION[document.documentElement.lang || 'en'];
+    const lang = document.documentElement.lang || 'en';
+    const translation = TRANSLATION?.default[lang];
+
+    return translation ? translation : `[No translation available for ${lang}]`;
 }

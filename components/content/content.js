@@ -65,6 +65,7 @@ if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
 
                 /**
                  * Updates the input field value with git checkout command
+                 * @author Julian Kasimir <julian.kasimir@atos.net>
                  * @author Jochen Simon <jochen.simon@atos.net>
                  * @param {string} prefix
                  */
@@ -74,6 +75,8 @@ if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
                 }
 
                 /**
+                 * @author Julian Kasimir <julian.kasimir@atos.net>
+                 * @author Jochen Simon <jochen.simon@atos.net>
                  * Copy the content of the input field
                  */
                 window.copyGitCommand = () => {
@@ -84,6 +87,8 @@ if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
 
                 /**
                  * Format page title to fit GitHub branch name and add the prefix parameter
+                 * @author Julian Kasimir <julian.kasimir@atos.net>
+                 * @author Jochen Simon <jochen.simon@atos.net>
                  * @param {string} prefix
                  * @returns {string} formatted branch name
                  */
@@ -94,6 +99,8 @@ if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
 
                 /**
                  * Set the git checkout command
+                 * @author Julian Kasimir <julian.kasimir@atos.net>
+                 * @author Jochen Simon <jochen.simon@atos.net>
                  * @param {string} prefix
                  * @returns {string} formatted GitHub command
                  */

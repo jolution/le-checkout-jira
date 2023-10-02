@@ -41,6 +41,7 @@
         "/components/content/config.js",
         "/components/content/content.js",
         "/components/content/content.css",
+        "/components/content/translation.json",
         "/components/content/language.js",
         "chrome-extension://mcibebkpekoelnpennfjepikmfndeccm/content.js",
         "chrome-extension://mcibebkpekoelnpennfjepikmfndeccm/content.css"
