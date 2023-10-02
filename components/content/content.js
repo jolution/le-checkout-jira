@@ -1,3 +1,4 @@
+import CONFIG from "./config.js";
 import {getTranslation} from './language.js';
 
 const TRANSLATION = getTranslation();
@@ -20,23 +21,16 @@ function approveValidGitBranchName(branchName) {
     return checkMaxLength(sanitizedBranchName);
 }
 
-const targetURL = 'https://jira.fsc.atos-services.net/browse/';
-
-// TODO: outsource to config file
-// Info: Set the log level to 0 to disable logging
-const LogLevel = 0;
-const LogIdentifier = '[STC5]';
-
 // Function to log a message if LogLevel is greater than 0
 function logThis(message) {
-    if (LogLevel > 0) {
+    if (CONFIG.LOG_LEVEL > 0) {
         // eslint-disable-next-line no-console
-        console.log(`${LogIdentifier} ${message}`);
+        console.log(`${CONFIG.LOG_IDENTIFIER} ${message}`);
     }
 }
 
-if (window.location.href.startsWith(targetURL)) {
-    logThis(`URL starts with ${targetURL}`);
+if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
+    logThis(`URL starts with ${CONFIG.TARGET_URL}`);
 
     window.onload = function () {
         logThis('Page fully loaded');

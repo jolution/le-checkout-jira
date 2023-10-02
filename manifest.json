@@ -36,9 +36,10 @@
   "web_accessible_resources": [
     {
       "resources": [
+        "/components/content/inject.js",
+        "/components/content/config.js",
         "/components/content/content.js",
         "/components/content/content.css",
-        "/components/content/inject.js",
         "/components/content/language.js",
         "chrome-extension://mcibebkpekoelnpennfjepikmfndeccm/content.js",
         "chrome-extension://mcibebkpekoelnpennfjepikmfndeccm/content.css"
