@@ -20,7 +20,9 @@
   ],
   "content_scripts": [
     {
-      "matches": ["https://jira.fsc.atos-services.net/browse/*"],
+      "matches": [
+        "https://jira.fsc.atos-services.net/browse/*"
+      ],
       "css": [
         "/components/content/content.css"
       ],
@@ -37,6 +39,7 @@
         "/components/content/content.js",
         "/components/content/content.css",
         "/components/content/inject.js",
+        "/components/content/language.js",
         "chrome-extension://mcibebkpekoelnpennfjepikmfndeccm/content.js",
         "chrome-extension://mcibebkpekoelnpennfjepikmfndeccm/content.css"
       ],

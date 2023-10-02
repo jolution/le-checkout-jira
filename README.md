@@ -24,3 +24,9 @@ TODO: Add installation instructions for Firefox, if manifest.json works with fir
 
 1. Open the Extension Management page by navigating to `chrome://extensions`.
 2. Click the **Update** button.
+
+### Authors (in alphabetical order)
+
+- [@juliankasimir](https://www.github.com/juliankasimir)
+- [@pimmok](https://www.github.com/pimmok)
+- [@raj19joshi](https://www.github.com/raj19joshi)
