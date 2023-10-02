@@ -1,6 +1,10 @@
 # Gitbranch Generator Browser Extension for Jira On Promise
 
-This is a browser extension that generates a git branch name based on the current date and time.
+This is a Chrome browser extension that generates a git branch name based on the current date and time.
+
+## Screenshots
+
+![App Screenshot](screenshot-jira.png)
 
 ## Installation
 
@@ -13,10 +17,6 @@ This is a browser extension that generates a git branch name based on the curren
 4. Click the **LOAD UNPACKED** button and select the extension directory.
 5. Open a new tab and open the company jira on promise ticket directly. On the right sidebar you will find the
    extension.
-
-### Firefox
-
-TODO: Add installation instructions for Firefox, if manifest.json works with firefox.
 
 ## Updating
 
