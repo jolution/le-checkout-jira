@@ -26,7 +26,7 @@ if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
         logThis('Page fully loaded');
         const waitForJIRA = setInterval(function () {
             logThis('Checking for JIRA...');
-            if (typeof JIRA !== 'undefined' && typeof JIRA.Issue !== 'undefined' && typeof JIRA.Issue.getIssueKey === 'function') {
+            if (typeof JIRA !== 'undefined' && typeof JIRA.Issue !== 'undefined' && typeof JIRA.Issue.getIssueKey === 'function' && JIRA.Issue.getIssueKey() !== null) {
                 clearInterval(waitForJIRA);
                 logThis('JIRA is available');
 
