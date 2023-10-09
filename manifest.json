@@ -21,7 +21,8 @@
   "content_scripts": [
     {
       "matches": [
-        "https://jira.fsc.atos-services.net/browse/*"
+        "https://jira.fsc.atos-services.net/browse/*",
+        "https://*.atlassian.net/browse/*"
       ],
       "css": [
         "/components/content/content.css"

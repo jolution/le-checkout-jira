@@ -12,9 +12,8 @@ const LOG_LEVEL = {
 };
 
 const CONFIG = {
-    TARGET_URL: 'https://jira.fsc.atos-services.net/browse/',
-    LOG_LEVEL: LOG_LEVEL.ALL,
-    LOG_IDENTIFIER: '[STC5]',
+    LOG_LEVEL: LOG_LEVEL.NONE,
+    LOG_IDENTIFIER: '[EVIDEN_STC5]',
 };
 
 export default CONFIG;
