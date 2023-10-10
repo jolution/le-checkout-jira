@@ -1,3 +1,5 @@
+import config from "./config.js";
+
 import {getTranslation} from './language.js';
 import {insertAfter, logThis} from "./utils.js";
 
@@ -33,7 +35,8 @@ window.onload = function () {
             // Extracting the title
             const titleElement = document.getElementById('summary-val');
             const title = titleElement.textContent.trim();
-            const prefixes = ['feature', 'fix', 'build', 'ci', 'docs', 'perf', 'refactor', 'style', 'test', 'chore', 'research'];
+            // const BRANCH_PREFIXES = ['feature', 'fix', 'build', 'ci', 'docs', 'perf', 'refactor', 'style', 'test', 'chore', 'research'];
+
             const typeElement = document.getElementById("type-val");
 
             // Creating the container element
@@ -51,15 +54,16 @@ window.onload = function () {
              * @returns {string} Option fields
              */
             window.prefixesSelectOptions = () => {
-                let options = ''
-                if (prefixes) {
-                    for (const prefix of prefixes) {
+                let options = '';
+                if (config.BRANCH_PREFIXES) {
+                    for (const prefix of Object.keys(config.BRANCH_PREFIXES)) {
+                        const emoji = config.BRANCH_PREFIXES[prefix];
                         // "Bug" is the bug type identifier name in Jira for both languages (DE,EN)
-                        options += `<option value="${prefix}" ${(prefix === 'fix' && typeElement?.textContent.trim() === "Bug") ? "selected" : ""} onclick="updateGitCommand()">${prefix}</option>`
+                        options += `<option value="${prefix}" ${(prefix === 'fix' && typeElement?.textContent.trim() === "Bug") ? "selected" : ""} onclick="updateGitCommand()">${emoji} ${prefix}</option>`;
                     }
                 }
-                return options
-            }
+                return options;
+            };
 
             /**
              * Updates the input field value with git checkout command
