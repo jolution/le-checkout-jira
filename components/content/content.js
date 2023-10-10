@@ -1,4 +1,4 @@
-import CONFIG from "./config.js";
+import config from "./config.js";
 
 import {getTranslation} from './language.js';
 import {insertAfter, logThis} from "./utils.js";
@@ -19,97 +19,99 @@ function approveValidGitBranchName(branchName) {
     return checkMaxLength(sanitizedBranchName);
 }
 
-if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
-    logThis(`URL starts with ${CONFIG.TARGET_URL}`);
+// if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
+//     logThis(`URL starts with ${CONFIG.TARGET_URL}`);
 
-    window.onload = function () {
-        logThis('Page fully loaded');
-        const waitForJIRA = setInterval(function () {
-            logThis('Checking for JIRA...');
-            if (typeof JIRA !== 'undefined' && typeof JIRA.Issue !== 'undefined' && typeof JIRA.Issue.getIssueKey === 'function' && JIRA.Issue.getIssueKey() !== null) {
-                clearInterval(waitForJIRA);
-                logThis('JIRA is available');
+window.onload = function () {
+    logThis('Page fully loaded');
+    const waitForJIRA = setInterval(function () {
+        logThis('Checking for JIRA...');
+        if (typeof JIRA !== 'undefined' && typeof JIRA.Issue !== 'undefined' && typeof JIRA.Issue.getIssueKey === 'function' && JIRA.Issue.getIssueKey() !== null) {
+            clearInterval(waitForJIRA);
+            logThis('JIRA is available');
 
-                const issueNumber = JIRA.Issue.getIssueKey();
+            const issueNumber = JIRA.Issue.getIssueKey();
 
-                // Extracting the title
-                const titleElement = document.getElementById('summary-val');
-                const title = titleElement.textContent.trim();
-                const prefixes = ['feature', 'fix', 'build', 'ci', 'docs', 'perf', 'refactor', 'style', 'test', 'chore', 'research'];
-                const typeElement = document.getElementById("type-val");
+            // Extracting the title
+            const titleElement = document.getElementById('summary-val');
+            const title = titleElement.textContent.trim();
+            // const BRANCH_PREFIXES = ['feature', 'fix', 'build', 'ci', 'docs', 'perf', 'refactor', 'style', 'test', 'chore', 'research'];
 
-                // Creating the container element
-                const containerElement = document.createElement('div');
-                containerElement.id = 'browser-extension-gitbranch__container';
+            const typeElement = document.getElementById("type-val");
 
-                // Selecting the target for the input field and adding the input field
-                const devStatusPanel = document.getElementById('viewissue-devstatus-panel');
-                // devStatusPanel.appendChild(containerElement);
-                insertAfter(containerElement, devStatusPanel);
+            // Creating the container element
+            const containerElement = document.createElement('div');
+            containerElement.id = 'browser-extension-gitbranch__container';
 
-                /**
-                 * Generate Option list from defined prefixes
-                 * @author Jochen Simon <jochen.simon@atos.net>
-                 * @returns {string} Option fields
-                 */
-                window.prefixesSelectOptions = () => {
-                    let options = ''
-                    if (prefixes) {
-                        for (const prefix of prefixes) {
-                            // "Bug" is the bug type identifier name in Jira for both languages (DE,EN)
-                            options += `<option value="${prefix}" ${(prefix === 'fix' && typeElement?.textContent.trim() === "Bug") ? "selected" : ""} onclick="updateGitCommand()">${prefix}</option>`
-                        }
+            // Selecting the target for the input field and adding the input field
+            const devStatusPanel = document.getElementById('viewissue-devstatus-panel');
+            // devStatusPanel.appendChild(containerElement);
+            insertAfter(containerElement, devStatusPanel);
+
+            /**
+             * Generate Option list from defined prefixes
+             * @author Jochen Simon <jochen.simon@atos.net>
+             * @returns {string} Option fields
+             */
+            window.prefixesSelectOptions = () => {
+                let options = '';
+                if (config.BRANCH_PREFIXES) {
+                    for (const prefix of Object.keys(config.BRANCH_PREFIXES)) {
+                        const emoji = config.BRANCH_PREFIXES[prefix];
+                        // "Bug" is the bug type identifier name in Jira for both languages (DE,EN)
+                        options += `<option value="${prefix}" ${(prefix === 'fix' && typeElement?.textContent.trim() === "Bug") ? "selected" : ""} onclick="updateGitCommand()">${emoji} ${prefix}</option>`;
                     }
-                    return options
                 }
+                return options;
+            };
 
-                /**
-                 * Updates the input field value with git checkout command
-                 * @author Julian Kasimir <julian.kasimir@atos.net>
-                 * @author Jochen Simon <jochen.simon@atos.net>
-                 * @param {string} prefix
-                 */
-                window.updateGitCommand = (prefix) => {
-                    const elem = document.getElementById('browser-extension-gitbranch__input');
-                    elem.value = setGitCommand(prefix);
-                }
+            /**
+             * Updates the input field value with git checkout command
+             * @author Julian Kasimir <julian.kasimir@atos.net>
+             * @author Jochen Simon <jochen.simon@atos.net>
+             * @param {string} prefix
+             */
+            window.updateGitCommand = (prefix) => {
+                const elem = document.getElementById('browser-extension-gitbranch__input');
+                elem.value = setGitCommand(prefix);
+            }
 
-                /**
-                 * @author Julian Kasimir <julian.kasimir@atos.net>
-                 * @author Jochen Simon <jochen.simon@atos.net>
-                 * Copy the content of the input field
-                 */
-                window.copyGitCommand = () => {
-                    const elem = document.getElementById('browser-extension-gitbranch__input');
-                    elem.select();
-                    document.execCommand('copy');
-                }
+            /**
+             * @author Julian Kasimir <julian.kasimir@atos.net>
+             * @author Jochen Simon <jochen.simon@atos.net>
+             * Copy the content of the input field
+             */
+            window.copyGitCommand = () => {
+                const elem = document.getElementById('browser-extension-gitbranch__input');
+                elem.select();
+                document.execCommand('copy');
+            }
 
-                /**
-                 * Format page title to fit GitHub branch name and add the prefix parameter
-                 * @author Julian Kasimir <julian.kasimir@atos.net>
-                 * @author Jochen Simon <jochen.simon@atos.net>
-                 * @param {string} prefix
-                 * @returns {string} formatted branch name
-                 */
-                window.getBranchName = (prefix) => {
-                    const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
-                    return `${prefix}/${issueNumber}-${formattedBranchName}`;
-                }
+            /**
+             * Format page title to fit GitHub branch name and add the prefix parameter
+             * @author Julian Kasimir <julian.kasimir@atos.net>
+             * @author Jochen Simon <jochen.simon@atos.net>
+             * @param {string} prefix
+             * @returns {string} formatted branch name
+             */
+            window.getBranchName = (prefix) => {
+                const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
+                return `${prefix}/${issueNumber}-${formattedBranchName}`;
+            }
 
-                /**
-                 * Set the git checkout command
-                 * @author Julian Kasimir <julian.kasimir@atos.net>
-                 * @author Jochen Simon <jochen.simon@atos.net>
-                 * @param {string} prefix
-                 * @returns {string} formatted GitHub command
-                 */
-                window.setGitCommand = (prefix) => {
-                    const branch = getBranchName(prefix);
-                    return `git checkout -b ${branch}`;
-                }
+            /**
+             * Set the git checkout command
+             * @author Julian Kasimir <julian.kasimir@atos.net>
+             * @author Jochen Simon <jochen.simon@atos.net>
+             * @param {string} prefix
+             * @returns {string} formatted GitHub command
+             */
+            window.setGitCommand = (prefix) => {
+                const branch = getBranchName(prefix);
+                return `git checkout -b ${branch}`;
+            }
 
-                const container = `
+            const container = `
 				<div id="gitbranch-devstatus" class="module toggle-wrap">
 					<div id="gitbranch-devstatus_heading" class="mod-header">
 						<button class="aui-button toggle-title" aria-label="Gitbranch" aria-controls="gitbranch-devstatus" aria-expanded="false" resolved>
@@ -151,8 +153,8 @@ if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
 					</div>
 				</div>`;
 
-                containerElement.insertAdjacentHTML("afterend", container)
-            }
-        }, 100);
-    }
+            containerElement.insertAdjacentHTML("afterend", container)
+        }
+    }, 100);
 }
+// }

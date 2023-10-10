@@ -1,11 +1,21 @@
-# Gitbranch Generator Browser Extension for Jira On Promise
+# Gitbranch Generator Browser Extension for Jira
 
 This is a Chrome browser extension that generates a git branch name based on the current jira issue key and the issue
 summary.
 
 ## Screenshots
 
-![App Screenshot](screenshot.png)
+EN:
+
+![App Screenshot EN](screenshot.png)
+
+DE:
+
+![App Screenshot DE](screenshot2.png)
+
+FR:
+
+![App Screenshot FR](screenshot3.png)
 
 ## Installation
 
