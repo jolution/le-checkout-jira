@@ -138,11 +138,7 @@ window.addEventListener('load', function () {
              * @returns {string} formatted branch name
              */
             window.getBranchName = (prefix) => {
-
-                if (!title) {
-                    return '';
-                }
-
+                if (!title) return '';
                 const formattedBranchName = approveValidGitBranchName(`${title?.toLowerCase().replace(/\s+/g, '-')}`);
                 return `${prefix}/${issueNumber}-${formattedBranchName}`;
             }
