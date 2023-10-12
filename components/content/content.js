@@ -58,10 +58,6 @@ window.addEventListener('load', function () {
             clearInterval(waitForJIRA);
             logThis('JIRA is available');
 
-            document.addEventListener("DOMContentLoaded", function () {
-                document.querySelector('body').classList.add('browser-extension-gitbranch');
-            });
-
             // TODO: extract to separate function like "getIssueTitle"
             // TODO: maybe extract different selector for jira on premise and cloud
             // Extracting the title
