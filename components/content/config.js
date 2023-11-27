@@ -15,7 +15,7 @@ const BRANCH_PREFIXES = {
     'feature': '🍕',
     'fix': '🐛',
     'docs': '📝',
-    'style': '🎨',
+    'style': '✨',
     'refactor': '🔨',
     'build': '🤖️',
     'ci': '🔁',
@@ -26,8 +26,9 @@ const BRANCH_PREFIXES = {
 };
 
 const CONFIG = {
-    LOG_LEVEL: LOG_LEVEL.NONE,
+    LOG_LEVEL: LOG_LEVEL.ALL,
     LOG_IDENTIFIER: '[EVIDEN_STC5]',
+    ABORT_ON_TRYS: 25,
     BRANCH_PREFIXES: BRANCH_PREFIXES
 };
 

@@ -22,20 +22,56 @@ function approveValidGitBranchName(branchName) {
 // if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
 //     logThis(`URL starts with ${CONFIG.TARGET_URL}`);
 
-window.onload = function () {
+// window.onload = function () {
+window.addEventListener('load', function () {
     logThis('Page fully loaded');
+    let TRYS = 0;
+    let issueNumber = null;
     const waitForJIRA = setInterval(function () {
         logThis('Checking for JIRA...');
-        if (typeof JIRA !== 'undefined' && typeof JIRA.Issue !== 'undefined' && typeof JIRA.Issue.getIssueKey === 'function' && JIRA.Issue.getIssueKey() !== null) {
+
+        if (TRYS > config.ABORT_ON_TRYS) {
+            clearInterval(waitForJIRA);
+            logThis('JIRA not available');
+            return;
+        }
+
+        if (typeof JIRA !== 'undefined' && typeof JIRA.Issue !== 'undefined' && typeof JIRA.Issue.getIssueKey === 'function') {
+
+            // Get JIRA issue Key
+            if (JIRA.Issue.getIssueId() !== null) {
+                issueNumber = JIRA.Issue.getIssueKey();
+            } else {
+                const currentUrl = window.location.href;
+
+                const jiraIdMatch = currentUrl.match(/\/browse\/([A-Z0-9]+-\d+)/);
+
+                if (jiraIdMatch) {
+                    issueNumber = jiraIdMatch[1];
+                } else {
+                    clearInterval(waitForJIRA);
+                    logThis('JIRA KEY not available');
+                    return;
+                }
+            }
+
             clearInterval(waitForJIRA);
             logThis('JIRA is available');
 
-            const issueNumber = JIRA.Issue.getIssueKey();
-
+            // TODO: extract to separate function like "getIssueTitle"
+            // TODO: maybe extract different selector for jira on premise and cloud
             // Extracting the title
-            const titleElement = document.getElementById('summary-val');
-            const title = titleElement.textContent.trim();
-            // const BRANCH_PREFIXES = ['feature', 'fix', 'build', 'ci', 'docs', 'perf', 'refactor', 'style', 'test', 'chore', 'research'];
+            let titleElement = document.getElementById('summary-val');
+
+            // If the element is not reachable, use the alternative ID (Jira Cloud, next gen)
+            if (!titleElement) {
+                titleElement = document.querySelector('h1');
+
+                // TODO: exact target doesnt work
+                // titleElement = document.querySelector('h1[data-test-id="issue.views.issue-base.foundation.summary.heading"]');
+            }
+
+            const title = titleElement?.textContent.trim();
 
             const typeElement = document.getElementById("type-val");
 
@@ -43,8 +79,15 @@ window.onload = function () {
             const containerElement = document.createElement('div');
             containerElement.id = 'browser-extension-gitbranch__container';
 
-            // Selecting the target for the input field and adding the input field
-            const devStatusPanel = document.getElementById('viewissue-devstatus-panel');
+            // Selecting the target for the input field (Jira on promise)
+            let devStatusPanel = document.getElementById('viewissue-devstatus-panel');
+
+            // If the element is not reachable, use the alternative ID (Jira Cloud, next gen)
+            if (!devStatusPanel) {
+                // Wenn das Element nicht erreichbar ist, verwenden Sie die alternative ID
+                devStatusPanel = document.getElementById('jira-issue-header-actions');
+            }
+
             // devStatusPanel.appendChild(containerElement);
             insertAfter(containerElement, devStatusPanel);
 
@@ -95,7 +138,8 @@ window.onload = function () {
              * @returns {string} formatted branch name
              */
             window.getBranchName = (prefix) => {
-                const formattedBranchName = approveValidGitBranchName(`${title.toLowerCase().replace(/\s+/g, '-')}`);
+                if (!title) return '';
+                const formattedBranchName = approveValidGitBranchName(`${title?.toLowerCase().replace(/\s+/g, '-')}`);
                 return `${prefix}/${issueNumber}-${formattedBranchName}`;
             }
 
@@ -145,6 +189,7 @@ window.onload = function () {
 								</form>
 								<div class="ml-1">
 									<button class="aui-button" onclick="copyGitCommand()">
+									    <!-- TODO: icon only work on jira on promise -->
 										<span class="aui-icon aui-icon-small aui-iconfont-copy icon-copy"></span> ${TRANSLATION.COPY_BUTTON_TEXT}
 									</button>
 								</div>
@@ -154,7 +199,8 @@ window.onload = function () {
 				</div>`;
 
             containerElement.insertAdjacentHTML("afterend", container)
+        } else {
+            TRYS++;
         }
     }, 100);
-}
-// }
+}, false);
