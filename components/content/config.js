@@ -15,7 +15,7 @@ const BRANCH_PREFIXES = {
     'feature': '🍕',
     'fix': '🐛',
     'docs': '📝',
-    'style': '🎨',
+    'style': '✨',
     'refactor': '🔨',
     'build': '🤖️',
     'ci': '🔁',
