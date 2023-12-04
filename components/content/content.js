@@ -139,9 +139,23 @@ window.addEventListener('load', function () {
              */
             window.getBranchName = (prefix) => {
                 if (!title) return '';
-                const formattedBranchName = approveValidGitBranchName(`${title?.toLowerCase().replace(/\s+/g, '-')}`);
+
+                const formattedBranchName = approveValidGitBranchName(
+                    title
+                        ?.toLowerCase()
+
+                        // no spaces or special characters
+                        .replace(/\W+/g, '-')
+
+                        // no double minus
+                        .replace(/-+/g, '-')
+
+                        // no ending minus
+                        .replace(/-$/, '')
+                );
+
                 return `${prefix}/${issueNumber}-${formattedBranchName}`;
-            }
+            };
 
             /**
              * Set the git checkout command
