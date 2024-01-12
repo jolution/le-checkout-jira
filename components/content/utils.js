@@ -12,3 +12,11 @@ export function logThis(message) {
 export function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
+
+export function isJiraCloud() {
+    return !!window.location.hostname.endsWith('atlassian.net');
+}
+
+// export function isJiraOnPromise() {
+//     return !isJiraCloud();
+// }
