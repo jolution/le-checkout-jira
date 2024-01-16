@@ -41,10 +41,15 @@
 }
 
 /* TODO: add html[data-color-mode="light"] */
+/* TODO: add postcss for nesting css */
 
 .jira-cloud-details {
     --border-settings: 1px solid var(--ds-border, #DFE1E6);
     background-color: var(--ds-surface-overlay, #fff);
     border-radius: 4px;
     position: sticky;
+}
+
+.jira-cloud-details button {
+    display: flex;
 }
