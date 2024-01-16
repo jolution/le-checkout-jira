@@ -1,3 +1,14 @@
+/**
+ * @fileOverview This file contains the JavaScript code for the Git Branch extension.
+ * @module GitBranchExtension
+ * @version 1.0.0
+ * @description This script enhances Jira pages by adding functionality related to Git branches.
+ * @license Definition can be found in the LICENSE file.
+ *
+ * @author Julian Kasimir <julian.kasimir@eviden.com>
+ *         Jochen Simon <jochen.simon@eviden.com>
+ */
+
 import config from "./config.js";
 
 import {getTranslation} from './language.js';
@@ -93,7 +104,6 @@ window.addEventListener('load', function () {
 
             /**
              * Generate Option list from defined prefixes
-             * @author Jochen Simon <jochen.simon@atos.net>
              * @returns {string} Option fields
              */
             window.prefixesSelectOptions = () => {
@@ -110,8 +120,6 @@ window.addEventListener('load', function () {
 
             /**
              * Updates the input field value with git checkout command
-             * @author Julian Kasimir <julian.kasimir@atos.net>
-             * @author Jochen Simon <jochen.simon@atos.net>
              * @param {string} prefix
              */
             window.updateGitCommand = (prefix) => {
@@ -119,9 +127,9 @@ window.addEventListener('load', function () {
                 elem.value = setGitCommand(prefix);
             }
 
+            // TODO: maybe rename function so we dont need info what the function does ?
+
             /**
-             * @author Julian Kasimir <julian.kasimir@atos.net>
-             * @author Jochen Simon <jochen.simon@atos.net>
              * Copy the content of the input field
              */
             window.copyGitCommand = () => {
@@ -132,8 +140,6 @@ window.addEventListener('load', function () {
 
             /**
              * Format page title to fit GitHub branch name and add the prefix parameter
-             * @author Julian Kasimir <julian.kasimir@atos.net>
-             * @author Jochen Simon <jochen.simon@atos.net>
              * @param {string} prefix
              * @returns {string} formatted branch name
              */
@@ -159,8 +165,6 @@ window.addEventListener('load', function () {
 
             /**
              * Set the git checkout command
-             * @author Julian Kasimir <julian.kasimir@atos.net>
-             * @author Jochen Simon <jochen.simon@atos.net>
              * @param {string} prefix
              * @returns {string} formatted GitHub command
              */
