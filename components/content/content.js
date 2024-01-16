@@ -169,25 +169,12 @@ window.addEventListener('load', function () {
                 return `git checkout -b ${branch}`;
             }
 
-            // TODO: extract to separate files and export
+            // TODO: extract to separate files and export ?
+
             const cloudContent = `
-				<div id="gitbranch-devstatus" class="module toggle-wrap">
-					<div id="gitbranch-devstatus_heading" class="mod-header">
-						<button class="aui-button toggle-title" aria-label="Gitbranch" aria-controls="gitbranch-devstatus" aria-expanded="false" resolved>
-							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
-								<g fill="none" fill-rule="evenodd">
-									<path d="M3.29175 4.793c-.389.392-.389 1.027 0 1.419l2.939 2.965c.218.215.5.322.779.322s.556-.107.769-.322l2.93-2.955c.388-.392.388-1.027 0-1.419-.389-.392-1.018-.392-1.406 0l-2.298 2.317-2.307-2.327c-.194-.195-.449-.293-.703-.293-.255 0-.51.098-.703.293z" fill="#344563">
-									</path>
-								</g>
-							</svg>
-						</button>
-						<h4 class="toggle-title" id="gitbranch-devstatus-label">
-							${TRANSLATION.COPY_GIT_COMMAND}
-						</h4>
-						<ul class="ops"></ul>
-					</div>
-					<div class="mod-content">
-						<div class="message-container">
+				<details open class="jira-cloud-details">
+				    <summary aria-label="Details">${TRANSLATION.COPY_GIT_COMMAND}</summary>
+						<div>
 							<div class="field-group">
 								<label for="browser-extension-gitbranch__select">
 									${TRANSLATION.TYPE} <span class="visually-hidden">${TRANSLATION.REQUIRED}</span>
@@ -207,12 +194,11 @@ window.addEventListener('load', function () {
 									    <span aria-hidden="true" class="css-1f7zkuy" style="--icon-primary-color: currentColor; --icon-secondary-color: var(--ds-surface, #FFFFFF);"><svg width="24" height="24" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><path d="M10 19h8V8h-8v11zM8 7.992C8 6.892 8.902 6 10.009 6h7.982C19.101 6 20 6.893 20 7.992v11.016c0 1.1-.902 1.992-2.009 1.992H10.01A2.001 2.001 0 018 19.008V7.992z"></path><path d="M5 16V4.992C5 3.892 5.902 3 7.009 3H15v13H5zm2 0h8V5H7v11z"></path></g></svg></span> ${TRANSLATION.COPY_BUTTON_TEXT}
 									</button>
 								</div>
-							</table>
-						</div>
-					</div>
-				</div>`;
+						    </div>
+					    </div>
+                </details>`;
 
-            // TODO: extract to separate files and export
+            // TODO: maybe the closing table tag is not needed and a closing div instead is better
             const onPromiseContent = `
 				<div id="gitbranch-devstatus" class="module toggle-wrap">
 					<div id="gitbranch-devstatus_heading" class="mod-header">
