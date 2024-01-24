@@ -1,0 +1,48 @@
+:root {
+    --fgColor-default: #e2e8f0;
+    --bgColor-default: #1f2937;
+    --body-font-size: 0.9rem;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: var(--body-font-size);
+    line-height: 1.5;
+    color: var(--fgColor-default);
+    background-color: var(--bgColor-default);
+    margin: 0;
+    padding: 1rem;
+    min-width: 20rem;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 1.25rem;
+}
+
+a {
+    color: var(--fgColor-default);
+    text-decoration: none;
+}
+
+#sponsorLink {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.625rem 1.25rem;
+    background-color: #383E46;
+    border: 0.0625rem solid #78838F;
+    border-radius: 0.3125rem;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#sponsorLink .icon-text {
+    display: flex;
+    align-items: center;
+}
+
+#sponsorLink:hover {
+    background-color: #993366;
+}
