@@ -6,6 +6,9 @@
     <link href="/components/popup/popup.css"
           rel="stylesheet"
           type="text/css"/>
+    <script defer
+            src="/components/popup/popup.js"
+            type="module"></script>
 </head>
 
 <body>
@@ -15,7 +18,14 @@
 </header>
 
 <main>
-    <!-- TODO: add buttons -->
+    <form id="optionsForm">
+        <label for="emoji">
+            <input id="emoji"
+                   name="emoji"
+                   type="checkbox">
+            Enable Emoji
+        </label>
+    </form>
 </main>
 
 <footer>
@@ -42,8 +52,6 @@
     <!--    <a href="https://URL.de/sponsor">Sponsoring</a>, <a href="https://URL.de/rating">Rating</a>,-->
     <!--    <a href="https://URL.de/datenschutz">Datenschutz</a>-->
 
-    <script src="/components/popup/popup.js"
-            type="module"></script>
     <script src="/components/content/inject.js"
             type="module"></script>
 </footer>

@@ -30,6 +30,28 @@ function approveValidGitBranchName(branchName) {
     return checkMaxLength(sanitizedBranchName);
 }
 
+function setDebugMode() { /* ... */
+}
+
+// @see: https://developer.chrome.com/docs/extensions/reference/api/storage?hl=de
+// chrome.storage.onChanged.addListener((changes, namespace) => {
+//     for (let [key, {oldValue, newValue}] of Object.entries(changes)) {
+//         console.log(
+//             `Storage key "${key}" in namespace "${namespace}" changed.`,
+//             `Old value was "${oldValue}", new value is "${newValue}".`
+//         );
+//     }
+// });
+
+// Watch for changes to the user's options & apply them
+chrome.storage.onChanged.addListener((changes, area) => {
+    if (area === 'sync' && changes.options?.newValue) {
+        const isEmoji = Boolean(changes.options.newValue.emoji);
+        logThis(isEmoji);
+        setDebugMode(isEmoji);
+    }
+});
+
 // if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
 //     logThis(`URL starts with ${CONFIG.TARGET_URL}`);
 
