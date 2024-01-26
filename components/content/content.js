@@ -44,13 +44,13 @@ function setDebugMode() { /* ... */
 // });
 
 // Watch for changes to the user's options & apply them
-chrome.storage.onChanged.addListener((changes, area) => {
-    if (area === 'sync' && changes.options?.newValue) {
-        const isEmoji = Boolean(changes.options.newValue.emoji);
-        logThis(isEmoji);
-        setDebugMode(isEmoji);
-    }
-});
+// chrome.storage?.onChanged.addListener((changes, area) => {
+//     if (area === 'sync' && changes.options?.newValue) {
+//         const isEmoji = Boolean(changes.options.newValue.emoji);
+//         logThis(isEmoji);
+//         setDebugMode(isEmoji);
+//     }
+// });
 
 // if (window.location.href.startsWith(CONFIG.TARGET_URL)) {
 //     logThis(`URL starts with ${CONFIG.TARGET_URL}`);
