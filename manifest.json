@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Jira Branchname Generator",
+  "name": "LeCheckout for Jira",
   "version": "1.0.0",
-  "author": "@juliankasimir",
+  "author": "@jolution",
   "description": "Generates a branch name from the Jira ticket number and title",
   "permissions": [
     "tabs",
@@ -60,7 +60,7 @@
       "16": "icons/icon16.png",
       "32": "icons/icon32.png"
     },
-    "default_title": "Click Me",
+    "default_title": "LeCheckout for Jira",
     "default_popup": "/components/popup/popup.html"
   },
   "icons": {

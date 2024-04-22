@@ -1,4 +1,5 @@
-# Gitbranch Generator Browser Extension for Jira
+# LeCheckout for Jira
+_Gitbranch Generator Browser Extension_
 
 This is a Chrome browser extension that generates a git branch name based on the current jira issue key and the issue
 summary.
@@ -22,7 +23,7 @@ FR:
 ### Chrome
 
 1. Download the [latest release](https://github.com/DE-AMS-AD-VAPPS/browser-extension-gitbranch) with GitHub CLI:
-   `gh repo clone DE-AMS-AD-VAPPS/browser-extension-gitbranch-jira`
+   `gh repo clone jolution/le-checkout-jira`
 2. Open the Extension Management page by navigating to `chrome://extensions`.
 3. Enable Developer Mode by clicking the toggle switch next to **Developer mode**.
 4. Click the **LOAD UNPACKED** button and select the extension directory.
@@ -40,4 +41,3 @@ FR:
 
 - [@juliankasimir](https://www.github.com/juliankasimir)
 - [@pimmok](https://www.github.com/pimmok)
-- [@raj19joshi](https://www.github.com/raj19joshi)
