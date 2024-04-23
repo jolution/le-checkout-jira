@@ -4,6 +4,8 @@ _Gitbranch Generator Browser Extension_
 This is a Chrome browser extension that generates a git branch name based on the current jira issue key and the issue
 summary.
 
+:package: If you use GitHub, have a look at the [GitHub Version](https://github.com/jolution/le-checkout-github).
+
 ## Screenshots
 
 EN:
