@@ -93,6 +93,17 @@ We do not currently offer direct support for this project.
 - [@juliankasimir](https://www.github.com/juliankasimir)
 - [@pimmok](https://www.github.com/pimmok)
 
+## 🤝 Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
 ## Sponsor
 
 Many thanks to JetBrains, which provided us with a yearly license for all their programs for the open source work on this project.
