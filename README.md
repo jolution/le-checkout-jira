@@ -104,7 +104,7 @@ We do not currently offer direct support for this project.
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-## Sponsor
+## 💎 Sponsor
 
 Many thanks to JetBrains, which provided us with a yearly license for all their programs for the open source work on this project.
 
