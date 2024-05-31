@@ -112,7 +112,7 @@ See the [LICENSE](LICENSE) file for details.
 
 Please note that this project, LeCheckout, is not officially associated with or endorsed by the Monkey Island franchise, its creators, or any related entities. It is an independent project developed by the open-source community and does not claim any rights to the Monkey Island trademark or any related materials.
 
-## Contributors ✨
+## ✨ Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
