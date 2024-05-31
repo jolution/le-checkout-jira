@@ -6,12 +6,18 @@
         fill: #000;
       }
 
-      .cls-1, .cls-2 {
-        stroke-width: 0px;
-      }
-
       .cls-2 {
         fill: #fff;
+      }
+
+      @media (prefers-color-scheme:dark) {
+        .cls-1 {
+          fill: #fff;
+        }
+
+      .cls-2 {
+          fill: #000;
+        }
       }
     </style>
   </defs>
