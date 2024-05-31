@@ -68,23 +68,23 @@ Why Use this Extension?
 <p>This allows us to make assignments more easily and, among other things, work with jira-prepare-commit-msg in projects.</p>
 </details>
 
-For more questions and answers, please visit our [Q&A Discussions](https://github.com/jolution/le-checkout-github/discussions/categories/q-a).
+For more questions and answers, please visit our [Q&A Discussions](https://github.com/jolution/le-checkout-jira/discussions/categories/q-a).
 
 ## ❤️ Support
 
-If you find this project helpful, please consider giving it a star on [GitHub](https://github.com/jolution/le-checkout-github).
+If you find this project helpful, please consider giving it a star on [GitHub](https://github.com/jolution/le-checkout-jira).
 
-[![Star this repository](https://img.shields.io/github/stars/jolution/le-checkout-github?style=social)](https://github.com/jolution/le-checkout-github)
+[![Star this repository](https://img.shields.io/github/stars/jolution/le-checkout-jira?style=social)](https://github.com/jolution/le-checkout-jira)
 
 We do not currently offer direct support for this project.
 
 ## 🗺️ Roadmap
 
--  Logo and CI design
+- Logo and CI design
 - Optimized design for Jira On Premise and Jira Cloud
 - Integration into popup variant of the ticket
 - Setup option for toggle the emojis.
-- Setup option to hide branches
+- Setup option to hide some of the prefix branches
 - Rolling out to Chrome Store
 - Creating the extension for Firefox
 
