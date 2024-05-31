@@ -4,6 +4,7 @@
   ],
   "imageSize": 100,
   "commit": false,
+  "contributorsSortAlphabetically": true,
   "commitType": "docs",
   "commitConvention": "angular",
   "contributors": [
@@ -30,5 +31,6 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "projectName": "le-checkout-jira",
-  "projectOwner": "jolution"
+  "projectOwner": "jolution",
+  "linkToUsage": false
 }
