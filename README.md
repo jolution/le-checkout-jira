@@ -2,7 +2,7 @@
     <picture>
         <source media="(prefers-color-scheme: dark)" srcset="./resources/png/le-checkout-dark.png">
         <source media="(prefers-color-scheme: light)" srcset="./resources/png/le-checkout-light.png">
-        <img alt="Shows the banner of Le Checkout, with its logo" src="./resources/png/le-checkout-dark.png" width="700">
+        <img alt="Shows the banner of Le Checkout, with its logo" src="./resources/png/le-checkout-dark.png" width="300">
     </picture>
 </p>
 
