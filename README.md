@@ -1,6 +1,10 @@
-[//]: # (<p align="center">)
-[//]: # (    <img alt="Shows the banner of LeCheckout Jira, with its logo" src="./resources/svg/lecheckout.svg" width="700">)
-[//]: # (</p>)
+<p align="center">
+    <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="./resources/png/le-checkout-dark.png">
+        <source media="(prefers-color-scheme: light)" srcset="./resources/png/le-checkout-light.png">
+        <img alt="Shows the banner of Le Checkout, with its logo" src="./resources/png/le-checkout-dark.png" width="700">
+    </picture>
+</p>
 
 <div align="center">
 
