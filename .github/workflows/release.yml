@@ -12,7 +12,7 @@ jobs:
   release:
     name: "🏷️ Release"
     runs-on: ubuntu-latest
-    permissions: 
+    permissions:
       contents: write
       issues: write
       pull-requests: write
@@ -44,6 +44,6 @@ jobs:
           HUSKY: 0 # disable pre-commit hooks
         run: npm ci
         # run: npm run build
-        run: |
+      - run: |
           npm run release
           echo "version=$(npm run env | grep npm_package_version | cut -d '=' -f 2)" >> $GITHUB_OUTPUT
