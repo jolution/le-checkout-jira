@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "This is a Chrome browser extension that generates a git branch name based on the current jira issue key and the issue\r summary.",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jolution/le-checkout-jira.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky",
