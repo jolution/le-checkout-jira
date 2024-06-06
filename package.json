@@ -21,8 +21,10 @@
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^11.0.0",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^9.0.4",
+    "@semantic-release/release-notes-generator": "^14.0.0",
     "husky": "^9.0.11",
     "semantic-release": "^21.0.7"
   }
