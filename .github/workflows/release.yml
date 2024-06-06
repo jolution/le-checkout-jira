@@ -43,7 +43,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HUSKY: 0 # disable pre-commit hooks
         run: npm ci
-        # run: npm run build
+        run: npm run build --if-present
       - run: |
           npm run release
           echo "version=$(npm run env | grep npm_package_version | cut -d '=' -f 2)" >> $GITHUB_OUTPUT
