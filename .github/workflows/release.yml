@@ -40,8 +40,8 @@ jobs:
         id: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN  }}
-          GH_TOKEN: ${{ secrets.NPM_TOKEN || secrets.GITHUB_TOKEN }} # Needed to push to GitHub
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           HUSKY: 0 # disable pre-commit hooks
         run: |
           npm run release
