@@ -17,10 +17,6 @@ jobs:
       issues: write
       pull-requests: write
 
-    environment:
-      name: production
-      url: https://github.com/${{ github.repository }}/releases/tag/v${{ steps.release.outputs.version }}
-
     outputs:
       version: ${{ steps.release.outputs.version }}
 
