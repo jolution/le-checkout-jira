@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jolution/le-checkout-jira.git"
+    "url": "git+https://github.com/jolution/le-checkout-jira.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
