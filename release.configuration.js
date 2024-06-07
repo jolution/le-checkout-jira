@@ -36,15 +36,6 @@ const config = {
             },
           ],
         },
-        writerOpts: {
-          transform: (commit, context) => {
-            console.log("commit is............", commit);
-            if (typeof commit.hash === "string") {
-              commit.shortHash = commit.hash.substring(0, 7);
-            }
-            return commit;
-          },
-        },
       },
     ],
     "@semantic-release/changelog",
