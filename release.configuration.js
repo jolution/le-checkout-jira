@@ -36,6 +36,35 @@ const config = {
             },
           ],
         },
+        writerOpts: {
+          transform: (commit, context) => {
+            console.log("commit is............", commit);
+            if (typeof commit.hash === "string") {
+              commit.shortHash = commit.hash.substring(0, 7);
+            }
+            if (commit.subject) {
+              const gitHubBaseUrl =
+                "https://github.com/jolution/le-checkout-jira";
+              console.log("commit subject..............", commit.subject);
+              const issues = commit.subject.match(/\[([A-Z]+-\d+)]/g);
+              console.log("Issues..............", issues);
+              if (issues) {
+                // remove curly braces from issue key
+                const issueKey = issues[0].substring(1, issues[0].length - 1);
+
+                // set commit subject to include link to Jira issue
+                const issueWithLink = `[${issueKey}](${gitHubBaseUrl}/browse/${issueKey})`;
+
+                // remove issue key from commit subject
+                const text = commit.subject.split(issues[0])[1].trim();
+
+                // set commit subject to include link to Jira issue
+                commit.subject = `${issueWithLink} ${text}`;
+              }
+            }
+            return commit;
+          },
+        },
       },
     ],
     "@semantic-release/changelog",
