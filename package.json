@@ -1,6 +1,6 @@
 {
   "name": "browser-extension-gitbranch-jira",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is a Chrome browser extension that generates a git branch name based on the current jira issue key and the issue\r summary.",
   "main": "index.js",
   "repository": {

@@ -1,3 +1,13 @@
+## [1.0.1](https://github.com/jolution/le-checkout-jira/compare/v1.0.0...v1.0.1) (2024-06-07)
+
+
+* Merge pull request #40 from jolution/feat/39-fix-npm-pkg ([86001fb](https://github.com/jolution/le-checkout-jira/commit/86001fbae32e8e36531e2f8d89809475937b1c23)), closes [#40](https://github.com/jolution/le-checkout-jira/issues/40)
+
+
+### fix
+
+* fixed npm package ([9fb4a22](https://github.com/jolution/le-checkout-jira/commit/9fb4a225fe6cc4b3e63edd1af3c2678e5312c7e0))
+
 ## 1.0.0 (2024-06-07)
 
 
