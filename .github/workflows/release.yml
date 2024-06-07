@@ -44,5 +44,5 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           HUSKY: 0 # disable pre-commit hooks
         run: |
-          npm run release
+          npx semantic-release
           echo "version=$(npm run env | grep npm_package_version | cut -d '=' -f 2)" >> $GITHUB_OUTPUT
