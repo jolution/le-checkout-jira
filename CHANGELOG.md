@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/jolution/le-checkout-jira/compare/v1.0.1...v1.0.2) (2024-06-07)
+
+
+### fix
+
+* removed environment prod ([7d269d6](https://github.com/jolution/le-checkout-jira/commit/7d269d60d9c9c178edf6299142f99b9398815404))
+
 ## [1.0.1](https://github.com/jolution/le-checkout-jira/compare/v1.0.0...v1.0.1) (2024-06-07)
 
 
