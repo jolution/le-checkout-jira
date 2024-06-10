@@ -77,11 +77,13 @@ Why Use this Extension?
 <p>This allows us to make assignments more easily and, among other things, work with jira-prepare-commit-msg in projects.</p>
 </details>
 
-For more questions and answers, please visit our [Q&A Discussions](https://github.com/jolution/le-checkout-jira/discussions/categories/q-a).
+For more questions and answers, please visit
+our [Q&A Discussions](https://github.com/jolution/le-checkout-jira/discussions/categories/q-a).
 
 ## ❤️ Support
 
-If you find this project helpful, please consider giving it a star on [GitHub](https://github.com/jolution/le-checkout-jira).
+If you find this project helpful, please consider giving it a star
+on [GitHub](https://github.com/jolution/le-checkout-jira).
 
 [![Star this repository](https://img.shields.io/github/stars/jolution/le-checkout-jira?style=social)](https://github.com/jolution/le-checkout-jira)
 
@@ -97,14 +99,25 @@ We do not currently offer direct support for this project.
 - Rolling out to Chrome Store
 - Creating the extension for Firefox
 
-### ✍️ Authors (in alphabetical order)
+## ✍️ Authors (in alphabetical order)
 
 - [@juliankasimir](https://www.github.com/juliankasimir)
 - [@pimmok](https://www.github.com/pimmok)
 
-## 💎 Sponsor
+## 💎 Sponsor (in alphabetical order)
 
-Many thanks to JetBrains, which provided us with a yearly license for all their programs for the open source work on this project.
+### Eviden
+
+We appreciate the support from [Eviden](https://eviden.com), helping us continue our open source work.
+
+<img style="max-width: 100px" width="100" src="https://raw.githubusercontent.com/DE-AMS-AD-VAPPS/brand/main/assets/eviden-logo.svg" alt="Eviden logo.">
+
+---
+
+### JetBrains
+
+Many thanks to [JetBrains](https://jetbrains.com), which provided us with a yearly license for all their programs for
+the open source work on this project.
 
 <img style="max-width: 50px" width="50" src="https://resources.jetbrains.com/storage/products/company/brand/logos/WebStorm_icon.png" alt="WebStorm logo.">
 
@@ -114,7 +127,9 @@ See the [LICENSE](LICENSE) file for details.
 
 ## ℹ️ Disclaimer
 
-Please note that this project, LeCheckout, is not officially associated with or endorsed by the Monkey Island franchise, its creators, or any related entities. It is an independent project developed by the open-source community and does not claim any rights to the Monkey Island trademark or any related materials.
+Please note that this project, LeCheckout, is not officially associated with or endorsed by the Monkey Island franchise,
+its creators, or any related entities. It is an independent project developed by the open-source community and does not
+claim any rights to the Monkey Island trademark or any related materials.
 
 ## ✨ Contributors
 
@@ -138,4 +153,5 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification.
+Contributions of any kind welcome!
