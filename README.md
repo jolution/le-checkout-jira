@@ -73,6 +73,12 @@ Why Use this Extension?
 ## ❓FAQ
 
 <details>
+<summary>Why do we "need" this Extension?</summary>
+<p>In Jira, you can set up Development integration such as GitHub, if configured correctly by someone with permissions. This integration allows us to create branches directly. However, the native setup lacks the ability to easily select a prefix like `/feature/` or `/fix/`. Our extension is designed for users who do not have this feature enabled natively or who prefer to use specific prefixes.</p>
+<p>Additionally, our extension aims to automatically prefill the prefix based on the type of Jira ticket in the future, distinguishing between bugs and features, for added convenience.</p>
+</details>
+
+<details>
 <summary>Why do you include the Jira ID in the branch title?</summary>
 <p>This allows us to make assignments more easily and, among other things, work with jira-prepare-commit-msg in projects.</p>
 </details>
