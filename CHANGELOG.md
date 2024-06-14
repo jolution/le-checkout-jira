@@ -1,3 +1,168 @@
+## 1.0.0 (2024-06-14)
+
+
+### docs
+
+* add Contributors ([a613864](https://github.com/jolution/le-checkout-jira/commit/a613864cf7d7a251d01897d4ced77875f64edff1))
+* add emoji for sponsor for highlighting this space ([53448df](https://github.com/jolution/le-checkout-jira/commit/53448df5d3c6a7f3ad96009a01d4ee3331b422e6))
+* add license ([b72ce8b](https://github.com/jolution/le-checkout-jira/commit/b72ce8bc93fb7a70b9eac87f5c3cc5eaaf009d6d))
+* add related repo link ([41008b9](https://github.com/jolution/le-checkout-jira/commit/41008b9dc86681d83b8d91f1dc3ffbbe33b3817f))
+* add related repo link ([46790bb](https://github.com/jolution/le-checkout-jira/commit/46790bbd04c578eb0f3399cf5989d2a0101cde76))
+* add related repo link ([204012c](https://github.com/jolution/le-checkout-jira/commit/204012c5d5aa90202d68bfe34778c4d6bf2eb3d7))
+* add sponsor ([7a7e22d](https://github.com/jolution/le-checkout-jira/commit/7a7e22d7c7dcd1baa8f7942924e975a6a1399c9e))
+* add sponsor ([f746270](https://github.com/jolution/le-checkout-jira/commit/f746270d4cbd9091b6b2f17ceb22a702a25eff16))
+* add version state ([5a843c9](https://github.com/jolution/le-checkout-jira/commit/5a843c98d1880f26bb3476b51cf1246f9b203da4))
+* brand naming ([cdf8d15](https://github.com/jolution/le-checkout-jira/commit/cdf8d15fad7aa7514579bfbeec6be1fd2676b2e3))
+* create .all-contributorsrc [skip ci] ([1626cfe](https://github.com/jolution/le-checkout-jira/commit/1626cfee595f63e382a38f9172622083eb90b551))
+* create .all-contributorsrc [skip ci] ([e3c2133](https://github.com/jolution/le-checkout-jira/commit/e3c2133f2dba0da159d1c22fcb93a187daf0d3fb))
+* decreased logo width in readme.md ([83e50e8](https://github.com/jolution/le-checkout-jira/commit/83e50e89cadf113586a4115b4b54387c4bea7f36))
+* optimate docs ([7970914](https://github.com/jolution/le-checkout-jira/commit/79709143dc75398dd9a6411d7d026d1bade9d5b7))
+* optimate docs ([55db568](https://github.com/jolution/le-checkout-jira/commit/55db5686293874e5c77dcfcec9c8dcaca8d9b300))
+* optimate docs (merge) ([9eb5d32](https://github.com/jolution/le-checkout-jira/commit/9eb5d3239d629369f2b228e469aea0341ed4465b))
+* optimate title ([e550b25](https://github.com/jolution/le-checkout-jira/commit/e550b25e268c8515d976461482e62b67cd77a930))
+* reduce duplicate author information ([f6a8788](https://github.com/jolution/le-checkout-jira/commit/f6a8788137779cddbd5258be0cfcf1c741e5c896))
+* update .all-contributorsrc [skip ci] ([b96cabf](https://github.com/jolution/le-checkout-jira/commit/b96cabfe4deac0d83efbf5824e7cecb9c667710b))
+* update .all-contributorsrc [skip ci] ([dd5f566](https://github.com/jolution/le-checkout-jira/commit/dd5f566aee75dd8a5de287b1dd5937695e5256e2))
+* update README.md [skip ci] ([2d29d33](https://github.com/jolution/le-checkout-jira/commit/2d29d33ec1d362aec07e4b56bb44f4fa801db05a))
+* update README.md [skip ci] ([309fd08](https://github.com/jolution/le-checkout-jira/commit/309fd087543a27e2975ddb106c1f3d507efb244b))
+* update README.md [skip ci] ([5527891](https://github.com/jolution/le-checkout-jira/commit/55278914491b779e57cedb0f349c808d4f2329c9))
+* update README.md [skip ci] ([2fbf605](https://github.com/jolution/le-checkout-jira/commit/2fbf60555af19b2ba9b110db2bf6876a231ef561))
+
+
+### chore
+
+* add todo ([34e9163](https://github.com/jolution/le-checkout-jira/commit/34e9163649c6f6da4d482d989b3ceffc8ca7e13e))
+* add todo ([d092ff7](https://github.com/jolution/le-checkout-jira/commit/d092ff7f1083fbfbc033698e35f5bd366cdd7559))
+* add todos ([9e5d2d3](https://github.com/jolution/le-checkout-jira/commit/9e5d2d3943802097ffd62571489e617286b12467))
+* align button text for centering ([2fcace3](https://github.com/jolution/le-checkout-jira/commit/2fcace3f75d9293bbb96411dcf3abed67acf3aa6))
+* optimate emoji for style ([22f51d3](https://github.com/jolution/le-checkout-jira/commit/22f51d3dad70c03ed2bfb0664bd9a9653436d451))
+* outsource config ([b17b57a](https://github.com/jolution/le-checkout-jira/commit/b17b57a75c2939617f2ed8ab4990331baf015229))
+* outsource lang ([3cebc8f](https://github.com/jolution/le-checkout-jira/commit/3cebc8fd1058026b24f44107ffc3f40b21855a85))
+* outsource utils ([8a159df](https://github.com/jolution/le-checkout-jira/commit/8a159dfe432fa05b7dacea2ac0ac253a7c928bfe))
+* reduce try ([804204d](https://github.com/jolution/le-checkout-jira/commit/804204dba80483dab00065639559204035a0f1bf))
+* **release:** 1.0.0 [skip ci] ([b1f1edb](https://github.com/jolution/le-checkout-jira/commit/b1f1edb91f8bea026d7db92889b1af839c30560c)), closes [#38](https://github.com/jolution/le-checkout-jira/issues/38) [#37](https://github.com/jolution/le-checkout-jira/issues/37) [#36](https://github.com/jolution/le-checkout-jira/issues/36) [#34](https://github.com/jolution/le-checkout-jira/issues/34) [#32](https://github.com/jolution/le-checkout-jira/issues/32) [#29](https://github.com/jolution/le-checkout-jira/issues/29) [#27](https://github.com/jolution/le-checkout-jira/issues/27) [#25](https://github.com/jolution/le-checkout-jira/issues/25) [#22](https://github.com/jolution/le-checkout-jira/issues/22) [#16](https://github.com/jolution/le-checkout-jira/issues/16) [#18](https://github.com/jolution/le-checkout-jira/issues/18) [#14](https://github.com/jolution/le-checkout-jira/issues/14) [#13](https://github.com/jolution/le-checkout-jira/issues/13) [#12](https://github.com/jolution/le-checkout-jira/issues/12) [#11](https://github.com/jolution/le-checkout-jira/issues/11) [#10](https://github.com/jolution/le-checkout-jira/issues/10) [#9](https://github.com/jolution/le-checkout-jira/issues/9) [#8](https://github.com/jolution/le-checkout-jira/issues/8) [#7](https://github.com/jolution/le-checkout-jira/issues/7) [#6](https://github.com/jolution/le-checkout-jira/issues/6) [#5](https://github.com/jolution/le-checkout-jira/issues/5) [#4](https://github.com/jolution/le-checkout-jira/issues/4) [#3](https://github.com/jolution/le-checkout-jira/issues/3) [#2](https://github.com/jolution/le-checkout-jira/issues/2) [#1](https://github.com/jolution/le-checkout-jira/issues/1)
+* **release:** 1.0.1 [skip ci] ([da7d76d](https://github.com/jolution/le-checkout-jira/commit/da7d76d1a3d285f324cbf8a27f478ec31089d8a6)), closes [#40](https://github.com/jolution/le-checkout-jira/issues/40)
+* **release:** 1.0.2 [skip ci] ([f56dc11](https://github.com/jolution/le-checkout-jira/commit/f56dc1116f601e1c64a048ffe5e47b2e71aed0f1))
+* remove old code, change author logIdentifier ([8d67e69](https://github.com/jolution/le-checkout-jira/commit/8d67e690cd80f59d024b752a3046dc54d95a8855))
+* remove prefix ([a69f42a](https://github.com/jolution/le-checkout-jira/commit/a69f42ac61d9c0deccc82c1e743945f043ad996d))
+* remove test function ([c07de89](https://github.com/jolution/le-checkout-jira/commit/c07de89d5777458c8bb9853979f25569c9511850))
+* rename const loglevels ([0f90ad1](https://github.com/jolution/le-checkout-jira/commit/0f90ad10ec2b8f5c3bd76c8495c5de2df136ea86))
+* rename file for generic approche ([5f55368](https://github.com/jolution/le-checkout-jira/commit/5f55368e34859d791ae27990e5674fb2d8d05f26))
+* shorthand func ([5d51029](https://github.com/jolution/le-checkout-jira/commit/5d5102910b7da30f5c2463ee329c575e015b6b98))
+* start add popup ([0bf0e79](https://github.com/jolution/le-checkout-jira/commit/0bf0e79ff1eba30c5830eed55a88d8d5037916db))
+* start add popup emoji config ([dfd50de](https://github.com/jolution/le-checkout-jira/commit/dfd50de2ee19cd199541b94b38f0653d4c810ded))
+* start add popup emoji config ([76ab5ad](https://github.com/jolution/le-checkout-jira/commit/76ab5ad671e0a03aa1d115a6985effc001399338))
+* update README ([f9d438f](https://github.com/jolution/le-checkout-jira/commit/f9d438fbfec2dc23aaafaefe33d322cbfd6a9ad0))
+
+
+### fix
+
+* downgraded semantic release version ([4bd4a16](https://github.com/jolution/le-checkout-jira/commit/4bd4a164f0b83f981251e0f45cf029a30a2a8ef0))
+* fixed code review comments ([725c915](https://github.com/jolution/le-checkout-jira/commit/725c91549763ba7004bf9421499e3025623920ce))
+* fixed error ([16a7077](https://github.com/jolution/le-checkout-jira/commit/16a707703b8ba782bda15dcce416c7abb368ffdc))
+* fixed npm package ([3413849](https://github.com/jolution/le-checkout-jira/commit/3413849475518ac06c844661e39fe6635d4a037c))
+* preselect fix type ([7d6810e](https://github.com/jolution/le-checkout-jira/commit/7d6810e554ec511b05db66231ef2b707be4f5fa2))
+* release yml step error ([5268a98](https://github.com/jolution/le-checkout-jira/commit/5268a980db14ca4c0fe5e77f8294cb09e37b8ec7))
+* remove not allowed chars from tilte ([57a384c](https://github.com/jolution/le-checkout-jira/commit/57a384ce2bc23cd53457e3d113f901b015cc2292))
+* remove special chars ([83d2434](https://github.com/jolution/le-checkout-jira/commit/83d24341a576981c17f6c635025a0fb24911e6b2))
+* removed commit write options ([732130c](https://github.com/jolution/le-checkout-jira/commit/732130c874fa50e011b337753f9884373f4f446e))
+* removed environment prod ([eb71231](https://github.com/jolution/le-checkout-jira/commit/eb71231d229d8e1f51a6eab2831288b3dad7dc4f))
+* removed write options completely ([e4cbab5](https://github.com/jolution/le-checkout-jira/commit/e4cbab51ac68cc448d50e491504ab4a726bcead4))
+* Update release.configuration.js ([32cb6ca](https://github.com/jolution/le-checkout-jira/commit/32cb6cafea662c1d21dc06799955fc73fa0797c1))
+* Update release.yml changed semantic-release excution command ([9e71ffa](https://github.com/jolution/le-checkout-jira/commit/9e71ffa214d866e341dfab6d2f6130f037de6966))
+* updated node version ([c2a1aef](https://github.com/jolution/le-checkout-jira/commit/c2a1aefceb1fefe7256f247780bbedab5e17fa49))
+* wait for jira issue key ([5b5fc43](https://github.com/jolution/le-checkout-jira/commit/5b5fc43d0d7d11eb95a2f53fbcf9c1d2c93218b2))
+
+
+### feat
+
+* add base code ([a98a08b](https://github.com/jolution/le-checkout-jira/commit/a98a08b0ff7ddd4679879b3e6dfe7e52326c7d08))
+* add copy icon to cloud version ([936a891](https://github.com/jolution/le-checkout-jira/commit/936a891e4bad3d907a201eaa2f4a489957908760))
+* add husky for conventionalcommits check ([dae929b](https://github.com/jolution/le-checkout-jira/commit/dae929bda8f1b40a2d4d3a71454b85cbb648a756))
+* add issue templates ([2b30d5e](https://github.com/jolution/le-checkout-jira/commit/2b30d5e8768437556478cdb5eadba6e855b8fd0f))
+* add issue templates ([d00e951](https://github.com/jolution/le-checkout-jira/commit/d00e9516fdb2e960bcaca23254c6abe615560f2c))
+* add jira cloud url ([71d53d5](https://github.com/jolution/le-checkout-jira/commit/71d53d5cc736e0fe74ac92b7370b2b588a93c1fd))
+* add maxlength for title ([9459187](https://github.com/jolution/le-checkout-jira/commit/9459187342ecafa12ec64c99bcafeb49a91960c9))
+* added additional dependencies to generate changelog release notes ([407357a](https://github.com/jolution/le-checkout-jira/commit/407357affeffd0b0718f5b53981dfdbd5f344904))
+* added npmrc ([ba837ea](https://github.com/jolution/le-checkout-jira/commit/ba837ea6198841e7a970635184276973a2f6d040))
+* added publish config in package json ([d9972e5](https://github.com/jolution/le-checkout-jira/commit/d9972e5db13c00baf4060ac72cf2cf38deb9a499))
+* added release rc json ([889ae3e](https://github.com/jolution/le-checkout-jira/commit/889ae3ed5ba4000393d42166fabedd538e177891))
+* added sematic release ([c3e7f53](https://github.com/jolution/le-checkout-jira/commit/c3e7f5351961845a38ac57e8d75a3805e3412866))
+* added social media banner ([a486c37](https://github.com/jolution/le-checkout-jira/commit/a486c3710fb8f821ea2d3d314e51824727bb466d))
+* downgraded release notes generator version ([d6fc84d](https://github.com/jolution/le-checkout-jira/commit/d6fc84d6f9c986ba0827630b1b95d137be6c2516))
+* extract data to json ([87238ab](https://github.com/jolution/le-checkout-jira/commit/87238abee39267b558c51a3c34e86badb5b599da))
+* optimate feature request template ([d24006a](https://github.com/jolution/le-checkout-jira/commit/d24006af8f6b130b29d815da5d7cad85fd86fa69))
+* optimate feature request template ([2ac3245](https://github.com/jolution/le-checkout-jira/commit/2ac3245cb516f00d00db07fb9844e2325a59e391))
+* optimate feature request template ([6e58ebf](https://github.com/jolution/le-checkout-jira/commit/6e58ebfc6d8491cbb69cf5b9197180252837bd3e))
+* preselect prefix ([5407dc7](https://github.com/jolution/le-checkout-jira/commit/5407dc7fd9f6b2ef2407abca7224e734e9b16b93))
+* select option if bug for fixed ([d6d21ce](https://github.com/jolution/le-checkout-jira/commit/d6d21ce926c9ff3d1dce71c6c26dd024e5830ed6))
+* start styling cloud version ([adbdee6](https://github.com/jolution/le-checkout-jira/commit/adbdee6660583673b62f72e2347506220c906d06))
+* test release ([bb2c503](https://github.com/jolution/le-checkout-jira/commit/bb2c503dcea7a5f06ddc3058aef087c1085afda9))
+* updated node version ([0c32c32](https://github.com/jolution/le-checkout-jira/commit/0c32c32f2b4c090448149d46028aa3d26544dbbc))
+* updated release config ([a9bfe30](https://github.com/jolution/le-checkout-jira/commit/a9bfe30e61410289e1837bfd6fb048ecae574567))
+
+
+* Update .npmrc ([2d60773](https://github.com/jolution/le-checkout-jira/commit/2d6077307f328c559d1026982f0a45cdf645c9b0))
+* Update .npmrc  registry ([e56af5c](https://github.com/jolution/le-checkout-jira/commit/e56af5caed199e912c45634d574bcfe12ddc81ae))
+* Update .npmrc added npm_token variable ([9cadded](https://github.com/jolution/le-checkout-jira/commit/9caddedd0b05f4174b7d57c987068aed7ed42622))
+* Update release.yml added GH_TOKEN ([6b32c63](https://github.com/jolution/le-checkout-jira/commit/6b32c630b61b97ebc7b520f5caa549fd9eebf3d3))
+* Update release.yml added  npm token in release step ([8defa01](https://github.com/jolution/le-checkout-jira/commit/8defa015b212db97f9296fe2533594e2b092f724))
+* Update release.yml added GH_Token ([7ded993](https://github.com/jolution/le-checkout-jira/commit/7ded993418e5b319d6ae09d0cbe0c172bc3276c2))
+* Update release.yml removed npm token ([6c99f35](https://github.com/jolution/le-checkout-jira/commit/6c99f354d0854e0819bb141e4d0ca8df674eab20))
+* Removed background of Darkmode PNG logo version ([5cbddd0](https://github.com/jolution/le-checkout-jira/commit/5cbddd05cd5bd09992ce87278a4128563981ece6))
+* Merge pull request #14 from jolution/refactor/logos ([40c5ba8](https://github.com/jolution/le-checkout-jira/commit/40c5ba81cfb5e9f1de3fd36fd48ef246731c8ead)), closes [#14](https://github.com/jolution/le-checkout-jira/issues/14)
+* Merge pull request #13 from jolution/feat/add-husky ([bbf1d16](https://github.com/jolution/le-checkout-jira/commit/bbf1d1621cc5eee327ff2b2c58e40dd9ef4846a5)), closes [#13](https://github.com/jolution/le-checkout-jira/issues/13)
+* Merge pull request #12 from jolution/feature/le-echeckout-logos ([3dab0d4](https://github.com/jolution/le-checkout-jira/commit/3dab0d48a55543e00fe9c61d809e246078ecbf54)), closes [#12](https://github.com/jolution/le-checkout-jira/issues/12)
+* Added darkmode support ([ec2bda5](https://github.com/jolution/le-checkout-jira/commit/ec2bda56b2a741e53557ae701a19ca873f112318))
+* Outlined logo strokes ([ebbee5d](https://github.com/jolution/le-checkout-jira/commit/ebbee5dd6e9f7d71f1ae096319794a2f6e2ca0b3))
+* Added negative version of logo ([afffd1e](https://github.com/jolution/le-checkout-jira/commit/afffd1e61d80f090260698ecd2c8222a95ee6a1f))
+* Added logo in PNG and SVG format ([21f9f4f](https://github.com/jolution/le-checkout-jira/commit/21f9f4fabbb061ac4b1ba40bb8398f3fe86984c8))
+* Merge pull request #11 from jolution/all-contributors/add-pimmok ([c5c0c95](https://github.com/jolution/le-checkout-jira/commit/c5c0c95d741f55ad21da8bf7a2d666df63d55374)), closes [#11](https://github.com/jolution/le-checkout-jira/issues/11)
+* Merge branch 'main' into all-contributors/add-pimmok ([db45e8c](https://github.com/jolution/le-checkout-jira/commit/db45e8c8a75afca337d5ac8c8583c97c76bcb916))
+* Merge pull request #10 from jolution/all-contributors/add-juliankasimir ([42fcad2](https://github.com/jolution/le-checkout-jira/commit/42fcad24d17adf52a3cfc977d78c437e6a7fc04e)), closes [#10](https://github.com/jolution/le-checkout-jira/issues/10)
+* Merge pull request #9 from jolution/docs/add-version-state ([667159d](https://github.com/jolution/le-checkout-jira/commit/667159d9c1a925724f233cb1a2364a0232a8eb21)), closes [#9](https://github.com/jolution/le-checkout-jira/issues/9)
+* Merge pull request #8 from DE-AMS-AD-VAPPS/fix/remove-backslashes-from-name ([5df0b61](https://github.com/jolution/le-checkout-jira/commit/5df0b61d2bc6101d89b85138d855454c64b7ab2f)), closes [#8](https://github.com/jolution/le-checkout-jira/issues/8)
+* Merge pull request #7 from DE-AMS-AD-VAPPS/feature/add-jira-cloud-selectors ([c352277](https://github.com/jolution/le-checkout-jira/commit/c352277b6730f3d1a863849c47894d8bda880321)), closes [#7](https://github.com/jolution/le-checkout-jira/issues/7)
+* Merge pull request #6 from DE-AMS-AD-VAPPS/feature/add-jira-cloud-urls ([ecaac6b](https://github.com/jolution/le-checkout-jira/commit/ecaac6ba66e3ad96ba1e955908c3b44e66f54120)), closes [#6](https://github.com/jolution/le-checkout-jira/issues/6)
+* Merge pull request #5 from DE-AMS-AD-VAPPS/feature/data-json ([7440d3d](https://github.com/jolution/le-checkout-jira/commit/7440d3d42e0641266a9f1e608f83d16c1614577e)), closes [#5](https://github.com/jolution/le-checkout-jira/issues/5)
+* Merge remote-tracking branch 'origin/main' ([01f205c](https://github.com/jolution/le-checkout-jira/commit/01f205c0b2dca4615e39c17901dcf2148613f473))
+* Merge pull request #4 from DE-AMS-AD-VAPPS/feature/optimate-docs ([18a9a4c](https://github.com/jolution/le-checkout-jira/commit/18a9a4cb166c65d0a54f3bec6872835bc53bf1ae)), closes [#4](https://github.com/jolution/le-checkout-jira/issues/4)
+* Merge pull request #3 from DE-AMS-AD-VAPPS/feature/prefix-select-fix ([47bab39](https://github.com/jolution/le-checkout-jira/commit/47bab39b12d2d621f18ec778069ecfa3448cf0c4)), closes [#3](https://github.com/jolution/le-checkout-jira/issues/3)
+* Merge pull request #2 from DE-AMS-AD-VAPPS/feature/beautify-display ([fd81baf](https://github.com/jolution/le-checkout-jira/commit/fd81baff2a0399bfc29c598a547cf0dcc6ab15e1)), closes [#2](https://github.com/jolution/le-checkout-jira/issues/2)
+* Closed gap between button and input field ([77c67b9](https://github.com/jolution/le-checkout-jira/commit/77c67b92ce53f7e122f83daa686cc009f22a317c))
+* Merge Conflicts wieder behoben ([8411513](https://github.com/jolution/le-checkout-jira/commit/841151338b1a470b0fa8631b568268941ad25a5a))
+* Merge branch 'feature/beautify-display' of github.com:DE-AMS-AD-VAPPS/browser-extension-gitbranch-jira into feature/beautify-display ([2a35576](https://github.com/jolution/le-checkout-jira/commit/2a35576e91849c981b727a374ba6ca318fc2d4a9))
+* Renamed functions and added authorship info ([a88c2fc](https://github.com/jolution/le-checkout-jira/commit/a88c2fcc3a55023d6387d9ad19e47eb542d1cde5))
+* Merge branch 'main' into feature/beautify-display ([1303b6f](https://github.com/jolution/le-checkout-jira/commit/1303b6f9d034f3433c099d079d4867a8364fabec))
+* Merge pull request #1 from DE-AMS-AD-VAPPS/feature/preselect-prefix ([0491ac0](https://github.com/jolution/le-checkout-jira/commit/0491ac0188c4e526c29957bfb6e74be99f6fed10)), closes [#1](https://github.com/jolution/le-checkout-jira/issues/1)
+* Removed old code ([a243600](https://github.com/jolution/le-checkout-jira/commit/a243600f06d402fa3c91ff234b170de2a9d40020))
+* Added JS functions core functionality ([c09b2f9](https://github.com/jolution/le-checkout-jira/commit/c09b2f906ca6c141cd85f7832e1f5f009dc58e4c))
+* Rearranged items and added CSS classes ([c3dc735](https://github.com/jolution/le-checkout-jira/commit/c3dc735ae01f022fc67dbcbb5eb06ddc2c524daf))
+* Added accordion to sidebar ([70556bc](https://github.com/jolution/le-checkout-jira/commit/70556bc38a6786d20d65ff291fc52913ecb0de20))
+* Initial commit ([1aa0b6f](https://github.com/jolution/le-checkout-jira/commit/1aa0b6fdfd710459940924b38c65d19c66327cbf))
+
+
+### refactor
+
+* cleanup contributors section ([b801669](https://github.com/jolution/le-checkout-jira/commit/b80166947cfe3a8c2234ffe4c2bb66dd2b02fb39))
+* cleanup contributors section ([b37da7c](https://github.com/jolution/le-checkout-jira/commit/b37da7c513e46f4bf93a7f6a877cf8b5d6e1e3c6))
+* cleanup contributors section ([8833899](https://github.com/jolution/le-checkout-jira/commit/8833899faf86e1fe26e1a64f1bbc6d3293e556e3))
+* cleanup contributors section ([29c96d5](https://github.com/jolution/le-checkout-jira/commit/29c96d5ffd90db50dde506ad525ca32b9e1ca90a))
+* relocate and rename logos ([d43f307](https://github.com/jolution/le-checkout-jira/commit/d43f30724999e4e06de1d53942f5492c9c38cf0a))
+
+
+### feature
+
+* add selector for jira cloud ([d3559f4](https://github.com/jolution/le-checkout-jira/commit/d3559f41cbc231c609b6d0efa25f325bea323f23))
+
+
+### style
+
+* add emoji and icons ([74e8daf](https://github.com/jolution/le-checkout-jira/commit/74e8dafb1ef95f47f1a52bfd610b41395a6c36fd))
+* add headline ([7fcd0e6](https://github.com/jolution/le-checkout-jira/commit/7fcd0e6192d75ac4b387d64da5ee5cb5ff591112))
+* add margin ([ac51734](https://github.com/jolution/le-checkout-jira/commit/ac517347d78444db16357e1008cbec276d08114d))
+* add select for prefixes ([a39737c](https://github.com/jolution/le-checkout-jira/commit/a39737c5b18983c44e051b7cc3c8371c467db835))
+
 ## [1.0.2](https://github.com/jolution/le-checkout-jira/compare/v1.0.1...v1.0.2) (2024-06-07)
 
 
