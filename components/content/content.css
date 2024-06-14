@@ -1,0 +1,55 @@
+#browser-extension-gitbranch__container {
+    margin-top: 1rem;
+    padding-left: 20px;
+}
+
+#browser-extension-gitbranch__table {
+    justify-content: space-between;
+}
+
+#browser-extension-gitbranch__select {
+    margin: 0 auto;
+    margin-top: 0.8rem;
+    margin-bottom: 1.4rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    border: 0;
+}
+
+#browser-extension-gitbranch__select option {
+    background-color: #fff
+}
+
+.flex-container {
+    display: flex;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.ml-1 {
+    margin-left: 1rem;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.maxw-36 {
+    max-width: 36rem;
+}
+
+/* TODO: add html[data-color-mode="light"] */
+/* TODO: add postcss for nesting css */
+
+.jira-cloud-details {
+    --border-settings: 1px solid var(--ds-border, #DFE1E6);
+    background-color: var(--ds-surface-overlay, #fff);
+    border-radius: 4px;
+    position: sticky;
+}
+
+.jira-cloud-details button {
+    display: flex;
+}
