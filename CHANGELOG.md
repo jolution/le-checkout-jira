@@ -1,3 +1,18 @@
+## 1.0.0 (2024-06-17)
+
+
+* Merge pull request #43 from jolution/fix/manifest-wildcard ([823c78b](https://github.com/jolution/le-checkout-jira/commit/823c78b186e8e529485fbbbc5f826f062694edcb)), closes [#43](https://github.com/jolution/le-checkout-jira/issues/43)
+
+
+### fix
+
+* wildcard manifest ([853b3f2](https://github.com/jolution/le-checkout-jira/commit/853b3f289f874838a8fd282b7f1534fa16843f22))
+
+
+### refactor
+
+* initial commit wihtout sensite URL ([eed281f](https://github.com/jolution/le-checkout-jira/commit/eed281fa7b609b18c22204112f563ce0a7eaea30))
+
 ## 1.0.0 (2024-06-14)
 
 
