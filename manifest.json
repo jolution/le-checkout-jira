@@ -21,7 +21,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://jira.*/browse/*",
+        "https://*/browse/*",
         "https://*.atlassian.net/browse/*"
       ],
       "css": [
@@ -46,9 +46,7 @@
         "/components/content/content.js",
         "/components/content/content.css",
         "/components/content/translation.json",
-        "/components/content/language.js",
-        "chrome-extension://mcibebkpekoelnpennfjepikmfndeccm/content.js",
-        "chrome-extension://mcibebkpekoelnpennfjepikmfndeccm/content.css"
+        "/components/content/language.js"
       ],
       "matches": [
         "<all_urls>"
