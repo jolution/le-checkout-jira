@@ -1,8 +1,12 @@
-import * as TRANSLATION from './translation.json' assert {type: 'json'};
+import TRANSLATION_CONTENT from '/components/content/translation.js';
 
-export function getTranslation() {
-    const lang = document.documentElement.lang || 'en';
-    const translation = TRANSLATION?.default[lang];
+function getTranslation() {
+  const lang = document.documentElement.lang || 'en';
+  const translation = TRANSLATION_CONTENT[lang];
 
-    return translation ? translation : `[No translation available for ${lang}]`;
+  return translation ? translation : `[No translation available for ${lang}]`;
 }
+
+const TRANSLATION = getTranslation();
+
+export default TRANSLATION;

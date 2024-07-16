@@ -1,8 +1,6 @@
-import CONFIG from "/components/content/config.js";
-
 // TODO: add base config for isEmoji
-console.log(CONFIG.isEmoji);
-
+// import CONFIG from "../config.js";
+// console.log(CONFIG.EMOJI);
 
 // In-page cache of the user's options
 const options = {};

@@ -29,7 +29,6 @@
         "/components/content/content.css"
       ],
       "js": [
-        "/components/popup/popup.js",
         "/components/content/inject.js"
       ],
       "all_frames": true,
@@ -39,14 +38,13 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "/components/popup/popup.js",
+        "/components/content/translation.js",
+        "/components/config.js",
+        "/components/content/language.js",
         "/components/content/inject.js",
         "/components/content/utils.js",
-        "/components/content/config.js",
         "/components/content/content.js",
-        "/components/content/content.css",
-        "/components/content/translation.json",
-        "/components/content/language.js"
+        "/components/content/content.css"
       ],
       "matches": [
         "<all_urls>"

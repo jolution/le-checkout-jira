@@ -8,12 +8,12 @@
  * @author Julian Kasimir, Jochen Simon
  */
 
-import config from "./config.js";
-
-import {getTranslation} from './language.js';
+import CONFIG from "../config.js";
 import {insertAfter, isJiraCloud, logThis} from "./utils.js";
-
-const TRANSLATION = getTranslation();
+import TRANSLATION from "./language.js";
+// import {getTranslation} from './language.js';
+//
+// const TRANSLATION = getTranslation();
 
 // check and limit the maximum length of a text
 function checkMaxLength(text) {
@@ -62,7 +62,7 @@ window.addEventListener('load', function () {
     const waitForJIRA = setInterval(function () {
         logThis('Checking for JIRA...');
 
-        if (TRYS > config.ABORT_ON_TRYS) {
+        if (TRYS > CONFIG.ABORT_ON_TRYS) {
             clearInterval(waitForJIRA);
             logThis('JIRA not available');
             return;
@@ -129,9 +129,9 @@ window.addEventListener('load', function () {
              */
             window.prefixesSelectOptions = () => {
                 let options = '';
-                if (config.BRANCH_PREFIXES) {
-                    for (const prefix of Object.keys(config.BRANCH_PREFIXES)) {
-                        const emoji = config.BRANCH_PREFIXES[prefix];
+                if (CONFIG.BRANCH_PREFIXES) {
+                    for (const prefix of Object.keys(CONFIG.BRANCH_PREFIXES)) {
+                        const emoji = CONFIG.BRANCH_PREFIXES[prefix];
                         // "Bug" is the bug type identifier name in Jira for both languages (DE,EN)
                         options += `<option value="${prefix}" ${(prefix === 'fix' && typeElement?.textContent.trim() === "Bug") ? "selected" : ""} onclick="updateGitCommand()">${emoji} ${prefix}</option>`;
                     }
