@@ -1,5 +1,4 @@
-// Function to log a message if LogLevel is greater than 0
-import CONFIG from "./config.js";
+import CONFIG from "../config.js";
 
 export function logThis(message) {
     if (CONFIG.LOG_LEVEL > 0) {
