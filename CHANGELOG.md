@@ -1,3 +1,13 @@
+## [1.0.1](https://github.com/jolution/le-checkout-jira/compare/v1.0.0...v1.0.1) (2024-07-16)
+
+
+* Merge pull request #44 from jolution/fix/optimate-module-import ([7561726](https://github.com/jolution/le-checkout-jira/commit/75617264c0117d50f20b36daee6275fd6f9988df)), closes [#44](https://github.com/jolution/le-checkout-jira/issues/44)
+
+
+### fix
+
+* optimate imports module ([83818e9](https://github.com/jolution/le-checkout-jira/commit/83818e94ed7df89736be04355c3ad5bcb20adff3))
+
 ## 1.0.0 (2024-06-17)
 
 
