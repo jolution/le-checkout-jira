@@ -9,7 +9,7 @@ const optionsForm = document.getElementById("optionsForm");
 // Immediately persist options changes
 optionsForm.emoji.addEventListener("change", (event) => {
     options.emoji = event.target.checked;
-    chrome.storage.sync.set({options});
+    chrome.storage.sync.set({ options });
 });
 
 // Initialize the form with the user's option settings

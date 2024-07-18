@@ -39,7 +39,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          HUSKY: 0
         run: |
-          npx semantic-release 
+          npx semantic-release
           echo "version=$(npm run env | grep npm_package_version | cut -d '=' -f 2)" >> $GITHUB_OUTPUT
