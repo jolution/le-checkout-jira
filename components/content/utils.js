@@ -13,7 +13,7 @@ export function insertAfter(newNode, referenceNode) {
 }
 
 export function isJiraCloud() {
-    return !!window.location.hostname.endsWith('atlassian.net');
+    return !!window.location.hostname.endsWith("atlassian.net");
 }
 
 // export function isJiraOnPromise() {
