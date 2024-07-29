@@ -97,13 +97,24 @@ We do not currently offer direct support for this project.
 
 ## 🗺️ Roadmap
 
+### 🔄 Unifying LeCheckout Extensions for Jira and GitHub
+
+We are excited to announce the start of the unification of [LeCheckout for Jira](https://github.com/jolution/le-checkout-jira) and [LeCheckout for GitHub](https://github.com/jolution/le-checkout-github). This consolidation aims to provide a unified and enhanced experience for users managing both Jira issues and GitHub repositories.
+
+By bringing these two extensions together, we offer a seamless experience across both platforms, ensuring consistency and reducing the need for multiple installations. For more details and ongoing discussions, please visit our [GitHub Discussions](https://github.com/jolution/le-checkout/discussions).
+
+### 🚀 Upcoming Features
+
+- Unifying LeCheckout Extensions for Jira and GitHub
+- Add Azure DevOps support
 - Logo and CI design
 - Optimized design for Jira On Premise and Jira Cloud
 - Integration into popup variant of the ticket
-- Setup option for toggle the emojis.
+- Setup option for toggle the emojis
 - Setup option to hide some of the prefix branches
 - Rolling out to Chrome Store
 - Creating the extension for Firefox
+- Add GitLab support
 
 ## ✍️ Authors (in alphabetical order)
 
