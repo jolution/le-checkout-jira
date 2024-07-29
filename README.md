@@ -101,7 +101,7 @@ We do not currently offer direct support for this project.
 
 We are excited to announce the start of the unification of [LeCheckout for Jira](https://github.com/jolution/le-checkout-jira) and [LeCheckout for GitHub](https://github.com/jolution/le-checkout-github). This consolidation aims to provide a unified and enhanced experience for users managing both Jira issues and GitHub repositories.
 
-By bringing these two extensions together, we offer a seamless experience across both platforms, ensuring consistency and reducing the need for multiple installations. For more details and ongoing discussions, please visit our [GitHub Discussions](https://github.com/jolution/le-checkout/discussions).
+By bringing these two extensions together, we offer a seamless experience across both platforms, ensuring consistency and reducing the need for multiple installations.
 
 ### 🚀 Upcoming Features
 
