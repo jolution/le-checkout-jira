@@ -180,7 +180,10 @@ window.addEventListener(
                             .replace(/-+/g, "-")
 
                             // no ending minus
-                            .replace(/-$/, ""),
+                            .replace(/^-/, "")
+
+                            // no ending minus
+                            .replace(/-$/, "")
                     );
 
                     return `${prefix}/${issueNumber}-${formattedBranchName}`;
