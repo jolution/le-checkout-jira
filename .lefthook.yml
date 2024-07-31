@@ -1,7 +1,7 @@
 pre-commit:
   parallel: true
   scripts:
-    ".lefthook/branch-protection.sh":
+    "template_checker":
       runner: bash
   commands:
     frontend-style:
@@ -11,6 +11,9 @@ pre-commit:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: npx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
       stage_fixed: true
+    markdown-link-check:
+      glob: '*.md'
+      run: npx markdown-link-check {staged_files}
 
 prepare-commit-msg:
   commands:
@@ -21,6 +24,8 @@ commit-msg:
   commands:
     lint-commit-msg:
       run: npx --no -- commitlint --color --edit ${1}
+    spell-check:
+      run: npm cspell --no-summary {1}
 
 pre-push:
   parallel: true

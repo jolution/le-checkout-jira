@@ -41,5 +41,9 @@
     "semantic-release": "^22.0.12",
     "stylelint": "^16.7.0",
     "stylelint-config-standard": "^36.0.1"
+  },
+  "dependencies": {
+    "cspell": "^8.13.0",
+    "markdown-link-check": "^3.12.2"
   }
 }
