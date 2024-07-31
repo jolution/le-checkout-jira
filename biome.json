@@ -1,27 +1,107 @@
 {
-    "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-    "organizeImports": {
-        "enabled": true
-    },
-    "files": {
-        "ignore": ["dist/**", "package.json"]
-    },
-    "linter": {
-        "enabled": true,
-        "rules": {
-            "recommended": true,
-            "style": {
-                "noUnusedTemplateLiteral": "off"
-            }
-        }
-    },
-    "formatter": {
-        "enabled": true,
-        "indentStyle": "space",
-        "indentWidth": 4,
-        "lineWidth": 320
-    },
-    "javascript": {
-        "formatter": {}
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 80,
+    "attributePosition": "auto",
+    "ignore": ["./dist", "./coverage"]
+  },
+  "organizeImports": { "enabled": true },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": false,
+      "complexity": {
+        "noExtraBooleanCast": "error",
+        "noMultipleSpacesInRegularExpressionLiterals": "error",
+        "noUselessCatch": "error",
+        "noUselessConstructor": "off",
+        "noVoid": "error",
+        "noWith": "error",
+        "useLiteralKeys": "off"
+      },
+      "correctness": {
+        "noConstAssign": "error",
+        "noConstantCondition": "error",
+        "noEmptyCharacterClassInRegex": "error",
+        "noEmptyPattern": "error",
+        "noGlobalObjectCalls": "error",
+        "noInnerDeclarations": "error",
+        "noInvalidConstructorSuper": "error",
+        "noInvalidUseBeforeDeclaration": "error",
+        "noNewSymbol": "error",
+        "noNonoctalDecimalEscape": "error",
+        "noPrecisionLoss": "error",
+        "noSelfAssign": "error",
+        "noSetterReturn": "error",
+        "noSwitchDeclarations": "error",
+        "noUndeclaredVariables": "error",
+        "noUnreachable": "error",
+        "noUnreachableSuper": "error",
+        "noUnsafeFinally": "error",
+        "noUnsafeOptionalChaining": "error",
+        "noUnusedLabels": "error",
+        "noUnusedVariables": "off",
+        "useIsNan": "error",
+        "useValidForDirection": "error",
+        "useYield": "error"
+      },
+      "security": { "noGlobalEval": "off" },
+      "style": {
+        "noCommaOperator": "error",
+        "noParameterAssign": "warn",
+        "noVar": "warn",
+        "useBlockStatements": "error",
+        "useCollapsedElseIf": "error",
+        "useConst": "error",
+        "useSingleVarDeclarator": "error"
+      },
+      "suspicious": {
+        "noAssignInExpressions": "error",
+        "noAsyncPromiseExecutor": "error",
+        "noCatchAssign": "error",
+        "noClassAssign": "error",
+        "noCompareNegZero": "error",
+        "noConsoleLog": "off",
+        "noControlCharactersInRegex": "error",
+        "noDebugger": "error",
+        "noDoubleEquals": "warn",
+        "noDuplicateCase": "error",
+        "noDuplicateClassMembers": "error",
+        "noDuplicateObjectKeys": "error",
+        "noDuplicateParameters": "error",
+        "noEmptyBlockStatements": "error",
+        "noFallthroughSwitchClause": "error",
+        "noFunctionAssign": "error",
+        "noGlobalAssign": "error",
+        "noImportAssign": "error",
+        "noMisleadingCharacterClass": "error",
+        "noPrototypeBuiltins": "error",
+        "noRedeclare": "error",
+        "noShadowRestrictedNames": "error",
+        "noUnsafeNegation": "error",
+        "useAwait": "warn",
+        "useGetterReturn": "error",
+        "useValidTypeof": "error"
+      }
     }
+  },
+  "javascript": {
+    "formatter": {
+      "jsxQuoteStyle": "double",
+      "quoteProperties": "asNeeded",
+      "trailingCommas": "all",
+      "semicolons": "asNeeded",
+      "arrowParentheses": "always",
+      "bracketSpacing": true,
+      "bracketSameLine": false,
+      "quoteStyle": "single",
+      "attributePosition": "auto"
+    }
+  },
+  "overrides": [{ "include": ["*.{js,ts}"], "linter": { "rules": {} } }]
 }

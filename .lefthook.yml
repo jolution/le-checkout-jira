@@ -1,9 +1,28 @@
 pre-commit:
+  parallel: true
   commands:
+    check-main-branch:
+      run: |
+        currentBranch=$(git rev-parse --abbrev-ref HEAD)
+        if [ "$currentBranch" = "main" ]; then
+          echo "ERROR: Commit rejected by Lefthook pre-commit hook!"
+          echo "You are about to commit to the \"$currentBranch\" branch!"
+          echo "Please create a new branch and commit there."
+          echo "Only pull requests can be merged into the \"$currentBranch\" branch."
+          exit 1
+        fi
+    frontend-style:
+      files: git diff --name-only HEAD @{push}
+      run: npx stylelint {files}
     check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: npm run stylelint {staged_files} && npx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+      run: npx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
       stage_fixed: true
+
+prepare-commit-msg:
+  commands:
+    jira-prepare-commit-msg:
+      run: npx jira-prepare-commit-msg ${1}
 
 commit-msg:
   commands:
@@ -11,8 +30,10 @@ commit-msg:
       run: npx --no -- commitlint --edit ${1}
 
 pre-push:
+  parallel: true
   commands:
+    frontend-style:
+      run: npx stylelint {push_files}
     check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: npm run stylelint {push_files} && npx @biomejs/biome check --no-errors-on-unmatched --files-ignore-unknown=true {push_files}
-      # npm run test:cov
+      run: npx @biomejs/biome check --no-errors-on-unmatched --files-ignore-unknown=true {push_files}
