@@ -1,13 +1,25 @@
 pre-commit:
   parallel: true
+  scripts:
+    "branch-protection":
+      runner: bash
   commands:
-    frontend-style:
-      files: git diff --name-only HEAD @{push}
-      run: npx stylelint {files}
+    type-check:
+      glob: '*.{ts,tsx}'
+      run: npm typecheck {staged_files}
+    stylelint:
+      glob: '*.{js,ts,jsx,tsx}' # For CSS-in-JS
+      run: npx stylelint {staged_files}
     check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: npx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
       stage_fixed: true
+    spelling:
+      glob: '*.{js,ts,jsx,tsx,md}'
+      run: npx cspell {staged_files}
+    markdown-link-check:
+      glob: '*.md'
+      run: npx markdown-link-check {staged_files}
 
 prepare-commit-msg:
   commands:
@@ -15,14 +27,22 @@ prepare-commit-msg:
       run: npx jira-prepare-commit-msg ${1}
 
 commit-msg:
+  parallel: true
   commands:
     lint-commit-msg:
-      run: npx --no -- commitlint --color --edit ${1}
+      run: npx commitlint --edit
+    spell-check:
+      run: npx cspell --locale=en --no-summary --no-progress --language-id commit-msg {1}
 
 pre-push:
   parallel: true
   commands:
+    test:
+      run: npm test
+    packages-audit:
+      run: npm audit
     frontend-style:
+      glob: '*.{js,ts,jsx,tsx}' # For CSS-in-JS
       run: npx stylelint {push_files}
     check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
