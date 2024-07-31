@@ -8,25 +8,25 @@
  * @author Julian Kasimir, Jochen Simon
  */
 
-import CONFIG from "../config.js";
-import TRANSLATION from "./language.js";
-import { insertAfter, isJiraCloud, logThis } from "./utils.js";
+import CONFIG from '../config.js'
+import TRANSLATION from './language.js'
+import { insertAfter, isJiraCloud, logThis } from './utils.js'
 // import {getTranslation} from './language.js';
 //
 // const TRANSLATION = getTranslation();
 
 // check and limit the maximum length of a text
 function checkMaxLength(text) {
-    return text.length > 255 ? text.slice(0, 255) : text;
+  return text.length > 255 ? text.slice(0, 255) : text
 }
 
 // approve a valid git branch name
 function approveValidGitBranchName(branchName) {
-    // Ersetze ungültige Zeichen durch Leerzeichen
-    const sanitizedBranchName = branchName.replace(/[^a-zA-Z0-9\/\-_]/g, "");
+  // Ersetze ungültige Zeichen durch Leerzeichen
+  const sanitizedBranchName = branchName.replace(/[^a-zA-Z0-9\/\-_]/g, '')
 
-    // Überprüfe die maximale Länge
-    return checkMaxLength(sanitizedBranchName);
+  // Überprüfe die maximale Länge
+  return checkMaxLength(sanitizedBranchName)
 }
 
 // function setDebugMode() {
@@ -57,151 +57,161 @@ function approveValidGitBranchName(branchName) {
 
 // window.onload = function () {
 window.addEventListener(
-    "load",
-    () => {
-        logThis("Page fully loaded");
-        let TRYS = 0;
-        let issueNumber = null;
-        const waitForJIRA = setInterval(() => {
-            logThis("Checking for JIRA...");
+  'load',
+  () => {
+    logThis('Page fully loaded')
+    let TRYS = 0
+    let issueNumber = null
+    const waitForJIRA = setInterval(() => {
+      logThis('Checking for JIRA...')
 
-            if (TRYS > CONFIG.ABORT_ON_TRYS) {
-                clearInterval(waitForJIRA);
-                logThis("JIRA not available");
-                return;
+      if (TRYS > CONFIG.ABORT_ON_TRYS) {
+        clearInterval(waitForJIRA)
+        logThis('JIRA not available')
+        return
+      }
+
+      if (
+        typeof JIRA !== 'undefined' &&
+        typeof JIRA.Issue !== 'undefined' &&
+        typeof JIRA.Issue.getIssueKey === 'function'
+      ) {
+        // Get JIRA issue Key
+        if (JIRA.Issue.getIssueId() !== null) {
+          issueNumber = JIRA.Issue.getIssueKey()
+        } else {
+          const currentUrl = window.location.href
+
+          const jiraIdMatch = currentUrl.match(/\/browse\/([A-Z0-9]+-\d+)/)
+
+          if (jiraIdMatch) {
+            issueNumber = jiraIdMatch[1]
+          } else {
+            clearInterval(waitForJIRA)
+            logThis('JIRA KEY not available')
+            return
+          }
+        }
+
+        clearInterval(waitForJIRA)
+        logThis('JIRA is available')
+
+        // TODO: extract to separate function like "getIssueTitle"
+        // TODO: maybe extract different selector for jira on premise and cloud
+        // Extracting the title
+        let titleElement = document.getElementById('summary-val')
+
+        // If the element is not reachable, use the alternative ID (Jira Cloud, next gen)
+        if (!titleElement) {
+          titleElement = document.querySelector('h1')
+
+          // TODO: exact target doesnt work
+          // titleElement = document.querySelector('h1[data-test-id="issue.views.issue-base.foundation.summary.heading"]');
+        }
+
+        const title = titleElement?.textContent.trim()
+
+        const typeElement = document.getElementById('type-val')
+
+        // Creating the container element
+        const containerElement = document.createElement('div')
+        containerElement.id = 'browser-extension-gitbranch__container'
+
+        // Selecting the target for the input field (Jira on promise)
+        let devStatusPanel = document.getElementById(
+          'viewissue-devstatus-panel',
+        )
+
+        // If the element is not reachable, use the alternative ID (Jira Cloud, next gen)
+        if (!devStatusPanel) {
+          // Wenn das Element nicht erreichbar ist, verwenden Sie die alternative ID
+          devStatusPanel = document.getElementById('jira-issue-header-actions')
+        }
+
+        // devStatusPanel.appendChild(containerElement);
+        insertAfter(containerElement, devStatusPanel)
+
+        /**
+         * Generate an Option list from defined prefixes
+         * @returns {string} Option fields
+         */
+        window.prefixesSelectOptions = () => {
+          let options = ''
+          if (CONFIG.BRANCH_PREFIXES) {
+            for (const prefix of Object.keys(CONFIG.BRANCH_PREFIXES)) {
+              const emoji = CONFIG.BRANCH_PREFIXES[prefix]
+              // "Bug" is the bug type identifier name in Jira for both languages (DE,EN)
+              options += `<option value="${prefix}" ${prefix === 'fix' && typeElement?.textContent.trim() === 'Bug' ? 'selected' : ''} onclick="updateGitCommand()">${emoji} ${prefix}</option>`
             }
+          }
+          return options
+        }
 
-            if (typeof JIRA !== "undefined" && typeof JIRA.Issue !== "undefined" && typeof JIRA.Issue.getIssueKey === "function") {
-                // Get JIRA issue Key
-                if (JIRA.Issue.getIssueId() !== null) {
-                    issueNumber = JIRA.Issue.getIssueKey();
-                } else {
-                    const currentUrl = window.location.href;
+        /**
+         * Updates the input field value with git checkout command
+         * @param {string} prefix
+         */
+        window.updateGitCommand = (prefix) => {
+          const elem = document.getElementById(
+            'browser-extension-gitbranch__input',
+          )
+          elem.value = setGitCommand(prefix)
+        }
 
-                    const jiraIdMatch = currentUrl.match(/\/browse\/([A-Z0-9]+-\d+)/);
+        // TODO: maybe rename function so we dont need info what the function does ?
 
-                    if (jiraIdMatch) {
-                        issueNumber = jiraIdMatch[1];
-                    } else {
-                        clearInterval(waitForJIRA);
-                        logThis("JIRA KEY not available");
-                        return;
-                    }
-                }
+        /**
+         * Copy the content of the input field
+         */
+        window.copyGitCommand = () => {
+          const elem = document.getElementById(
+            'browser-extension-gitbranch__input',
+          )
+          elem.select()
+          document.execCommand('copy')
+        }
 
-                clearInterval(waitForJIRA);
-                logThis("JIRA is available");
+        /**
+         * Format page title to fit GitHub branch name and add the prefix parameter
+         * @param {string} prefix
+         * @returns {string} formatted branch name
+         */
+        window.getBranchName = (prefix) => {
+          if (!title) return ''
 
-                // TODO: extract to separate function like "getIssueTitle"
-                // TODO: maybe extract different selector for jira on premise and cloud
-                // Extracting the title
-                let titleElement = document.getElementById("summary-val");
+          const formattedBranchName = approveValidGitBranchName(
+            title
+              ?.toLowerCase()
 
-                // If the element is not reachable, use the alternative ID (Jira Cloud, next gen)
-                if (!titleElement) {
-                    titleElement = document.querySelector("h1");
+              // no spaces or special characters
+              .replace(/\W+/g, '-')
 
-                    // TODO: exact target doesnt work
-                    // titleElement = document.querySelector('h1[data-test-id="issue.views.issue-base.foundation.summary.heading"]');
-                }
+              // no double minus
+              .replace(/-+/g, '-')
 
-                const title = titleElement?.textContent.trim();
+              // no ending minus
+              .replace(/^-/, '')
 
-                const typeElement = document.getElementById("type-val");
+              // no ending minus
+              .replace(/-$/, ''),
+          )
 
-                // Creating the container element
-                const containerElement = document.createElement("div");
-                containerElement.id = "browser-extension-gitbranch__container";
+          return `${prefix}/${issueNumber}-${formattedBranchName}`
+        }
 
-                // Selecting the target for the input field (Jira on promise)
-                let devStatusPanel = document.getElementById("viewissue-devstatus-panel");
+        /**
+         * Set the git checkout command
+         * @param {string} prefix
+         * @returns {string} formatted GitHub command
+         */
+        window.setGitCommand = (prefix) => {
+          const branch = getBranchName(prefix)
+          return `git checkout -b ${branch}`
+        }
 
-                // If the element is not reachable, use the alternative ID (Jira Cloud, next gen)
-                if (!devStatusPanel) {
-                    // Wenn das Element nicht erreichbar ist, verwenden Sie die alternative ID
-                    devStatusPanel = document.getElementById("jira-issue-header-actions");
-                }
+        // TODO: extract to separate files and export ?
 
-                // devStatusPanel.appendChild(containerElement);
-                insertAfter(containerElement, devStatusPanel);
-
-                /**
-                 * Generate an Option list from defined prefixes
-                 * @returns {string} Option fields
-                 */
-                window.prefixesSelectOptions = () => {
-                    let options = "";
-                    if (CONFIG.BRANCH_PREFIXES) {
-                        for (const prefix of Object.keys(CONFIG.BRANCH_PREFIXES)) {
-                            const emoji = CONFIG.BRANCH_PREFIXES[prefix];
-                            // "Bug" is the bug type identifier name in Jira for both languages (DE,EN)
-                            options += `<option value="${prefix}" ${prefix === "fix" && typeElement?.textContent.trim() === "Bug" ? "selected" : ""} onclick="updateGitCommand()">${emoji} ${prefix}</option>`;
-                        }
-                    }
-                    return options;
-                };
-
-                /**
-                 * Updates the input field value with git checkout command
-                 * @param {string} prefix
-                 */
-                window.updateGitCommand = (prefix) => {
-                    const elem = document.getElementById("browser-extension-gitbranch__input");
-                    elem.value = setGitCommand(prefix);
-                };
-
-                // TODO: maybe rename function so we dont need info what the function does ?
-
-                /**
-                 * Copy the content of the input field
-                 */
-                window.copyGitCommand = () => {
-                    const elem = document.getElementById("browser-extension-gitbranch__input");
-                    elem.select();
-                    document.execCommand("copy");
-                };
-
-                /**
-                 * Format page title to fit GitHub branch name and add the prefix parameter
-                 * @param {string} prefix
-                 * @returns {string} formatted branch name
-                 */
-                window.getBranchName = (prefix) => {
-                    if (!title) return "";
-
-                    const formattedBranchName = approveValidGitBranchName(
-                        title
-                            ?.toLowerCase()
-
-                            // no spaces or special characters
-                            .replace(/\W+/g, "-")
-
-                            // no double minus
-                            .replace(/-+/g, "-")
-
-                            // no ending minus
-                            .replace(/^-/, "")
-
-                            // no ending minus
-                            .replace(/-$/, "")
-                    );
-
-                    return `${prefix}/${issueNumber}-${formattedBranchName}`;
-                };
-
-                /**
-                 * Set the git checkout command
-                 * @param {string} prefix
-                 * @returns {string} formatted GitHub command
-                 */
-                window.setGitCommand = (prefix) => {
-                    const branch = getBranchName(prefix);
-                    return `git checkout -b ${branch}`;
-                };
-
-                // TODO: extract to separate files and export ?
-
-                const cloudContent = `
+        const cloudContent = `
 				<details open class="jira-cloud-details">
 				    <summary aria-label="Details">${TRANSLATION.COPY_GIT_COMMAND}</summary>
 						<div>
@@ -217,7 +227,7 @@ window.addEventListener(
 							</div>
 							<div class="flex-container space-between form maxw-36">
 								<form class="aui w-100">
-									<input id="browser-extension-gitbranch__input" class="text long-field" readonly="readonly" value="${setGitCommand(typeElement?.textContent.trim() === "Bug" ? "fix" : "feature")}">
+									<input id="browser-extension-gitbranch__input" class="text long-field" readonly="readonly" value="${setGitCommand(typeElement?.textContent.trim() === 'Bug' ? 'fix' : 'feature')}">
 								</form>
 								<div class="ml-1">
 									<button class="aui-button" onclick="copyGitCommand()">
@@ -226,10 +236,10 @@ window.addEventListener(
 								</div>
 						    </div>
 					    </div>
-                </details>`;
+                </details>`
 
-                // TODO: maybe the closing table tag is not needed and a closing div instead is better
-                const onPromiseContent = `
+        // TODO: maybe the closing table tag is not needed and a closing div instead is better
+        const onPromiseContent = `
 				<div id="gitbranch-devstatus" class="module toggle-wrap">
 					<div id="gitbranch-devstatus_heading" class="mod-header">
 						<button class="aui-button toggle-title" aria-label="Gitbranch" aria-controls="gitbranch-devstatus" aria-expanded="false">
@@ -259,7 +269,7 @@ window.addEventListener(
 							</div>
 							<div class="flex-container space-between form maxw-36">
 								<form class="aui w-100">
-									<input id="browser-extension-gitbranch__input" class="text long-field" readonly="readonly" value="${setGitCommand(typeElement?.textContent.trim() === "Bug" ? "fix" : "feature")}">
+									<input id="browser-extension-gitbranch__input" class="text long-field" readonly="readonly" value="${setGitCommand(typeElement?.textContent.trim() === 'Bug' ? 'fix' : 'feature')}">
 								</form>
 								<div class="ml-1">
 									<button class="aui-button" onclick="copyGitCommand()">
@@ -269,15 +279,15 @@ window.addEventListener(
 							</table>
 						</div>
 					</div>
-				</div>`;
+				</div>`
 
-                const container = isJiraCloud() ? cloudContent : onPromiseContent;
+        const container = isJiraCloud() ? cloudContent : onPromiseContent
 
-                containerElement.insertAdjacentHTML("afterend", container);
-            } else {
-                TRYS++;
-            }
-        }, 100);
-    },
-    false,
-);
+        containerElement.insertAdjacentHTML('afterend', container)
+      } else {
+        TRYS++
+      }
+    }, 100)
+  },
+  false,
+)

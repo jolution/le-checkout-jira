@@ -1,16 +1,9 @@
 pre-commit:
   parallel: true
+  scripts:
+    ".lefthook/branch-protection.sh":
+      runner: bash
   commands:
-    check-main-branch:
-      run: |
-        currentBranch=$(git rev-parse --abbrev-ref HEAD)
-        if [ "$currentBranch" = "main" ]; then
-          echo "ERROR: Commit rejected by Lefthook pre-commit hook!"
-          echo "You are about to commit to the \"$currentBranch\" branch!"
-          echo "Please create a new branch and commit there."
-          echo "Only pull requests can be merged into the \"$currentBranch\" branch."
-          exit 1
-        fi
     frontend-style:
       files: git diff --name-only HEAD @{push}
       run: npx stylelint {files}
@@ -27,7 +20,7 @@ prepare-commit-msg:
 commit-msg:
   commands:
     lint-commit-msg:
-      run: npx --no -- commitlint --edit ${1}
+      run: npx --no -- commitlint --color --edit ${1}
 
 pre-push:
   parallel: true
