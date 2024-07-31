@@ -1,5 +1,8 @@
 pre-commit:
   parallel: true
+  scripts:
+    ".lefthook/branch-protection.sh":
+      runner: bash
   commands:
     frontend-style:
       files: git diff --name-only HEAD @{push}
