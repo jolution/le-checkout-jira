@@ -10,7 +10,7 @@ pre-commit:
     stylelint:
       glob: '*.{js,ts,jsx,tsx}' # For CSS-in-JS
       run: npx stylelint {staged_files}
-    check:
+    biome:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: npx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
       stage_fixed: true
@@ -32,18 +32,20 @@ commit-msg:
     lint-commit-msg:
       run: npx commitlint --edit
     spell-check:
-      run: npx cspell --locale=en --no-summary --no-progress --language-id commit-msg {1}
+      run: npx cspell --locale=en --no-summary --no-progress --show-suggestions --language-id commit-msg {1}
 
 pre-push:
   parallel: true
   commands:
     test:
       run: npm test
-    packages-audit:
+    audit:
       run: npm audit
-    frontend-style:
+    stylelint:
       glob: '*.{js,ts,jsx,tsx}' # For CSS-in-JS
       run: npx stylelint {push_files}
-    check:
+    biome:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: npx @biomejs/biome check --no-errors-on-unmatched --files-ignore-unknown=true {push_files}
+#    playwright:
+#      run: npx playwright test
