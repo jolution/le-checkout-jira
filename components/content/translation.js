@@ -20,4 +20,4 @@ export default {
     TYPE: 'Type',
     REQUIRED: 'Obligatoire',
   },
-}
+};

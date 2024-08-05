@@ -1,9 +1,9 @@
 function injectScript(file_path, tag) {
-  const node = document.getElementsByTagName(tag)[0]
-  const script = document.createElement('script')
-  script.setAttribute('type', 'module')
-  script.setAttribute('src', file_path)
-  node.appendChild(script)
+  const node = document.getElementsByTagName(tag)[0];
+  const script = document.createElement('script');
+  script.setAttribute('type', 'module');
+  script.setAttribute('src', file_path);
+  node.appendChild(script);
 }
 
 /*
@@ -16,17 +16,22 @@ function injectStyle(file_path, tag) {
 }*/
 
 function injectStyleRel(file_path, tag) {
-  const node = document.getElementsByTagName(tag)[0]
-  const style = document.createElement('link')
-  style.setAttribute('rel', 'stylesheet')
-  style.setAttribute('type', 'text/css')
-  style.setAttribute('href', file_path)
-  node.appendChild(style)
+  const node = document.getElementsByTagName(tag)[0];
+  const style = document.createElement('link');
+  style.setAttribute('rel', 'stylesheet');
+  style.setAttribute('type', 'text/css');
+  style.setAttribute('href', file_path);
+  node.appendChild(style);
 }
 
 // injectScript(chrome.extension.getURL('content.js'), 'body');
-injectStyleRel(chrome.runtime.getURL('/components/content/content.css'), 'head')
-injectScript(chrome.runtime.getURL('/components/content/content.js'), 'body')
+injectStyleRel(
+  // biome-ignore lint/correctness/noUndeclaredVariables: Chrome extension
+  chrome.runtime.getURL('/components/content/content.css'),
+  'head',
+);
+// biome-ignore lint/correctness/noUndeclaredVariables: Chrome extension
+injectScript(chrome.runtime.getURL('/components/content/content.js'), 'body');
 
 // run a script that has access to information on the current tab
 // Source: https://developer.chrome.com/docs/extensions/mv3/intro/mv3-migration/
