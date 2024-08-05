@@ -1,15 +1,14 @@
+// TODO: Add more log levels
+/*
+  INFO: 1,
+  VERBOSE: 2,
+  WARNING: 3,
+  ERROR: 4
+  */
 const LOG_LEVEL = {
   NONE: 0,
   ALL: 1,
-
-  // TODO: Add more log levels
-  /*
-    INFO: 1,
-    VERBOSE: 2,
-    WARNING: 3,
-    ERROR: 4
-    */
-}
+};
 
 const BRANCH_PREFIXES = {
   feature: '🍕',
@@ -17,13 +16,13 @@ const BRANCH_PREFIXES = {
   docs: '📝',
   style: '✨',
   refactor: '🔨',
-  build: '🤖️',
+  build: '🤖',
   ci: '🔁',
   perf: '⚡',
   test: '✅',
   chore: '📦',
   research: '🔍',
-}
+};
 
 const CONFIG = {
   LOG_LEVEL: LOG_LEVEL.ALL,
@@ -31,6 +30,6 @@ const CONFIG = {
   ABORT_ON_TRYS: 25,
   BRANCH_PREFIXES: BRANCH_PREFIXES,
   EMOJI: false,
-}
+};
 
-export default CONFIG
+export default CONFIG;

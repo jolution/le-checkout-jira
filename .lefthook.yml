@@ -1,14 +1,15 @@
 pre-commit:
   parallel: true
-  scripts:
+  scripts: # alternative: "npx validate-branch-name"
     "branch-protection":
       runner: bash
   commands:
     type-check:
       glob: '*.{ts,tsx}'
-      run: npm typecheck {staged_files}
+      run: npm typecheck {staged_files} # alternative: "tsc --noEmit",
     stylelint:
-      glob: '*.{js,ts,jsx,tsx}' # For CSS-in-JS
+      glob: '*.css'
+#      glob: '*.{js,ts,jsx,tsx}' # For CSS-in-JS
       run: npx stylelint {staged_files}
     biome:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
@@ -20,19 +21,21 @@ pre-commit:
     markdown-link-check:
       glob: '*.md'
       run: npx markdown-link-check {staged_files}
-
-prepare-commit-msg:
-  commands:
-    jira-prepare-commit-msg:
-      run: npx jira-prepare-commit-msg ${1}
+#    gitLeaks:
+#      run: npx gitleaks detect -v
 
 commit-msg:
   parallel: true
   commands:
     lint-commit-msg:
       run: npx commitlint --edit
-    spell-check:
-      run: npx cspell --locale=en --no-summary --no-progress --show-suggestions --language-id commit-msg {1}
+#    spell-check:
+#      run: npx cspell --locale=en --no-summary --no-progress --show-suggestions --language-id commit-msg {1}
+
+prepare-commit-msg:
+  commands:
+    jira-prepare-commit-msg:
+      run: npx jira-prepare-commit-msg ${1}
 
 pre-push:
   parallel: true
@@ -42,10 +45,22 @@ pre-push:
     audit:
       run: npm audit
     stylelint:
-      glob: '*.{js,ts,jsx,tsx}' # For CSS-in-JS
+      glob: '*.css'
+#      glob: '*.{js,ts,jsx,tsx}' # For CSS-in-JS
       run: npx stylelint {push_files}
     biome:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: npx @biomejs/biome check --no-errors-on-unmatched --files-ignore-unknown=true {push_files}
 #    playwright:
 #      run: npx playwright test
+
+output:
+  #  - meta           # Print lefthook version
+  #  - summary        # Print summary block (successful and failed steps)
+  #  - empty_summary  # Print summary heading when there are no steps to run
+  #  - success        # Print successful steps
+  - failure        # Print failed steps printing
+#  - execution      # Print any execution logs (but prints if the execution failed)
+#  - execution_out  # Print execution output (but still prints failed commands output)
+#  - execution_info # Print `EXECUTE > ...` logging
+#  - skips          # Print "skip" (i.e. no files matched)
