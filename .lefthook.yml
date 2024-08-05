@@ -45,7 +45,8 @@ pre-push:
     audit:
       run: npm audit
     stylelint:
-      glob: '*.{js,ts,jsx,tsx}' # For CSS-in-JS
+      glob: '*.css'
+#      glob: '*.{js,ts,jsx,tsx}' # For CSS-in-JS
       run: npx stylelint {push_files}
     biome:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
