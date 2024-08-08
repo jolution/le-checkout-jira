@@ -1,15 +1,12 @@
 pre-commit:
   parallel: true
-  scripts: # alternative: "npx validate-branch-name"
-    "branch-protection":
-      runner: bash
   commands:
     type-check:
       glob: '*.{ts,tsx}'
-      run: npm typecheck {staged_files} # alternative: "tsc --noEmit",
+      run: npx tsc --noEmit {staged_files}
     stylelint:
       glob: '*.css'
-#      glob: '*.{js,ts,jsx,tsx}' # For CSS-in-JS
+      #      glob: '*.{js,ts,jsx,tsx}' # For CSS-in-JS
       run: npx stylelint {staged_files}
     biome:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
@@ -21,21 +18,22 @@ pre-commit:
     markdown-link-check:
       glob: '*.md'
       run: npx markdown-link-check {staged_files}
-#    gitLeaks:
-#      run: npx gitleaks detect -v
+    gitLeaks:
+      run: gitleaks detect --source . -v
 
 commit-msg:
   parallel: true
   commands:
     lint-commit-msg:
       run: npx commitlint --edit
+      # TODO: Check the bug ticket: https://github.com/sindresorhus/find-up-simple/issues/2
 #    spell-check:
 #      run: npx cspell --locale=en --no-summary --no-progress --show-suggestions --language-id commit-msg {1}
 
 prepare-commit-msg:
   commands:
     jira-prepare-commit-msg:
-      run: npx jira-prepare-commit-msg ${1}
+      run: npx jira-prepare-commit-msg {1}
 
 pre-push:
   parallel: true
@@ -43,10 +41,11 @@ pre-push:
     test:
       run: npm test
     audit:
+      tags: frontend security
       run: npm audit
     stylelint:
       glob: '*.css'
-#      glob: '*.{js,ts,jsx,tsx}' # For CSS-in-JS
+      #      glob: '*.{js,ts,jsx,tsx}' # For CSS-in-JS
       run: npx stylelint {push_files}
     biome:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
