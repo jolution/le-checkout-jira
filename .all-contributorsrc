@@ -1,38 +1,56 @@
 {
-    "files": ["README.md"],
-    "imageSize": 100,
-    "commit": false,
-    "contributorsSortAlphabetically": true,
-    "commitType": "docs",
-    "commitConvention": "angular",
-    "contributors": [
-        {
-            "login": "pimmok",
-            "name": "Jochen Simon",
-            "avatar_url": "https://avatars.githubusercontent.com/u/17846993?v=4",
-            "profile": "https://jochensimon.com/",
-            "contributions": ["design"]
-        },
-        {
-            "login": "juliankasimir",
-            "name": "Julian Kasimir",
-            "avatar_url": "https://avatars.githubusercontent.com/u/120172350?v=4",
-            "profile": "https://github.com/juliankasimir",
-            "contributions": ["ideas", "code"]
-        },
-        {
-            "login": "raj19joshi",
-            "name": "raj19joshi",
-            "avatar_url": "https://avatars.githubusercontent.com/u/112689625?v=4",
-            "profile": "https://github.com/raj19joshi",
-            "contributions": ["code"]
-        }
-    ],
-    "contributorsPerLine": 7,
-    "skipCi": true,
-    "repoType": "github",
-    "repoHost": "https://github.com",
-    "projectName": "le-checkout-jira",
-    "projectOwner": "jolution",
-    "linkToUsage": false
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributorsSortAlphabetically": true,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "pimmok",
+      "name": "Jochen Simon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17846993?v=4",
+      "profile": "https://jochensimon.com/",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "juliankasimir",
+      "name": "Julian Kasimir",
+      "avatar_url": "https://avatars.githubusercontent.com/u/120172350?v=4",
+      "profile": "https://github.com/juliankasimir",
+      "contributions": [
+        "ideas",
+        "code"
+      ]
+    },
+    {
+      "login": "raj19joshi",
+      "name": "raj19joshi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/112689625?v=4",
+      "profile": "https://github.com/raj19joshi",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Sett17",
+      "name": "Raik Rohde",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64754924?v=4",
+      "profile": "http://dikka.dev",
+      "contributions": [
+        "ideas"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "le-checkout-jira",
+  "projectOwner": "jolution",
+  "linkToUsage": false
 }
