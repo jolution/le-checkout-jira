@@ -162,6 +162,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/juliankasimir"><img src="https://avatars.githubusercontent.com/u/120172350?v=4?s=100" width="100px;" alt="Julian Kasimir"/><br /><sub><b>Julian Kasimir</b></sub></a><br /><a href="#ideas-juliankasimir" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/jolution/le-checkout-jira/commits?author=juliankasimir" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://dikka.dev"><img src="https://avatars.githubusercontent.com/u/64754924?v=4?s=100" width="100px;" alt="Raik Rohde"/><br /><sub><b>Raik Rohde</b></sub></a><br /><a href="#ideas-Sett17" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/raj19joshi"><img src="https://avatars.githubusercontent.com/u/112689625?v=4?s=100" width="100px;" alt="raj19joshi"/><br /><sub><b>raj19joshi</b></sub></a><br /><a href="https://github.com/jolution/le-checkout-jira/commits?author=raj19joshi" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/tobi-he"><img src="https://avatars.githubusercontent.com/u/129895563?v=4?s=100" width="100px;" alt="tobi-he"/><br /><sub><b>tobi-he</b></sub></a><br /><a href="#maintenance-tobi-he" title="Maintenance">🚧</a></td>
     </tr>
   </tbody>
 </table>
