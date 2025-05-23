@@ -48,11 +48,14 @@ FR:
 
 1. Download the latest release with GitHub CLI:
    `gh repo clone jolution/le-checkout-jira`
-2. Open the Extension Management page by navigating to `chrome://extensions`.
-3. Enable Developer Mode by clicking the toggle switch next to **Developer mode**.
-4. Click the **LOAD UNPACKED** button and select the extension directory.
-5. Open a new tab and open the company jira on promise ticket directly. On the right sidebar you will find the
-   extension.
+2. Navigate into the project directory and build the extension:
+   ```bash
+   npm install && npm run build
+   ```
+3. Open the Extension Management page by navigating to `chrome://extensions`.
+4. Enable Developer Mode by clicking the toggle switch next to **Developer mode**.
+5. Click the **LOAD UNPACKED** button and select the extension directory named `dist`.
+6. Open a new tab and open the company jira on promise ticket directly. On the right sidebar you will find the extension.
 
 ## Updating
 
