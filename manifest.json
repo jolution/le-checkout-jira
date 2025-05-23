@@ -1,39 +1,57 @@
 {
-    "manifest_version": 3,
-    "name": "LeCheckout for Jira",
-    "version": "1.0.0",
-    "author": "@jolution",
-    "description": "Generates a branch name from the Jira ticket number and title",
-    "permissions": ["tabs", "activeTab", "declarativeContent", "storage", "unlimitedStorage", "contextMenus", "alarms", "notifications", "webRequest"],
-    "host_permissions": ["<all_urls>"],
-    "content_scripts": [
-        {
-            "matches": ["https://*/browse/*", "https://*.atlassian.net/browse/*"],
-            "css": ["/components/popup/popup.css", "/components/content/content.css"],
-            "js": ["/components/content/inject.js"],
-            "all_frames": true,
-            "run_at": "document_end"
-        }
-    ],
-    "web_accessible_resources": [
-        {
-            "resources": ["/components/content/translation.js", "/components/config.js", "/components/content/language.js", "/components/content/inject.js", "/components/content/utils.js", "/components/content/content.js", "/components/content/content.css"],
-            "matches": ["<all_urls>"]
-        }
-    ],
-    "action": {
-        "default_icon": {
-            "16": "icons/icon16.png",
-            "32": "icons/icon32.png"
-        },
-        "default_title": "LeCheckout for Jira",
-        "default_popup": "/components/popup/popup.html"
-    },
-    "icons": {
-        "16": "icons/icon16.png",
-        "32": "icons/icon32.png",
-        "64": "icons/icon64.png",
-        "128": "icons/icon128.png",
-        "256": "icons/icon256.png"
+  "manifest_version": 3,
+  "name": "Le Checkout Jira (Alpha)",
+  "version": "1.0.0-alpha",
+  "author": "@jolution",
+  "description": "Generates a branch name from the Jira ticket number and title",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "declarativeContent",
+    "storage",
+    "unlimitedStorage",
+    "contextMenus",
+    "alarms",
+    "notifications",
+    "webRequest"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["https://*/browse/*", "https://*.atlassian.net/browse/*"],
+      "css": ["/components/popup/popup.css", "/components/content/content.css"],
+      "js": ["/components/content/inject.js"],
+      "all_frames": true,
+      "run_at": "document_end"
     }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "/components/content/translation.js",
+        "/components/config.js",
+        "/components/content/language.js",
+        "/components/content/inject.js",
+        "/components/content/utils.js",
+        "/components/content/content.js",
+        "/components/content/content.css"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    },
+    "default_title": "LeCheckout for Jira",
+    "default_popup": "/components/popup/popup.html"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "64": "icons/icon64.png",
+    "128": "icons/icon128.png",
+    "256": "icons/icon256.png"
+  }
 }
