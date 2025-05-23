@@ -1,6 +1,6 @@
 {
   "name": "browser-extension-gitbranch-jira",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This is a Chrome browser extension that generates a git branch name based on the current jira issue key and the issue\r summary.",
   "main": "index.js",
   "repository": {
@@ -23,7 +23,7 @@
     "lint:style:fix": "npm run lint:style -- --write",
     "format": "biome format --write ./",
     "prepare": "lefthook install",
-    "build": "mkdir -p dist && cp -r components icons manifest.json dist/",
+    "build": "mkdir -p dist && cp -r components public/icons manifest.json dist/",
     "zip": "npm run build && mkdir -p release && cd dist && zip -r ../release/le-checkout-jira.zip .",
     "release": "npx semantic-release"
   },
