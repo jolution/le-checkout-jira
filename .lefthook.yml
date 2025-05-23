@@ -6,18 +6,11 @@ pre-commit:
       run: npx tsc --noEmit {staged_files}
     stylelint:
       glob: '*.css'
-      #      glob: '*.{js,ts,jsx,tsx}' # For CSS-in-JS
       run: npx stylelint {staged_files}
     biome:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: npx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
       stage_fixed: true
-    spelling:
-      glob: '*.{js,ts,jsx,tsx,md}'
-      run: npx cspell {staged_files}
-    markdown-link-check:
-      glob: '*.md'
-      run: npx markdown-link-check {staged_files}
     gitLeaks:
       run: gitleaks detect --source . -v
 
