@@ -144,9 +144,10 @@ See the [LICENSE](LICENSE) file for details.
 
 ## ℹ️ Disclaimer
 
-Please note that this project, LeCheckout, is not officially associated with or endorsed by the Monkey Island franchise,
-its creators, or any related entities. It is an independent project developed by the open-source community and does not
-claim any rights to the Monkey Island trademark or any related materials.
+**LeCheckout** is an independent open-source project and is not affiliated with, endorsed by, or associated with Atlassian®, Jira®, or any of their subsidiaries or products.  
+All references to Jira® are for descriptive and interoperability purposes only.
+
+The visual style and logo of LeCheckout are inspired by the *Monkey Island* franchise. This project is not affiliated with, endorsed by, or associated with *Monkey Island*, Lucasfilm™, LucasArts™, Disney®, or any related entities. All trademarks and copyrights are the property of their respective owners.
 
 ## ✨ Contributors
 
