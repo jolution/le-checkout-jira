@@ -30,17 +30,9 @@ summary.
 
 ## 🌟 Screenshots
 
-EN:
+![App Screenshot 1](screenshot.png)
 
-![App Screenshot EN](screenshot.png)
-
-DE:
-
-![App Screenshot DE](screenshot2.png)
-
-FR:
-
-![App Screenshot FR](screenshot3.png)
+![App Screenshot 2](screenshot2.png)
 
 ## 📦 Installation
 

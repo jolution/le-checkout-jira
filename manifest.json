@@ -4,18 +4,8 @@
   "version": "1.0.2",
   "author": "@jolution",
   "description": "Generates a branch name from the Jira ticket number and title",
-  "permissions": [
-    "tabs",
-    "activeTab",
-    "declarativeContent",
-    "storage",
-    "unlimitedStorage",
-    "contextMenus",
-    "alarms",
-    "notifications",
-    "webRequest"
-  ],
-  "host_permissions": ["<all_urls>"],
+  "permissions": ["tabs", "activeTab"],
+  "host_permissions": ["https://*.atlassian.net/*", "https://*/browse/*"],
   "content_scripts": [
     {
       "matches": ["https://*/browse/*", "https://*.atlassian.net/browse/*"],
