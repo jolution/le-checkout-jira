@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Le Checkout Jira",
+  "name": "LeCheckout Jira",
   "version": "1.0.2",
   "author": "@jolution",
   "description": "Generates a branch name from the Jira ticket number and title",
