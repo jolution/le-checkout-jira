@@ -1,10 +1,9 @@
 {
   "manifest_version": 3,
   "name": "LeCheckout Jira",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "@jolution",
   "description": "Generates a branch name from the Jira ticket number and title",
-  "permissions": ["tabs", "activeTab"],
   "host_permissions": ["https://*.atlassian.net/*", "https://*/browse/*"],
   "content_scripts": [
     {

@@ -44,8 +44,12 @@
 /* TODO: add postcss for nesting css */
 
 .jira-cloud-details {
+    /* stylelint-disable-next-line */
     --border-settings: 1px solid var(--ds-border, #DFE1E6);
+  /* stylelint-disable-next-line */
     background-color: var(--ds-surface-overlay, #fff);
+  /* stylelint-disable-next-line */
+    padding: var(--ds-space-100, 8px);
     border-radius: 4px;
     position: sticky;
 }

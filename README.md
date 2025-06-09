@@ -1,3 +1,5 @@
+![Banner](https://github.com/jolution/le-checkout-jira/blob/main/resources/png/le-checkout-social-banner-big.png)
+
 <p align="center">
     <picture>
         <source media="(prefers-color-scheme: dark)" srcset="./resources/png/le-checkout-dark.png">

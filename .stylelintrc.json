@@ -1,1 +1,12 @@
-{ "extends": ["stylelint-config-standard"] }
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "selector-id-pattern": [
+      ".*",
+      {
+        "resolveNestedSelectors": true
+      }
+    ],
+    "comment-empty-line-before": null
+  }
+}
