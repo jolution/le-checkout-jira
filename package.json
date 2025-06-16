@@ -1,6 +1,7 @@
 {
   "name": "browser-extension-gitbranch-jira",
-  "version": "1.0.3",
+  "author": "@jolution",
+  "version": "1.1.0",
   "description": "This is a Chrome browser extension that generates a git branch name based on the current jira issue key and the issue\r summary.",
   "main": "index.js",
   "repository": {
@@ -11,10 +12,10 @@
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "start": "npm run lint && npm run zip",
+    "start": "npm run lint && npm run firefox:run",
     "test": "echo \"Info: no test specified\"",
     "check": "biome check ./",
-    "lint": "conc \"npm:lint:*(!fix)\"",
+    "lint": "conc \"npm:lint:*(!fix)\" && npm run firefox:lint",
     "lint:fix": "conc -m 1 \"npm:lint:*:fix\"",
     "lint:css": "npx stylelint \"**/*.{css}\" --aei",
     "lint:css:fix": "npm run lint:css -- --fix",
@@ -25,11 +26,12 @@
     "lint:style:fix": "npm run lint:style -- --write",
     "format": "biome format --write ./",
     "build": "mkdir -p dist && cp -r components public/icons manifest.json dist/",
-    "zip": "rm -rf release/* && npm run build && mkdir -p release && cd dist && zip -r ../release/le-checkout-jira.zip .",
+    "zip": "npm run build && web-ext build --source-dir=dist --artifacts-dir=release --overwrite-dest",
     "release": "npx semantic-release",
-    "prepare": "lefthook install"
+    "prepare": "lefthook install",
+    "firefox:lint": "npm run zip && web-ext lint --source-dir=dist",
+    "firefox:run": "npm run zip && web-ext run --source-dir=dist"
   },
-  "author": "",
   "license": "ISC",
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
@@ -42,10 +44,11 @@
     "@semantic-release/release-notes-generator": "^14.0.3",
     "concurrently": "^9.1.2",
     "jira-prepare-commit-msg": "^1.7.2",
-    "lefthook": "^1.11.13",
+    "lefthook": "^1.11.14",
     "semantic-release": "^24.2.5",
     "stylelint": "^16.20.0",
     "stylelint-config-standard": "^38.0.0",
-    "typecheck": "^0.1.2"
+    "typecheck": "^0.1.2",
+    "web-ext": "^8.7.1"
   }
 }

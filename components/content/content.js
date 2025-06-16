@@ -15,6 +15,15 @@ import { insertAfter, isJiraCloud, logThis } from './utils.js';
 //
 // const TRANSLATION = getTranslation();
 
+function escapeHtml(unsafe = '') {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 // check and limit the maximum length of a text
 function checkMaxLength(text) {
   return text.length > 255 ? text.slice(0, 255) : text;
@@ -84,10 +93,8 @@ window.addEventListener(
 
       if (
         // biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
-        typeof JIRA !== 'undefined' &&
-        // biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
-        typeof JIRA.Issue !== 'undefined' &&
-        // biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
+        typeof JIRA !== 'undefined' && // biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
+        typeof JIRA.Issue !== 'undefined' && // biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
         typeof JIRA.Issue.getIssueKey === 'function'
       ) {
         // Get JIRA issue Key
@@ -125,19 +132,17 @@ window.addEventListener(
           // titleElement = document.querySelector('h1[data-test-id="issue.views.issue-base.foundation.summary.heading"]');
         }
 
-        const title = titleElement?.textContent.trim();
+        const title = escapeHtml(titleElement?.textContent.trim()) ?? '';
 
         const typeElement = document.getElementById('type-val');
 
         // Creating the container element
         const containerElement = document.createElement('div');
 
-        /* spell-checker: disable-next-line */
         containerElement.id = 'browser-extension-gitbranch__container';
 
         // Selecting the target for the input field (Jira on promise)
         let devStatusPanel = document.getElementById(
-          /* spell-checker: disable-next-line */
           'viewissue-devstatus-panel',
         );
 
@@ -160,7 +165,7 @@ window.addEventListener(
             for (const prefix of Object.keys(CONFIG.BRANCH_PREFIXES)) {
               const emoji = CONFIG.BRANCH_PREFIXES[prefix];
               // "Bug" is the bug type identifier name in Jira for both languages (DE,EN)
-              options += `<option value="${prefix}" ${prefix === 'fix' && typeElement?.textContent.trim() === 'Bug' ? 'selected' : ''} onclick="updateGitCommand()">${emoji} ${prefix}</option>`;
+              options += `<option value="${prefix}" ${prefix === 'fix' && typeElement?.textContent.trim() === 'Bug' ? 'selected' : ''}>${emoji} ${prefix}</option>`;
             }
           }
           return options;
@@ -172,7 +177,6 @@ window.addEventListener(
          */
         window.updateGitCommand = (prefix) => {
           const elem = document.getElementById(
-            /* spell-checker: disable-next-line */
             'browser-extension-gitbranch__input',
           );
           // biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
@@ -186,7 +190,6 @@ window.addEventListener(
          */
         window.copyGitCommand = () => {
           const elem = document.getElementById(
-            /* spell-checker: disable-next-line */
             'browser-extension-gitbranch__input',
           );
           elem.select();
@@ -198,7 +201,7 @@ window.addEventListener(
          * @param {string} prefix
          * @returns {string} formatted branch name
          */
-        window.getBranchName = (prefix) => {
+        window.getBranchName = (prefix = 'feature') => {
           if (!title) {
             return '';
           }
@@ -232,7 +235,6 @@ window.addEventListener(
         };
 
         // TODO: extract to separate files and export ?
-        /* spell-checker: disable */
         const cloudContent = `
 				<details open class="jira-cloud-details">
 				    <summary aria-label="Details">${TRANSLATION.COPY_GIT_COMMAND}</summary>
@@ -242,7 +244,7 @@ window.addEventListener(
 									${TRANSLATION.TYPE} <span class="visually-hidden">${TRANSLATION.REQUIRED}</span>
 									<span class="aui-icon icon-required" aria-hidden="true"></span>
 								</label>
-								<select id="browser-extension-gitbranch__select" class="aui-button" onchange="updateGitCommand(this.value)">
+								<select id="browser-extension-gitbranch__select" class="aui-button">
 									<option hidden disabled value>${TRANSLATION.SELECT_PROMPT}</option>
 									${
                     // biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
@@ -262,7 +264,7 @@ window.addEventListener(
                   }">
 								</form>
 								<div class="ml-1">
-									<button class="aui-button" onclick="copyGitCommand()">
+									<button class="aui-button" id="browser-extension-gitbranch__copy-btn">
 									    <span aria-hidden="true" class="css-1f7zkuy" style="--icon-primary-color: currentColor; --icon-secondary-color: #FFFFFF;"><svg width="24" height="24" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><path d="M10 19h8V8h-8v11zM8 7.992C8 6.892 8.902 6 10.009 6h7.982C19.101 6 20 6.893 20 7.992v11.016c0 1.1-.902 1.992-2.009 1.992H10.01A2.001 2.001 0 018 19.008V7.992z"></path><path d="M5 16V4.992C5 3.892 5.902 3 7.009 3H15v13H5zm2 0h8V5H7v11z"></path></g></svg></span> ${TRANSLATION.COPY_BUTTON_TEXT}
 									</button>
 								</div>
@@ -294,7 +296,7 @@ window.addEventListener(
 									${TRANSLATION.TYPE} <span class="visually-hidden">${TRANSLATION.REQUIRED}</span>
 									<span class="aui-icon icon-required" aria-hidden="true"></span>
 								</label>
-								<select id="browser-extension-gitbranch__select" class="aui-button" onchange="updateGitCommand(this.value)">
+								<select id="browser-extension-gitbranch__select" class="aui-button">
 									<option hidden disabled value>${TRANSLATION.SELECT_PROMPT}</option>
 									${
                     // biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
@@ -314,7 +316,7 @@ window.addEventListener(
                   }">
 								</form>
 								<div class="ml-1">
-									<button class="aui-button" onclick="copyGitCommand()">
+									<button class="aui-button" id="browser-extension-gitbranch__copy-btn">
 										<span class="aui-icon aui-icon-small aui-iconfont-copy icon-copy"></span> ${TRANSLATION.COPY_BUTTON_TEXT}
 									</button>
 								</div>
@@ -322,11 +324,27 @@ window.addEventListener(
 						</div>
 					</div>
 				</div>`;
-        /* spell-checker: enable */
 
         const container = isJiraCloud() ? cloudContent : onPromiseContent;
-
         containerElement.insertAdjacentHTML('afterend', container);
+
+        const selectElem = document.getElementById(
+          'browser-extension-gitbranch__select',
+        );
+        if (selectElem) {
+          selectElem.addEventListener('change', (event) => {
+            window.updateGitCommand(event.target.value);
+          });
+        }
+
+        const copyBtn = document.getElementById(
+          'browser-extension-gitbranch__copy-btn',
+        );
+        if (copyBtn) {
+          copyBtn.addEventListener('click', () => {
+            window.copyGitCommand();
+          });
+        }
       } else {
         TRYS++;
       }
