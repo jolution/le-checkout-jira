@@ -21,24 +21,56 @@
 
 _Gitbranch Generator Browser Extension_
 
-**Working Draft**
+**Working Draft / PoC**
 
 ## 📚 Summary
 
 This is a Chrome browser extension that generates a git branch name based on the current jira issue key and the issue
 summary.
 
-:package: If you use GitHub, have a look at the [GitHub Version](https://github.com/jolution/le-checkout-github).
+:package: If you use GitHub, have a look at the alpha Test-Version of [GitHub Version](https://github.com/jolution/le-checkout-github).
 
 ## 🌟 Screenshots
 
-![App Screenshot 1](screenshot.png)
+![App Screenshot 1](resources/png/screenshot.png)
 
-![App Screenshot 2](screenshot2.png)
+![App Screenshot 2](resources/png/screenshot2.png)
 
 ## 📦 Installation
 
-### Chrome
+### 🛒 Chrome Store
+[//]: # (### 🛒 Chrome and Firefox Store)
+
+You can install the extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/dlnckhalkgolbmdjengopemhjihfcgde).
+
+[//]: # (&#40;or [Firefox Add-ons]&#40;https://addons.mozilla.org/firefox/addon/lecheckout-jira&#41;)
+
+We recommend using the store versions for the best experience, as they are automatically updated and maintained.
+
+**✨⭐️ Like the extension? Give it a ⭐️⭐️⭐️⭐️⭐️ review — we’d love your support! ✨**
+
+<p>
+  <a href="https://chromewebstore.google.com/detail/dlnckhalkgolbmdjengopemhjihfcgde">
+    <picture>
+      <source srcset="https://i.imgur.com/XBIE9pk.png" media="(prefers-color-scheme: dark)" />
+      <img height="58" src="https://i.imgur.com/oGxig2F.png" alt="Chrome Web Store" />
+    </picture>
+  </a>
+
+[//]: # (  <a href="https://addons.mozilla.org/firefox/addon/lecheckout-jira">)
+
+[//]: # (    <picture>)
+
+[//]: # (      <source srcset="https://i.imgur.com/ZluoP7T.png" media="&#40;prefers-color-scheme: dark&#41;" />)
+
+[//]: # (      <img height="58" src="https://i.imgur.com/4PobQqE.png" alt="Firefox Add-ons" />)
+
+[//]: # (    </picture>)
+
+[//]: # (  </a>)
+</p>
+
+### 📦 Installation from Source for Development
 
 1. Download the latest release with GitHub CLI:
    `gh repo clone jolution/le-checkout-jira`
@@ -90,28 +122,52 @@ on [GitHub](https://github.com/jolution/le-checkout-jira).
 
 [![Star this repository](https://img.shields.io/github/stars/jolution/le-checkout-jira?style=social)](https://github.com/jolution/le-checkout-jira)
 
-We do not currently offer direct support for this project.
+And of course, if you like the extension, please consider giving it a ⭐️⭐️⭐️⭐️⭐️ review on the [Chrome Web Store](https://chromewebstore.google.com/detail/lecheckout-jira/dlnckhalkgolbmdjengopemhjihfcgde/reviews).
+
+[//]: # (or Firefox Add-ons page.)
+
+**The extension must be installed before you can leave a review.**
+
+---
+
+We do not currently offer direct support for this project, please use the [Discussions](https://github.com/jolution/le-checkout-jira/discussions)
+or [Issues](https://github.com/jolution/le-checkout-jira/issues) section for any questions or issues you may have.
 
 ## 🗺️ Roadmap
 
-### 🔄 Unifying LeCheckout Extensions for Jira and GitHub
+### 🔄 Shared Library: Unifying LeCheckout for Jira & GitHub
 
-We are excited to announce the start of the unification of [LeCheckout for Jira](https://github.com/jolution/le-checkout-jira) and [LeCheckout for GitHub](https://github.com/jolution/le-checkout-github). This consolidation aims to provide a unified and enhanced experience for users managing both Jira issues and GitHub repositories.
-
-By bringing these two extensions together, we offer a seamless experience across both platforms, ensuring consistency and reducing the need for multiple installations.
+We’re currently working on extracting a **shared library** to unify the core logic of [LeCheckout for Jira](https://github.com/jolution/le-checkout-jira) and [LeCheckout for GitHub](https://github.com/jolution/le-checkout-github). This step will help us streamline development, reduce duplication, and ensure consistent behavior across both extensions.
+Once the shared library is in place, the **GitHub version** will be updated to match the improved logic already available in the **Jira version**.
 
 ### 🚀 Upcoming Features
 
-- Unifying LeCheckout Extensions for Jira and GitHub
-- Add Azure DevOps support
-- Logo and CI design
-- Optimized design for Jira On Premise and Jira Cloud
-- Integration into popup variant of the ticket
-- Setup option for toggle the emojis
-- Setup option to hide some of the prefix branches
-- Rolling out to Chrome Store
-- Creating the extension for Firefox
-- Add GitLab support
+- [x] Logo and CI design
+- [x] Rollout to Chrome Web Store
+- [ ] Design the popup Component
+- [ ] Firefox extension version (in progress)
+- [ ] Subtask handling
+- [ ] Shared library for LeCheckout for Jira and GitHub
+- [ ] Custom title inputs (Community request)
+- [ ] Add Azure DevOps support
+- [ ] Optimized design for Jira On-Premise and Jira Cloud
+- [ ] Integration into the popup variant of the ticket
+- [ ] Setup option to toggle emojis
+- [ ] Setup option to hide specific branch prefixes
+- [ ] Add GitLab support
+
+### ⚙️ Tech Stack Upgrade: Preparing for v2.0
+
+The current codebase is more of a PoC (proof of concept), and while it served us well to validate the idea, we’re now preparing for a more robust and scalable **2.0 release**.
+
+For this next version, we plan to rebuild the extensions using a **modern frontend framework** — like **[Preact](https://preactjs.com/)** — to improve maintainability, performance, and developer experience.
+
+This will allow us to:
+
+- Streamline the UI and make it more modular
+- Set a solid foundation for cross-platform extension development
+
+We’re excited about what’s ahead!
 
 ## ✍️ Authors (in alphabetical order)
 
@@ -120,20 +176,21 @@ By bringing these two extensions together, we offer a seamless experience across
 
 ## 💎 Sponsor (in alphabetical order)
 
-### Eviden
+### Atos & Eviden
 
-We appreciate the support from [Eviden](https://eviden.com), helping us continue our open source work.
+We are grateful for the support from [Atos](https://atos.net) and [Eviden](https://eviden.com), which enables us to continue our open source work.
 
-<img style="max-width: 100px" width="100" src="https://raw.githubusercontent.com/DE-AMS-AD-VAPPS/brand/main/assets/eviden-logo.svg" alt="Eviden logo.">
-
----
+<div style="display: flex; gap: 20px; align-items: center;">
+  <img style="max-width: 100px;" width="100" src="https://raw.githubusercontent.com/DE-AMS-AD-VAPPS/brand/refs/heads/main/assets/atos_logo--blue.svg" alt="Atos logo">
+  <img style="max-width: 100px;" width="100" src="https://raw.githubusercontent.com/DE-AMS-AD-VAPPS/brand/main/assets/eviden-logo.svg" alt="Eviden logo">
+</div>
 
 ### JetBrains
 
-Many thanks to [JetBrains](https://jetbrains.com), which provided us with a yearly license for all their programs for
+Many thanks to [JetBrains](https://jetbrains.com), which provided us two times with a yearly license for all their programs for
 the open source work on this project.
 
-<img style="max-width: 50px" width="50" src="https://resources.jetbrains.com/storage/products/company/brand/logos/WebStorm_icon.png" alt="WebStorm logo.">
+<img style="max-width: 50px" width="50" src="https://resources.jetbrains.com/storage/products/company/brand/logos/WebStorm_icon.png" alt="WebStorm logo">
 
 ## ⚖️ License
 
