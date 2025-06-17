@@ -3,9 +3,6 @@
   "author": "@jolution",
   "version": "1.1.0",
   "description": "This is a Chrome browser extension that generates a git branch name based on the current jira issue key and the issue\r summary.",
-  "overrides": {
-    "brace-expansion": "^2.0.2"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jolution/le-checkout-jira.git"
