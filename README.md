@@ -38,12 +38,9 @@ summary.
 
 ## 📦 Installation
 
-### 🛒 Chrome Store
-[//]: # (### 🛒 Chrome and Firefox Store)
+### 🛒 Chrome and Firefox Store
 
-You can install the extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/dlnckhalkgolbmdjengopemhjihfcgde).
-
-[//]: # (&#40;or [Firefox Add-ons]&#40;https://addons.mozilla.org/firefox/addon/lecheckout-jira&#41;)
+You can install the extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/dlnckhalkgolbmdjengopemhjihfcgde) or [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/lecheckout-jira).
 
 We recommend using the store versions for the best experience, as they are automatically updated and maintained.
 
@@ -56,18 +53,12 @@ We recommend using the store versions for the best experience, as they are autom
       <img height="58" src="https://i.imgur.com/oGxig2F.png" alt="Chrome Web Store" />
     </picture>
   </a>
-
-[//]: # (  <a href="https://addons.mozilla.org/firefox/addon/lecheckout-jira">)
-
-[//]: # (    <picture>)
-
-[//]: # (      <source srcset="https://i.imgur.com/ZluoP7T.png" media="&#40;prefers-color-scheme: dark&#41;" />)
-
-[//]: # (      <img height="58" src="https://i.imgur.com/4PobQqE.png" alt="Firefox Add-ons" />)
-
-[//]: # (    </picture>)
-
-[//]: # (  </a>)
+  <a href="https://addons.mozilla.org/addon/lecheckout-jira">
+    <picture>
+      <source srcset="https://i.imgur.com/ZluoP7T.png" media="(prefers-color-scheme: dark)" />
+      <img height="58" src="https://i.imgur.com/4PobQqE.png" alt="Firefox Add-ons" />
+    </picture>
+  </a>
 </p>
 
 ### 📦 Installation from Source for Development
@@ -122,9 +113,7 @@ on [GitHub](https://github.com/jolution/le-checkout-jira).
 
 [![Star this repository](https://img.shields.io/github/stars/jolution/le-checkout-jira?style=social)](https://github.com/jolution/le-checkout-jira)
 
-And of course, if you like the extension, please consider giving it a ⭐️⭐️⭐️⭐️⭐️ review on the [Chrome Web Store](https://chromewebstore.google.com/detail/lecheckout-jira/dlnckhalkgolbmdjengopemhjihfcgde/reviews).
-
-[//]: # (or Firefox Add-ons page.)
+And of course, if you like the extension, please consider giving it a ⭐️⭐️⭐️⭐️⭐️ review on the [Chrome Web Store](https://chromewebstore.google.com/detail/lecheckout-jira/dlnckhalkgolbmdjengopemhjihfcgde/reviews) or [Firefox Add-ons page](https://addons.mozilla.org/addon/lecheckout-jira).
 
 **The extension must be installed before you can leave a review.**
 
@@ -144,9 +133,11 @@ Once the shared library is in place, the **GitHub version** will be updated to m
 
 - [x] Logo and CI design
 - [x] Rollout to Chrome Web Store
+- [x] Firefox extension version in Firefox Add-ons
+
+
+- [ ] Subtask handling (in Progress 🚀)
 - [ ] Design the popup Component
-- [ ] Firefox extension version (in progress)
-- [ ] Subtask handling
 - [ ] Shared library for LeCheckout for Jira and GitHub
 - [ ] Custom title inputs (Community request)
 - [ ] Add Azure DevOps support
