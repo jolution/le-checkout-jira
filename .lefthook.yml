@@ -18,11 +18,6 @@ commit-msg:
     lint-commit-msg:
       run: npx commitlint --edit
 
-prepare-commit-msg:
-  commands:
-    jira-prepare-commit-msg:
-      run: npx jira-prepare-commit-msg {1}
-
 pre-push:
   parallel: true
   commands:
