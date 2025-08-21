@@ -2,58 +2,138 @@
 <html lang="en">
 
 <head>
-    <title>Jira Branchname Generator</title>
-    <link href="/components/popup/popup.css"
-          rel="stylesheet"
-          type="text/css"/>
-    <script defer
-            src="/components/popup/popup.js"
-            type="module"></script>
+  <title>Jira Branchname Generator</title>
+  <link href="/components/popup/popup.css"
+        rel="stylesheet"
+        type="text/css"/>
+  <script defer
+          src="/components/popup/popup.js"
+          type="module"></script>
+
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: system-ui, sans-serif;
+    }
+
+    .container {
+      display: grid;
+      place-items: center;
+      height: 100%;
+      padding: 16px;
+    }
+
+    .card {
+      max-width: 360px;
+      width: 100%;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.25rem;
+    }
+
+    p {
+      margin: 0 0 16px;
+      color: #555;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid currentColor;
+    }
+
+    .btn.primary {
+      background-color: #0366d6;
+      color: #fff;
+      border: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      p {
+        color: #ccc;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Jira Branchname Generator</h1>
-</header>
+<!--<header>
+  <h1>Jira Branchname Generator</h1>
+</header>-->
 
 <main>
-    <form id="optionsForm">
-        <label for="emoji">
-            <input id="emoji"
-                   name="emoji"
-                   type="checkbox">
-            Enable Emoji
-        </label>
-    </form>
+  <div class="container">
+    <div class="card"
+         role="dialog"
+         aria-labelledby="title">
+      <h1 id="title">Optionen</h1>
+      <p>Die Optionsseite f&uuml;r die Erweiterung wird gerade entworfen und gebaut. Bis dahin: Testen, Repo einen Stern
+        geben und gerne contributen.</p>
+      <div>
+        <a class="btn primary"
+           href="https://github.com/jolution/le-checkout-jira?tab=readme-ov-file#%EF%B8%8F-support"
+           target="_blank"
+           rel="noopener noreferrer">Repo einen Stern geben</a>
+        <a class="btn"
+           href="https://github.com/jolution/le-checkout-jira"
+           target="_blank"
+           rel="noopener noreferrer">Contribute</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!--<form id="optionsForm">
+      <label for="emoji">
+          <input id="emoji"
+                 name="emoji"
+                 type="checkbox">
+          Enable Emoji
+      </label>
+  </form>-->
 </main>
 
 <footer>
 
-    <!--    <a href="https://github.com/sponsors/xxx"-->
-    <!--       id="sponsorLink"-->
-    <!--       target="_blank">-->
-    <!--        <svg aria-hidden="true"-->
-    <!--             class="octicon octicon-heart icon-sponsor mr-1 v-align-middle color-fg-sponsors anim-pulse-in"-->
-    <!--             data-view-component="true"-->
-    <!--             height="16"-->
-    <!--             style="fill: #BC6796; vertical-align: middle;"-->
-    <!--             version="1.1"-->
-    <!--             viewBox="0 0 16 16"-->
-    <!--             width="16">-->
-    <!--            <path d="m8 14.25.345.666a.75.75 0 0 1-.69 0l-.008-.004-.018-.01a7.152 7.152 0 0 1-.31-.17 22.055 22.055 0 0 1-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.066 22.066 0 0 1-3.744 2.584l-.018.01-.006.003h-.002ZM4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.58 20.58 0 0 0 8 13.393a20.58 20.58 0 0 0 3.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.749.749 0 0 1-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5Z"></path>-->
-    <!--        </svg>-->
-    <!--        &nbsp;Sponsor-->
-    <!--    </a>-->
+  <!--    <a href="https://github.com/sponsors/xxx"-->
+  <!--       id="sponsorLink"-->
+  <!--       target="_blank">-->
+  <!--        <svg aria-hidden="true"-->
+  <!--             class="octicon octicon-heart icon-sponsor mr-1 v-align-middle color-fg-sponsors anim-pulse-in"-->
+  <!--             data-view-component="true"-->
+  <!--             height="16"-->
+  <!--             style="fill: #BC6796; vertical-align: middle;"-->
+  <!--             version="1.1"-->
+  <!--             viewBox="0 0 16 16"-->
+  <!--             width="16">-->
+  <!--            <path d="m8 14.25.345.666a.75.75 0 0 1-.69 0l-.008-.004-.018-.01a7.152 7.152 0 0 1-.31-.17 22.055 22.055 0 0 1-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.066 22.066 0 0 1-3.744 2.584l-.018.01-.006.003h-.002ZM4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.58 20.58 0 0 0 8 13.393a20.58 20.58 0 0 0 3.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.749.749 0 0 1-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5Z"></path>-->
+  <!--        </svg>-->
+  <!--        &nbsp;Sponsor-->
+  <!--    </a>-->
 
-    <!--    <p id="copyright">&copy; 2024 <a href="https://github.com/REPONAME"-->
-    <!--                                     target="_blank">info@EMAIL.de</a></p>-->
+  <!--    <p id="copyright">&copy; 2024 <a href="https://github.com/REPONAME"-->
+  <!--                                     target="_blank">info@EMAIL.de</a></p>-->
 
-    <!--    <a href="https://URL.de/sponsor">Sponsoring</a>, <a href="https://URL.de/rating">Rating</a>,-->
-    <!--    <a href="https://URL.de/datenschutz">Datenschutz</a>-->
+  <!--    <a href="https://URL.de/sponsor">Sponsoring</a>, <a href="https://URL.de/rating">Rating</a>,-->
+  <!--    <a href="https://URL.de/datenschutz">Datenschutz</a>-->
 
-    <script src="/components/content/inject.js"
-            type="module"></script>
+  <script src="/components/content/inject.js"
+          type="module"></script>
 </footer>
 </body>
 
