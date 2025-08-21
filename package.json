@@ -11,7 +11,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "start": "npm run lint && npm run firefox:run",
+    "start": "npm run lint:fix && npm run lint && npm run firefox:run",
     "test": "echo \"Info: no test specified\"",
     "check": "biome check ./",
     "lint": "conc \"npm:lint:*(!fix)\" && npm run firefox:lint",
@@ -36,11 +36,11 @@
     "@biomejs/biome": "1.8.3",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "concurrently": "^9.1.2",
-    "lefthook": "^1.11.14",
-    "semantic-release": "^24.2.5",
-    "stylelint": "^16.20.0",
-    "stylelint-config-standard": "^38.0.0",
-    "web-ext": "^8.7.1"
+    "concurrently": "^9.2.0",
+    "lefthook": "^1.12.3",
+    "semantic-release": "^24.2.7",
+    "stylelint": "^16.23.1",
+    "stylelint-config-standard": "^39.0.0",
+    "web-ext": "^8.9.0"
   }
 }
