@@ -1,7 +1,7 @@
 /**
  * @fileOverview This file contains the JavaScript code for the Git Branch extension.
  * @module GitBranchExtension
- * @version 1.0.0
+ * @version 1.1.1
  * @description This script enhances Jira pages by adding functionality related to Git branches.
  * @license Definition can be found in the LICENSE file.
  *
@@ -141,19 +141,15 @@ window.addEventListener(
 
         containerElement.id = 'browser-extension-gitbranch__container';
 
-        // Selecting the target for the input field (Jira on promise)
-        let devStatusPanel = document.getElementById(
-          'viewissue-devstatus-panel',
-        );
+        const devStatusPanel = isJiraCloud()
+          ? document.getElementById('jira-issue-header-actions') // cloud
+          : document.getElementById('viewissue-devstatus-panel'); // onPremise
 
-        // If the element is not reachable, use the alternative ID (Jira Cloud, next gen)
         if (!devStatusPanel) {
-          // If the item is not reachable, use the alternative ID
-          devStatusPanel = document.getElementById('jira-issue-header-actions');
+          logThis('Kein Ziel-Element gefunden, Abbruch.');
+        } else {
+          insertAfter(containerElement, devStatusPanel);
         }
-
-        // devStatusPanel.appendChild(containerElement);
-        insertAfter(containerElement, devStatusPanel);
 
         /**
          * Generate an Option list from defined prefixes
@@ -326,7 +322,7 @@ window.addEventListener(
 				</div>`;
 
         const container = isJiraCloud() ? cloudContent : onPromiseContent;
-        containerElement.insertAdjacentHTML('afterend', container);
+        containerElement.insertAdjacentHTML('afterbegin', container);
 
         const selectElem = document.getElementById(
           'browser-extension-gitbranch__select',
